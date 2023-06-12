@@ -12,6 +12,10 @@ function Navlink(props) {
   const isActive =
     location.pathname === (nav === "Home" ? "/" : `/${nav.toLowerCase()}`);
 
+  const handleClick = () => {
+    appContext?.setActiveNav(nav);
+  };
+
   return (
     <Link to={nav === "Home" ? "/" : nav.toLowerCase()}>
       <Text
@@ -22,13 +26,13 @@ function Navlink(props) {
         pos="relative"
         fontWeight={appContext?.activeNav === nav ? "semibold" : "medium"}
         fontSize={appContext?.scrolled ? ".9rem" : ".95rem"}
-        color={appContext?.activeNav === nav ? "#FFC700" : "white"}
+        color={isActive || appContext?.activeNav === nav ? "#FFC700" : "white"}
         textDecoration={isActive ? "none" : ""}
-        
         _hover={{
           color: "#FFC700",
           textDecoration: "none",
         }}
+        onClick={handleClick}
       >
         {nav}
       </Text>
