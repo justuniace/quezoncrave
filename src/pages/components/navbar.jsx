@@ -1,8 +1,9 @@
-import { Box, Flex, Image,  HStack } from "@chakra-ui/react";
+import { Box, Flex, Image, HStack } from "@chakra-ui/react";
 import PropTypes from "prop-types";
 import Navlink from "./navlink";
-import { Link } from "react-router-dom"; 
-
+import { Link } from "react-router-dom";
+import Cart from "/src/assets/cart.json";
+import Lottie from "lottie-react";
 
 function Navbar(props) {
   const { logo, navLinks } = props;
@@ -17,7 +18,6 @@ function Navbar(props) {
       boxShadow="none"
       top="0"
       right="0"
-      
     >
       <Flex
         justifyContent="space-between"
@@ -25,32 +25,43 @@ function Navbar(props) {
         h="100%"
         margin="auto"
         w="95%"
-        
       >
-        <Box>
+        <Box paddingLeft="5rem">
           <Link to="/">
             <Image
               transition="all .3s ease"
-              width="7rem"
+              width="8rem"
               borderRadius="1rem"
-              marginLeft="50%"
               src={logo}
             />
           </Link>
         </Box>
-        
 
-        <Flex 
-        justifyContent="center"
-        flex="1"
-        marginRight="9.5%"
-        >
+        <Flex flex="1" justifyContent="center">
           <HStack spacing="5rem">
             {navLinks.map((nav) => {
               return <Navlink nav={nav} key={nav} />;
             })}
           </HStack>
         </Flex>
+
+        <Box
+          fontSize="1.5rem"
+          transition="all .3s ease"
+          _hover={{ transform: "scale(.9)" }}
+          cursor="pointer"
+          // // onClick={onOpen}
+          pos="relative"
+          display={{ base: "none", md: "block" }}
+          paddingRight="5rem"
+        >
+          <Lottie
+            loop
+            animationData={Cart}
+            play
+            style={{ width: 85, height: 80 }}
+          />
+        </Box>
       </Flex>
     </Box>
   );
