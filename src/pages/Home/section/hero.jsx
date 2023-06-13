@@ -23,10 +23,10 @@ export default function Hero() {
       right="0"
     >
       <Box>
-        {/* background image */}
+        {/* background image right*/}
         <Image
           width="8rem"
-          src="./src/assets/b1.webp"
+          src="https://drive.google.com/uc?export=view&id=1dOOjY4uLDWFUQfGjIW90Ws0sdl16EnvW"
           position="relative"
           left="70%"
           top="0"
@@ -39,7 +39,7 @@ export default function Hero() {
         {/* background image left */}
         <Image
           width="8rem"
-          src="./src/assets/b1.webp"
+          src="https://drive.google.com/uc?export=view&id=1dOOjY4uLDWFUQfGjIW90Ws0sdl16EnvW"
           position="absolute"
           right="63%"
           top="12"
@@ -51,7 +51,7 @@ export default function Hero() {
       {/* leaves right */}
       <Box>
         <Image
-          src="./src/assets/leaves2.webp"
+          src="https://drive.google.com/uc?export=view&id=1COkxwrhf8iCrF5XosqAN8CGLKwTZa0y6"
           position="absolute"
           top="12%"
           left="82%"
@@ -62,7 +62,7 @@ export default function Hero() {
       {/* leaves left */}
       <Box>
         <Image
-          src="./src/assets/leaves2.webp"
+          src="https://drive.google.com/uc?export=view&id=1COkxwrhf8iCrF5XosqAN8CGLKwTZa0y6"
           position="absolute"
           top="16%"
           left="40%"
@@ -73,7 +73,7 @@ export default function Hero() {
       {/* hero-image */}
       <Box>
         <Image
-          src="./src/assets/hero-image.webp"
+          src="https://drive.google.com/uc?export=view&id=1NDWrdQk6B-fzBB582-wUVwj6bxZ9QDEH"
           position="absolute"
           left="32%"
           top="30%"
@@ -83,7 +83,7 @@ export default function Hero() {
       {/* leaves1 bottom */}
       <Box>
         <Image
-          src="./src/assets/leaves1.webp"
+          src="https://drive.google.com/uc?export=view&id=14jD0wyMU5pQ5hPmAlODGtlExu8k8sNcn"
           position="absolute"
           left="75%"
           top="64%"
