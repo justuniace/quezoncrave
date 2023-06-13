@@ -7,10 +7,16 @@ const colors = {
     accent: "#FFC700",
     accent_hover: "#EFCA48",
   },
+  myCustomColorScheme: {
+    50: "#FFC700",
+    100: "#FFC700",
+    200: "#F8D990",
+    
+  },
 };
 const fonts = {
   body: `'Inter', sans-serif`,
-  heading: `'Abril-Fatface', cursive`
+  heading: `'Abril-Fatface'`
 
 
 }

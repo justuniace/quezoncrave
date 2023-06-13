@@ -9,22 +9,21 @@ export const Menu = () => {
     <Box>
       <Center h="10rem">
         <Text
-          top="18%"
+          top="20%"
           display="flex"
           position="fixed"
           fontSize="25"
-          fontFamily="inter"
           fontWeight="semibold"
           justifyContent="center"
           alignItems="center"
+          fontFamily="Abril-Fatface"
         >
           Heartwarming Traditions, Savored in Every Bite!
         </Text>
       </Center>
-      <Center paddingBlock="4rem">
-       <MenuNav/>
+      <Center paddingBlock="5rem">
+        <MenuNav />
       </Center>
-     
     </Box>
   );
 };

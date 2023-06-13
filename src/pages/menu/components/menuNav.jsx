@@ -1,7 +1,9 @@
-import "./menu.css";
-import { Box } from "@chakra-ui/react";
 
+import { Box } from "@chakra-ui/react";
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from "@chakra-ui/react";
+
+
+
 export default function MenuNav() {
   const tabs = [
     { label: "Food", link: "Food" },
@@ -14,8 +16,8 @@ export default function MenuNav() {
     <>
       <Box
         h="4rem"
-        w="20rem"
-        top="13.2rem"
+        w="22rem"
+        top="14.2rem"
         position="absolute"
         borderRadius="20px"
         background="linear-gradient(145deg, #ececec, #ffffff)"
@@ -23,10 +25,15 @@ export default function MenuNav() {
         zIndex="-1"
       ></Box>
       <Box>
-        <Tabs variant="soft-rounded" colorScheme="yellow" placeholder="#FFFFF">
+        <Tabs variant="soft-rounded" colorScheme="myCustomColorScheme">
           <TabList sx={{ gap: "20px" }}>
             {tabs.map((item) => (
-              <Tab key={item.label} style={{ color: "black" }}>
+              <Tab
+                key={item.label}
+                style={{
+                  color: "#42403F",
+                }}
+              >
                 {item.label}
               </Tab>
             ))}
