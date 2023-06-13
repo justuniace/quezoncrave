@@ -7,7 +7,7 @@ function Category() {
         w="100%"
         position="relative"
         bottom="26px" // Adjust this value to move the image higher
-        src="./src/assets/categories-elipse.png"
+        src="./src/assets/categories-elipse.webp"
       />
       <Box
         h="2.5px"

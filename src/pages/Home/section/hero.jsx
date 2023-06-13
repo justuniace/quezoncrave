@@ -26,7 +26,7 @@ export default function Hero() {
         {/* background image */}
         <Image
           width="8rem"
-          src="./src/assets/b1.png"
+          src="./src/assets/b1.webp"
           position="relative"
           left="70%"
           top="0"
@@ -39,7 +39,7 @@ export default function Hero() {
         {/* background image left */}
         <Image
           width="8rem"
-          src="./src/assets/b1.png"
+          src="./src/assets/b1.webp"
           position="absolute"
           right="63%"
           top="12"
@@ -51,7 +51,7 @@ export default function Hero() {
       {/* leaves right */}
       <Box>
         <Image
-          src="./src/assets/leaves2.png"
+          src="./src/assets/leaves2.webp"
           position="absolute"
           top="12%"
           left="82%"
@@ -62,7 +62,7 @@ export default function Hero() {
       {/* leaves left */}
       <Box>
         <Image
-          src="./src/assets/leaves2.png"
+          src="./src/assets/leaves2.webp"
           position="absolute"
           top="16%"
           left="40%"
@@ -73,7 +73,7 @@ export default function Hero() {
       {/* hero-image */}
       <Box>
         <Image
-          src="./src/assets/hero-image.png"
+          src="./src/assets/hero-image.webp"
           position="absolute"
           left="32%"
           top="30%"
@@ -83,7 +83,7 @@ export default function Hero() {
       {/* leaves1 bottom */}
       <Box>
         <Image
-          src="./src/assets/leaves1.png"
+          src="./src/assets/leaves1.webp"
           position="absolute"
           left="75%"
           top="64%"
