@@ -8,7 +8,12 @@ const colors = {
     accent_hover: "#EFCA48",
   },
 };
+const fonts = {
+  body: `'Inter', sans-serif`,
+  heading: `'Abril-Fatface', cursive`
 
+
+}
 const styles = {
   global: {
     html: {
@@ -25,5 +30,5 @@ const styles = {
     },
   },
 };
-const theme = extendTheme({ colors, styles });
+const theme = extendTheme({ colors, styles, fonts });
 export default theme;
