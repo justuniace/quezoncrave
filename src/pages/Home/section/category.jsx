@@ -7,17 +7,14 @@ function Category() {
         w="100%"
         position="relative"
         bottom="26px" // Adjust this value to move the image higher
-        src="./src/assets/categories-elipse.webp"
+        src="https://drive.google.com/uc?export=view&id=1IhI1e3yUJYqd_8pwAMnU9HUDCnsrw0vh"
       />
       <Box
         h="2.5px"
         w="12rem"
-        
         position="absolute"
         top="8rem"
         left="41.4rem"
-      
-        
         borderRadius="20px"
         background="pallete.accent"
         boxShadow="28px 28px 55px #d4d4d4, -28px -28px 55px #ffffff"
