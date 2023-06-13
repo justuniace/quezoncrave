@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 export const AppContext = createContext(null);
 
 function Context({ children }) {
-  const [activeNav, setActiveNav] = useState("Home");
+
   const [scrolled, setScrolled] = useState(false);
 
   const handleScroll = () => {
@@ -25,10 +25,9 @@ function Context({ children }) {
   const values = useMemo(() => {
     return {
       scrolled,
-      activeNav,
-      setActiveNav,
+     
     };
-  }, [activeNav, scrolled]);
+  }, [ scrolled]);
 
   return <AppContext.Provider value={values}>{children}</AppContext.Provider>;
 }

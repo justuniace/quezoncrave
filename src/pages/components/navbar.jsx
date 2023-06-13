@@ -50,7 +50,7 @@ function Navbar(props) {
           transition="all .3s ease"
           _hover={{ transform: "scale(.9)" }}
           cursor="pointer"
-          // // onClick={onOpen}
+          
           pos="relative"
           display={{ base: "none", md: "block" }}
           paddingRight="5rem"
