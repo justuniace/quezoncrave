@@ -3,7 +3,7 @@ import Category from "./section/category"
 
 function Home() {
   return (
-    <div>
+    <div >
       <Hero />
       <Category />
     </div>

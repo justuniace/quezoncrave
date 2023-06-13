@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 export default function Hero() {
   return (
     <Flex
-      h="100vh"
+      h="103vh"
       w="100%"
-      position="fixed"
+      position="relative"
       bg="#262424"
       justifyContent="center"
       alignItems="center"
@@ -19,13 +19,12 @@ export default function Hero() {
         <Image
           width="8rem"
           src="./src/assets/b1.png"
-          position="fixed"
+          position="relative"
           left="70%"
           top="0"
           h="50rem"
           w="40rem"
           opacity="0.1"
-          zIndex="-1"
         />
       </Box>
       <Box>
@@ -39,7 +38,28 @@ export default function Hero() {
           h="50rem"
           w="40rem"
           opacity="0.1"
-          zIndex="-1"
+        />
+      </Box>
+      {/* leaves right */}
+      <Box>
+        <Image
+          src="./src/assets/leaves2.png"
+          position="absolute"
+          top="12%"
+          left="82%"
+          w="20%"
+          transform="rotate(120deg)"
+        />
+      </Box>
+      {/* leaves left */}
+      <Box>
+        <Image
+          src="./src/assets/leaves2.png"
+          position="absolute"
+          top="16%"
+          left="40%"
+          w="20%"
+          transform="rotate(30deg)"
         />
       </Box>
       {/* hero-image */}
@@ -47,8 +67,9 @@ export default function Hero() {
         <Image
           src="./src/assets/hero-image.png"
           position="absolute"
-          left="30%"
+          left="32%"
           top="30%"
+          w="70rem"
         />
       </Box>
       {/* leaves1 bottom */}
@@ -59,34 +80,12 @@ export default function Hero() {
           left="75%"
           top="64%"
           w="50%"
-        />
-      </Box>
-      {/* leaves right */}
-      <Box>
-        <Image
-          src="./src/assets/leaves2.png"
-          position="absolute"
-          top="15%"
-          left="82%"
-          w="20%"
-          transform="rotate(150deg)"
-          zIndex="-1"
-        />
-      </Box>
-      {/* leaves left */}
-      <Box>
-        <Image
-          src="./src/assets/leaves2.png"
-          position="absolute"
-          top="18%"
-          left="44%"
-          w="20%"
-          transform="rotate(20deg)"
-          zIndex="-1"
+          zIndex="1"
         />
       </Box>
 
-      <Flex left="8%" top="20%" position="absolute" w="47rem">
+      {/* Hero Text */}
+      <Flex left="8%" top="20%" position="absolute" w="56rem">
         <VStack align="start" w={{ base: "100%", md: "55%" }}>
           <Text
             lineHeight="120px"
@@ -104,18 +103,22 @@ export default function Hero() {
               A Taste of Home
             </Highlight>
           </Text>
-          <Text
-            color="white"
-            marginTop="10px"
-            fontFamily="Inter"
-            fontWeight="thin"
-            fontSize="20px"
-          >
-            Indulge in Nostalgia with Every Scrumptious Bite.
-          </Text>
+
+          <Box w="20rem">
+            <Text
+              color="white"
+              marginTop="30px"
+              fontFamily="Inter"
+              fontWeight="thin"
+              fontSize="20px"
+            >
+              Indulge in Nostalgia with Every Scrumptious Bite.
+            </Text>
+          </Box>
+
           <Link to="/menu">
             <Button
-              marginTop="10px"
+              marginTop="30px"
               padding="20px 90px"
               borderRadius="15px"
               variant="ghost"
