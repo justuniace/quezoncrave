@@ -1,4 +1,12 @@
-import { Flex,Box, Image , Text, VStack, Highlight, Button} from "@chakra-ui/react";
+import {
+  Flex,
+  Box,
+  Image,
+  Text,
+  VStack,
+  Highlight,
+  Button,
+} from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 export default function Hero() {
   return (
@@ -18,7 +26,7 @@ export default function Hero() {
         {/* background image */}
         <Image
           width="8rem"
-          src="./src/assets/b1.png"
+          src="./assets/b1.png"
           position="relative"
           left="70%"
           top="0"
@@ -31,9 +39,9 @@ export default function Hero() {
         {/* background image left */}
         <Image
           width="8rem"
-          src="./src/assets/b1.png"
+          src="./assets/b1.png"
           position="absolute"
-          right="70%"
+          right="63%"
           top="12"
           h="50rem"
           w="40rem"
@@ -43,7 +51,7 @@ export default function Hero() {
       {/* leaves right */}
       <Box>
         <Image
-          src="./src/assets/leaves2.png"
+          src="./assets/leaves2.png"
           position="absolute"
           top="12%"
           left="82%"
@@ -54,7 +62,7 @@ export default function Hero() {
       {/* leaves left */}
       <Box>
         <Image
-          src="./src/assets/leaves2.png"
+          src="./assets/leaves2.png"
           position="absolute"
           top="16%"
           left="40%"
@@ -65,7 +73,7 @@ export default function Hero() {
       {/* hero-image */}
       <Box>
         <Image
-          src="./src/assets/hero-image.png"
+          src="./assets/hero-image.png"
           position="absolute"
           left="32%"
           top="30%"
@@ -75,7 +83,7 @@ export default function Hero() {
       {/* leaves1 bottom */}
       <Box>
         <Image
-          src="./src/assets/leaves1.png"
+          src="./assets/leaves1.png"
           position="absolute"
           left="75%"
           top="64%"
@@ -85,7 +93,7 @@ export default function Hero() {
       </Box>
 
       {/* Hero Text */}
-      <Flex left="8%" top="20%" position="absolute" w="56rem">
+      <Flex left="8%" top="24%" position="absolute" w="56rem">
         <VStack align="start" w={{ base: "100%", md: "55%" }}>
           <Text
             lineHeight="120px"
