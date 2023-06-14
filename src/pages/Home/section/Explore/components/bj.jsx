@@ -27,7 +27,7 @@ function BukoJuice() {
       </Box>
       <Box mt="-12em" ml="-8rem">
         <ExploreContent
-          title="Bistek Tagalog"
+          title="Buko Juice"
           details="Lorem ipsum dolor sit amet. Sed laudantium veniam ea dolorum alias aut voluptates dolore qui labore enim nam accusantium incidunt ad harum saepe."
         />
       </Box>

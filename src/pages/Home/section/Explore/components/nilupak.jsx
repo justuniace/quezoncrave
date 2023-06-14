@@ -26,9 +26,9 @@ function Nilupak() {
         </Box>
       </Box>
       <Box w="100%" mt="-21rem" ml="-40rem">
-        {/* Adjust the margin value as per your requirement */}
+  
         <ExploreContent
-          title="Bistek Tagalog"
+          title="Nilumpak/Niyubak"
           details="Lorem ipsum dolor sit amet. Sed laudantium veniam ea dolorum alias aut voluptates dolore qui labore enim nam accusantium incidunt ad harum saepe."
         />
       </Box>

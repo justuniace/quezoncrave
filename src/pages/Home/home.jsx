@@ -1,6 +1,7 @@
 import Hero from "./section/hero/hero";
 import Category from "./section/category/category"
 import Explore from "./section/Explore/explore"
+import Howitworks from "./section/Howitwork/how-it-works";
 
 function Home() {
   return (
@@ -8,6 +9,7 @@ function Home() {
       <Hero />
       <Category />
       <Explore />
+      <Howitworks />
     </div>
   );
 }
