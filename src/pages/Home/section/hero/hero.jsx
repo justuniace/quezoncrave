@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 export default function Hero() {
   return (
     <Flex
-      h="103vh"
+      h="105vh"
       w="100%"
       position="relative"
       bg="#262424"
@@ -85,7 +85,7 @@ export default function Hero() {
         <Image
           src="https://drive.google.com/uc?export=view&id=14jD0wyMU5pQ5hPmAlODGtlExu8k8sNcn"
           position="absolute"
-          left="75%"
+          left="72%"
           top="64%"
           w="50%"
           zIndex="1"

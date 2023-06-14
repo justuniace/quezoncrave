@@ -37,7 +37,7 @@ function Navbar(props) {
           </Link>
         </Box>
 
-        <Flex flex="1" justifyContent="center">
+        <Flex flex="1" justifyContent="center" >
           <HStack spacing="5rem">
             {navLinks.map((nav) => {
               return <Navlink nav={nav} key={nav} />;

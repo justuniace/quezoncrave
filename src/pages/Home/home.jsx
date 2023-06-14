@@ -1,5 +1,5 @@
-import Hero from "./section/hero";
-import Category from "./section/category"
+import Hero from "./section/hero/hero";
+import Category from "./section/category/category"
 
 function Home() {
   return (
