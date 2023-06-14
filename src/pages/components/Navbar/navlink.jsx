@@ -1,7 +1,7 @@
 import { Text } from "@chakra-ui/react";
 import { Link, useLocation } from "react-router-dom";
 import { useContext } from "react";
-import { AppContext } from "../components/context";
+import { AppContext } from "../context";
 import PropTypes from "prop-types";
 
 function Navlink(props) {

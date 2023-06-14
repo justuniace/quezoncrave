@@ -4,10 +4,11 @@ import {
   Image,
   Text,
   VStack,
-  Highlight,
-  Button,
+  Highlight
+
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+
+import CustomButton from "../../../components/buttons";
 export default function Hero() {
   return (
     <Flex
@@ -124,31 +125,9 @@ export default function Hero() {
             </Text>
           </Box>
 
-          <Link to="/menu">
-            <Button
-              marginTop="30px"
-              padding="20px 90px"
-              borderRadius="15px"
-              variant="ghost"
-              borderColor="#FFC700"
-              boxShadow="0 0 0 3px #FFC700"
-              color="#FFC700"
-              position="absolute"
-              top="110%"
-              fontFamily="Inter"
-              fontWeight="light"
-              _hover={{
-                bg: "#FFC700",
-                color: "white",
-              }}
-              _active={{
-                bg: "#FFC700",
-                color: "white",
-              }}
-            >
-              Order Now
-            </Button>
-          </Link>
+          <Box mt="50px">
+            <CustomButton buttonText="Order Now" buttonLink="/menu" />
+          </Box>
         </VStack>
       </Flex>
     </Flex>

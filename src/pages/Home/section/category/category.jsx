@@ -31,6 +31,7 @@ function Category() {
     <Box position="absolute" h="100vh" w="100%" bg="#262424">
       <Image
         top="-5%"
+        h="100vh"
         w="100%"
         pos="relative"
         src="https://drive.google.com/uc?export=view&id=1IhI1e3yUJYqd_8pwAMnU9HUDCnsrw0vh"
@@ -39,7 +40,7 @@ function Category() {
 
       <Box
         position="absolute"
-        top="2rem"
+        top="5rem"
         left={0}
         right={0}
         zIndex={1}

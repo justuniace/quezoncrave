@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/home";
-import Navbar from "./pages/components/navbar";
+import Navbar from "./pages/components/Navbar/navbar";
 import Logo from "/logo.webp";
 import { About } from "./pages/about/about";
 import { Blog } from "./pages/blog/blog";
