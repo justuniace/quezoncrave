@@ -28,18 +28,19 @@ function Category() {
   ];
 
   return (
-    <Box position="absolute" h="100vh" w="100%" bg="#262424">
+    <Box position="relative"  bg="#262424">
       <Image
-        top="-5%"
-        h="100vh"
+        top="0"
+        h="80vh"
         w="100%"
-        pos="relative"
+        pos="absolute"
+        zIndex="1"
         src="https://drive.google.com/uc?export=view&id=1IhI1e3yUJYqd_8pwAMnU9HUDCnsrw0vh"
         alt="Background Image"
       />
 
       <Box
-        position="absolute"
+        position="relative"
         top="5rem"
         left={0}
         right={0}

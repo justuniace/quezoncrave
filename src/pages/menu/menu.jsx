@@ -1,17 +1,14 @@
-
-import { Box, Center, Text} from "@chakra-ui/react";
-import MenuNav from "./components/menuNav"
-
+import { Box, Center, Text } from "@chakra-ui/react";
+import MenuNav from "./components/menuNav";
 
 export const Menu = () => {
-
   return (
-    <Box>
+    <Box h="100vh" w="100%">
       <Center h="10rem">
         <Text
           top="20%"
           display="flex"
-          position="fixed"
+          position="absolute"
           fontSize="25"
           fontWeight="semibold"
           justifyContent="center"

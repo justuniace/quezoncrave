@@ -3,7 +3,7 @@ import HowProps from "./howProps";
 import Menu from "../../../../assets/how-it-works/menu.svg";
 import Meal from "../../../../assets/how-it-works/meal.svg";
 import Delivery from "../../../../assets/how-it-works/delivery.svg";
-import { Box,  Flex , Wrap} from "@chakra-ui/react";
+import { Box, Flex, Wrap } from "@chakra-ui/react";
 
 function How() {
   const items = [
@@ -28,7 +28,7 @@ function How() {
   ];
 
   return (
-    <Flex className="explore" mt="180%" h="100vh" w="100%" position="absolute">
+    <Flex className="How" mt="140%" h="10vh" w="100%" position="relative">
       <Box mt="-18rem" h="100vh" w="100%">
         <Title title="How It Works" />
         <Wrap justify="center" spacing="8rem" mt="5rem">

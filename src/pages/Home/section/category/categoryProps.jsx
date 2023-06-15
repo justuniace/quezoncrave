@@ -6,7 +6,7 @@ function CatProps({ items }) {
     <WrapItem w="20rem" position="relative">
       <VStack>
         <Box>
-          <Image src={items.image} alt="Icon" w="8rem" h="8rem" />
+          <Image src={items.image} alt="Icon" w="8rem" h="8rem"  />
         </Box>
         <Flex alignItems="center" position="relative">
           <Text

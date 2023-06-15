@@ -1,18 +1,10 @@
-import {
-  Flex,
-  Box,
-  Image,
-  Text,
-  VStack,
-  Highlight
-
-} from "@chakra-ui/react";
+import { Flex, Box, Image, Text, VStack, Highlight } from "@chakra-ui/react";
 
 import CustomButton from "../../../components/buttons";
 export default function Hero() {
   return (
     <Flex
-      h="105vh"
+      h="100vh"
       w="100%"
       position="relative"
       bg="#262424"
@@ -79,6 +71,7 @@ export default function Hero() {
           left="32%"
           top="30%"
           w="70rem"
+          zIndex="1"
         />
       </Box>
       {/* leaves1 bottom */}
@@ -89,7 +82,7 @@ export default function Hero() {
           left="72%"
           top="64%"
           w="50%"
-          zIndex="1"
+          zIndex="2"
         />
       </Box>
 

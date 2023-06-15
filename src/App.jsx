@@ -5,6 +5,7 @@ import Logo from "/logo.webp";
 import { About } from "./pages/about/about";
 import { Blog } from "./pages/blog/blog";
 import { Menu } from "./pages/menu/menu";
+import { Footer }  from "./pages/components/Footer/footer"
 // import  Food  from "./pages/menu/sections/food"
 // import  Beverages  from "./pages/menu/sections/beverages";
 // import Dessert  from "./pages/menu/sections/dessert";
@@ -27,6 +28,7 @@ function App() {
           <Route path="beverages" element={<Beverages />} />
           <Route path="dessert" element={<Dessert />} />  */}
         </Routes>
+         <Footer />
       </Router>
     </div>
   );

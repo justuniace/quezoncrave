@@ -7,7 +7,7 @@ import CustomButton from "../../../components/buttons";
 
 function Explore() {
   return (
-    <Flex className="explore" mt="36.2%" h="100vh" w="100%" position="absolute">
+    <Flex className="explore" h="100vh" w="100%" position="absolute">
       <Box
         h="242vh"
         bg="white"
@@ -49,7 +49,6 @@ function Explore() {
             <BukoJuice />
           </VStack>
           <Box ml="72rem" mt="5rem">
-           
             <CustomButton
               buttonText="See Menu"
               buttonLink="/menu"
