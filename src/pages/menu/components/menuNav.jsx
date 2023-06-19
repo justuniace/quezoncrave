@@ -15,6 +15,9 @@ export default function MenuNav() {
   return (
     <>
       <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
         h="4rem"
         w="22rem"
         top="14.2rem"

@@ -1,14 +1,16 @@
 import { Box, Center, Text } from "@chakra-ui/react";
 import MenuNav from "./components/menuNav";
+// import Food from "./sections/food";
+import Dessert from "./sections/dessert";
+
 
 export const Menu = () => {
   return (
-    <Box h="100vh" w="100%">
+    <Box w="100%" h="auto">
       <Center h="10rem">
         <Text
-          top="20%"
-          display="flex"
-          position="absolute"
+          top="50%"
+          position="relative"
           fontSize="25"
           fontWeight="semibold"
           justifyContent="center"
@@ -18,9 +20,12 @@ export const Menu = () => {
           Heartwarming Traditions, Savored in Every Bite!
         </Text>
       </Center>
-      <Center paddingBlock="5rem">
+      <Center paddingTop="5rem">
         <MenuNav />
       </Center>
+      <Box>
+        <Dessert />
+      </Box>
     </Box>
   );
 };
