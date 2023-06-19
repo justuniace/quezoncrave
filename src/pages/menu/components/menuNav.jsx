@@ -1,16 +1,17 @@
-
 import { Box } from "@chakra-ui/react";
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from "@chakra-ui/react";
+import PropTypes from "prop-types";
 
-
-
-export default function MenuNav() {
+export default function MenuNav({ activeTab, onTabChange }) {
   const tabs = [
     { label: "Food", link: "Food" },
     { label: "Beverages", link: "Beverages" },
     { label: "Dessert", link: "" },
   ];
 
+  const handleTabClick = (tab) => {
+    onTabChange(tab);
+  };
 
   return (
     <>
@@ -35,7 +36,9 @@ export default function MenuNav() {
                 key={item.label}
                 style={{
                   color: "#42403F",
+                  fontWeight: item.label === activeTab ? "bold" : "normal",
                 }}
+                onClick={() => handleTabClick(item.label)}
               >
                 {item.label}
               </Tab>
@@ -43,9 +46,7 @@ export default function MenuNav() {
           </TabList>
           <TabPanels paddingTop="50px">
             {tabs.map((item) => (
-              <TabPanel key={item.label}>
-                <p>{item.label}!</p>
-              </TabPanel>
+              <TabPanel key={item.label} />
             ))}
           </TabPanels>
         </Tabs>
@@ -53,3 +54,8 @@ export default function MenuNav() {
     </>
   );
 }
+
+MenuNav.propTypes = {
+  activeTab: PropTypes.string.isRequired,
+  onTabChange: PropTypes.func.isRequired,
+};

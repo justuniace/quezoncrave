@@ -1,10 +1,17 @@
 import { Box, Center, Text } from "@chakra-ui/react";
 import MenuNav from "./components/menuNav";
-// import Food from "./sections/food";
+import Food from "./sections/food";
 import Dessert from "./sections/dessert";
-
+import Beverage from "./sections/beverages";
+import { useState } from "react";
 
 export const Menu = () => {
+  const [activeTab, setActiveTab] = useState("Food");
+
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+  };
+
   return (
     <Box w="100%" h="auto">
       <Center h="10rem">
@@ -21,10 +28,12 @@ export const Menu = () => {
         </Text>
       </Center>
       <Center paddingTop="5rem">
-        <MenuNav />
+        <MenuNav activeTab={activeTab} onTabChange={handleTabChange} />
       </Center>
       <Box>
-        <Dessert />
+        {activeTab === "Food" && <Food />}
+        {activeTab === "Beverages" && <Beverage />}
+        {activeTab === "Dessert" && <Dessert />}
       </Box>
     </Box>
   );

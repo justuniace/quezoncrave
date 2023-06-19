@@ -13,14 +13,13 @@ import {
 } from "@chakra-ui/react";
 import PropTypes from "prop-types";
 
-
 function ProductCard({ image, name, details, price, altText }) {
   return (
     <Wrap spacing="2rem" justify="center">
       <WrapItem>
         <Card
           w="21rem"
-          h="24rem"
+          h="28rem" // Adjust the height as per your requirement
           boxShadow="2xl"
           borderRadius="30px"
           marginTop="50px"
@@ -44,8 +43,11 @@ function ProductCard({ image, name, details, price, altText }) {
               <Image
                 position="absolute"
                 src={image}
-                w="14rem"
-                top="-7rem"
+                w="70%" // Adjust the width as per your requirement
+                h="70%" // Adjust the height as per your requirement
+                top="3rem"
+                left="50%"
+                transform="translate(-50%, -50%)" // Center the image
                 filter="drop-shadow(1px 1px 16px rgba(0, 0, 0, .3))"
                 alt={altText}
               />
