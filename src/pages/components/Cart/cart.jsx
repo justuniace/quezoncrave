@@ -6,27 +6,35 @@ import {
   DrawerHeader,
   DrawerBody,
   DrawerFooter,
-  Input,
-  Button,
+   VStack,
+  Divider,
+
 } from "@chakra-ui/react";
 import PropTypes from "prop-types";
+import { CartFooter } from "./CartFooter";
+import { CartBody } from "./CartBody";
+
+
 
 function CartDrawer({ isOpen, onClose }) {
   return (
-    <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
-      {isOpen && <DrawerOverlay />}{" "}
-      {/* Render the overlay only when the drawer is open */}
+    <Drawer size="md" isOpen={isOpen} placement="right" onClose={onClose}>
+      <DrawerOverlay />
       <DrawerContent>
         <DrawerCloseButton />
-        <DrawerHeader>Create your account</DrawerHeader>
-        <DrawerBody>
-          <Input placeholder="Type here..." />
+        <DrawerHeader>My Cart</DrawerHeader>
+        <Divider />
+        <DrawerBody bg="#ECECEC" >
+          <VStack
+            w="100%"
+            h="100%"
+          >
+             <CartBody/>
+          </VStack>
         </DrawerBody>
+       
         <DrawerFooter>
-          <Button variant="outline" mr={3} onClick={onClose}>
-            Cancel
-          </Button>
-          <Button colorScheme="blue">Save</Button>
+          <CartFooter />
         </DrawerFooter>
       </DrawerContent>
     </Drawer>

@@ -45,7 +45,7 @@ CatProps.propTypes = {
     details: PropTypes.string.isRequired,
     dTitle: PropTypes.string.isRequired,
   }).isRequired,
-  backgroundImage: PropTypes.string.isRequired,
+ 
 };
 
 export default CatProps;

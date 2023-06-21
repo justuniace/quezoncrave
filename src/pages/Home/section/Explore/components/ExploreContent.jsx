@@ -34,7 +34,6 @@ function ExploreContent({ title, details }) {
 }
 
 ExploreContent.propTypes = {
-  textMargin: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   details: PropTypes.string.isRequired,
 };
