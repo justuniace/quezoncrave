@@ -6,15 +6,12 @@ import {
   DrawerHeader,
   DrawerBody,
   DrawerFooter,
-   VStack,
+  VStack,
   Divider,
-
 } from "@chakra-ui/react";
 import PropTypes from "prop-types";
 import { CartFooter } from "./CartFooter";
-import { CartBody } from "./CartBody";
-
-
+import { CartBody } from "./cartBody";
 
 function CartDrawer({ isOpen, onClose }) {
   return (
@@ -24,15 +21,12 @@ function CartDrawer({ isOpen, onClose }) {
         <DrawerCloseButton />
         <DrawerHeader>My Cart</DrawerHeader>
         <Divider />
-        <DrawerBody bg="#ECECEC" >
-          <VStack
-            w="100%"
-            h="100%"
-          >
-             <CartBody/>
+        <DrawerBody bg="#ECECEC">
+          <VStack w="100%" h="100%">
+            <CartBody />
           </VStack>
         </DrawerBody>
-       
+
         <DrawerFooter>
           <CartFooter />
         </DrawerFooter>
