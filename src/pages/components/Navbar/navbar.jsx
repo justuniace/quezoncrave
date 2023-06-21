@@ -1,12 +1,25 @@
+import { useState } from "react";
 import { Box, Flex, Image, HStack } from "@chakra-ui/react";
 import PropTypes from "prop-types";
 import Navlink from "./navlink";
 import { Link } from "react-router-dom";
 import Cart from "/src/assets/cart.json";
 import Lottie from "lottie-react";
+import CartDrawer from "../Cart/cart"; // Import the updated CartDrawer component
 
 function Navbar(props) {
   const { logo, navLinks } = props;
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false); // State to control the drawer
+
+  // Function to open the drawer
+  const openDrawer = () => {
+    setIsDrawerOpen(true);
+  };
+
+  // Function to close the drawer
+  const closeDrawer = () => {
+    setIsDrawerOpen(false);
+  };
 
   return (
     <Box
@@ -37,7 +50,7 @@ function Navbar(props) {
           </Link>
         </Box>
 
-        <Flex flex="1" justifyContent="center" >
+        <Flex flex="1" justifyContent="center">
           <HStack spacing="5rem">
             {navLinks.map((nav) => {
               return <Navlink nav={nav} key={nav} />;
@@ -50,10 +63,10 @@ function Navbar(props) {
           transition="all .3s ease"
           _hover={{ transform: "scale(.9)" }}
           cursor="pointer"
-          
           pos="relative"
           display={{ base: "none", md: "block" }}
           paddingRight="5rem"
+          onClick={openDrawer}
         >
           <Lottie
             loop
@@ -63,6 +76,9 @@ function Navbar(props) {
           />
         </Box>
       </Flex>
+
+      {/* Render the updated CartDrawer component */}
+      <CartDrawer isOpen={isDrawerOpen} onClose={closeDrawer} />
     </Box>
   );
 }
