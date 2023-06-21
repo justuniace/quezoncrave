@@ -19,7 +19,7 @@ function ProductCard({ image, name, details, price, altText }) {
       <WrapItem>
         <Card
           w="21rem"
-          h="28rem" // Adjust the height as per your requirement
+          h="27rem" // Adjust the height as per your requirement
           boxShadow="2xl"
           borderRadius="30px"
           marginTop="50px"
@@ -33,12 +33,12 @@ function ProductCard({ image, name, details, price, altText }) {
           <Flex flexDir="column" h="100%" justifyContent="space-between">
             <VStack
               w="100%"
-              p="2rem"
+              p="1rem"
               justify="center"
               flex={1}
               spacing={4}
               align="center"
-              marginBottom="-3rem"
+              marginBottom="-5rem"
             >
               <Image
                 position="absolute"
@@ -60,15 +60,18 @@ function ProductCard({ image, name, details, price, altText }) {
                 </Text>
               </Box>
               <Divider
-                borderWidth="1px"
+
+              w="16.5rem"
+                mt="4"
+                borderWidth="1.5px"
                 borderRadius="1rem"
-                boxShadow="0px 2px 4px rgba(0, 0, 0, 0.2)"
+              
               />
             </VStack>
-            <HStack p="1rem" justify="center" align="center">
+            <HStack p="2rem" justifyContent="space-around" align="center">
               <Text fontSize="1.2rem">₱</Text>
               <Text fontSize="1.2rem">{price}</Text>
-              <Divider orientation="vertical" />
+              <Divider orientation="vertical" h="50px" />
               <Button
                 bg="#FFC700"
                 size="md"

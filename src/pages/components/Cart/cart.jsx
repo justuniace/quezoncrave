@@ -13,7 +13,12 @@ import PropTypes from "prop-types";
 import { CartFooter } from "./CartFooter";
 import { CartBody } from "./cartBody";
 
+
+
 function CartDrawer({ isOpen, onClose }) {
+  // Example item data
+  
+
   return (
     <Drawer size="md" isOpen={isOpen} placement="right" onClose={onClose}>
       <DrawerOverlay />
@@ -23,12 +28,14 @@ function CartDrawer({ isOpen, onClose }) {
         <Divider />
         <DrawerBody bg="#ECECEC">
           <VStack w="100%" h="100%">
-            <CartBody />
+            <CartBody
+             
+            />
           </VStack>
         </DrawerBody>
 
         <DrawerFooter>
-          <CartFooter />
+          <CartFooter  />
         </DrawerFooter>
       </DrawerContent>
     </Drawer>
