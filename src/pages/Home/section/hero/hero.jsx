@@ -1,6 +1,7 @@
-import { Flex, Box, Image, Text, VStack, Highlight } from "@chakra-ui/react";
+import { Flex, Box, Image, Text, VStack, Icon } from "@chakra-ui/react";
 
 import CustomButton from "../../../components/buttons";
+import { HiHome } from "react-icons/hi";
 export default function Hero() {
   return (
     <Flex
@@ -96,16 +97,13 @@ export default function Hero() {
             fontWeight="bold"
             fontFamily="Abril-Fatface"
           >
-            <Highlight
-              query="Home"
-              styles={{
-                color: "pallete.accent",
-              }}
-            >
-              A Taste of Home
-            </Highlight>
+            <span style={{ color: "white" }}>A Taste of</span>{" "}
+            <span style={{ color: "#FFC700" }}>Ho</span>
+            <Box display="inline-block" position="relative" top="10px">
+              <Icon as={HiHome} boxSize={20} color="pallete.accent" />
+            </Box>
+            <span style={{ color: "#FFC700" }}>e</span>
           </Text>
-
           <Box w="20rem">
             <Text
               color="white"
