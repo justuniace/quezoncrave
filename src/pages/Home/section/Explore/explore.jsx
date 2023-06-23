@@ -15,7 +15,7 @@ function Explore() {
         backgroundImage="https://drive.google.com/uc?export=view&id=1xUnGklxZ0BlUP4IkoNgD4AMfcmZCAvQp"
         backgroundSize="cover"
       >
-        <Box mt="8%">
+        <Box mt="10%" zIndex="1" pos="relative">
           <Title title="Explore Our Best Menu" />
         </Box>
         <Wrap w="100%">

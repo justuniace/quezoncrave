@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 function HowProps({ items }) {
   return (
-    <WrapItem w="20rem" position="relative">
+    <WrapItem w="20rem" position="absolute">
       <VStack>
         <Box>
           <Image src={items.image} alt="Icon" w="8rem" h="8rem" />

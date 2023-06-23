@@ -1,4 +1,3 @@
-// Food.jsx
 import { useState } from "react";
 import PropTypes from "prop-types";
 import { FoodList } from "../ItemList/foodList";
@@ -19,8 +18,10 @@ import {
 
 function Food({ activeTab }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedFood, setSelectedFood] = useState(null);
 
-  const openModal = () => {
+  const openModal = (food) => {
+    setSelectedFood(food);
     setIsModalOpen(true);
   };
 
@@ -91,7 +92,7 @@ function Food({ activeTab }) {
                     size="md"
                     fontWeight="light"
                     _hover={{ opacity: 0.8 }}
-                    onClick={openModal}
+                    onClick={() => openModal(item)}
                   >
                     Add to Cart
                   </Button>
@@ -102,7 +103,7 @@ function Food({ activeTab }) {
         ))}
       </Wrap>
       {isModalOpen && activeTab === "Food" && (
-        <FoodModal onClose={closeModal} />
+        <FoodModal onClose={closeModal} food={selectedFood} />
       )}
     </Box>
   );
