@@ -6,7 +6,7 @@ export default function MenuNav({ activeTab, onTabChange }) {
   const tabs = [
     { label: "Food", link: "Food" },
     { label: "Beverages", link: "Beverages" },
-    { label: "Dessert", link: "" },
+    { label: "Dessert", link: "Dessert" },
   ];
 
   const handleTabClick = (tab) => {

@@ -31,9 +31,9 @@ export const Menu = () => {
         <MenuNav activeTab={activeTab} onTabChange={handleTabChange} />
       </Center>
       <Box>
-        {activeTab === "Food" && <Food />}
-        {activeTab === "Beverages" && <Beverage />}
-        {activeTab === "Dessert" && <Dessert />}
+        {activeTab === "Food" && <Food activeTab={activeTab} />}
+        {activeTab === "Beverages" && <Beverage activeTab={activeTab} />}
+        {activeTab === "Dessert" && <Dessert activeTab={activeTab} />}
       </Box>
     </Box>
   );
