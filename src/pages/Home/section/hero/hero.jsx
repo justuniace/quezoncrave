@@ -5,7 +5,7 @@ import { HiHome } from "react-icons/hi";
 export default function Hero() {
   return (
     <Flex
-      h="100vh"
+      h="100%"
       w="100%"
       position="relative"
       bg="#262424"

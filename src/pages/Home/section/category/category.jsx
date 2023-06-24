@@ -4,7 +4,7 @@ import Food from "../../../../assets/category/food.svg";
 import Beverage from "../../../../assets/category/beverages.svg";
 import Dessert from "../../../../assets/category/dessert.svg";
 import { Box, Wrap, Image } from "@chakra-ui/react";
-
+import Elipse from "../../../../assets/categories-elipse.webp";
 function Category() {
   const items = [
     {
@@ -35,7 +35,7 @@ function Category() {
         w="100%"
         pos="absolute"
         zIndex="1"
-        src="https://drive.google.com/uc?export=view&id=1IhI1e3yUJYqd_8pwAMnU9HUDCnsrw0vh"
+        src={Elipse}
         alt="Background Image"
       />
 

@@ -7,12 +7,12 @@ import CustomButton from "../../../components/buttons";
 
 function Explore() {
   return (
-    <Flex className="explore" h="100vh" w="100%" position="absolute">
+    <Flex flexDirection="column" position="relative">
       <Box
         h="242vh"
         bg="white"
         w="100%"
-        backgroundImage="https://drive.google.com/uc?export=view&id=1xUnGklxZ0BlUP4IkoNgD4AMfcmZCAvQp"
+        backgroundImage="url(https://drive.google.com/uc?export=view&id=1xUnGklxZ0BlUP4IkoNgD4AMfcmZCAvQp)"
         backgroundSize="cover"
       >
         <Box mt="10%" zIndex="1" pos="relative">
