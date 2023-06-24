@@ -1,6 +1,6 @@
-//beveragesmodal.jsx
+
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BiCartDownload } from "react-icons/bi";
 import {
@@ -17,12 +17,13 @@ import {
   Radio,
   RadioGroup,
 } from "@chakra-ui/react";
+import { CartContext } from "../../components/Context/Context";
 
 export function BeveragesModal({ onClose, beverages}) {
 
   const [quantity, setQuantity] = useState(1);
   const [size, setSize] = useState("16oz");
-
+  const { addToCart } = useContext(CartContext);
   const incrementQuantity = () => {
     setQuantity(quantity + 1);
   };
@@ -45,6 +46,14 @@ export function BeveragesModal({ onClose, beverages}) {
     return totalPrice.toFixed(2);
   };
 
+  const handleAddToCart = () => {
+    const item = {
+      beverages: beverages,
+      quantity: quantity,
+    };
+    addToCart(item);
+    onClose();
+  };
 
 
 
@@ -134,6 +143,7 @@ export function BeveragesModal({ onClose, beverages}) {
             mr={3}
             color="white"
             leftIcon={<AiOutlineShoppingCart />}
+            onClick={handleAddToCart}
           >
             Add to Cart
           </Button>

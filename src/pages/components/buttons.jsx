@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 function CustomButton({ buttonText, buttonLink, isBlackButton }) {
   const handleClick = () => {
-    // Add your custom logic or function here
+   
     console.log("Button clicked!");
   };
 

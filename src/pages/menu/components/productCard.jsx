@@ -22,7 +22,7 @@ function ProductCard({ image, name, details, price, altText }) {
   const [activeTab, setActiveTab] = useState("Food");
 
   const openModal = (tab) => {
-    console.log(tab);
+  
     setIsModalOpen(true);
     setActiveTab(tab);
   };
@@ -48,7 +48,7 @@ function ProductCard({ image, name, details, price, altText }) {
     return null;
   };
 
-  console.log("activeTab:", activeTab); // Debugging line
+  console.log("activeTab:", activeTab); 
   return (
     <>
       

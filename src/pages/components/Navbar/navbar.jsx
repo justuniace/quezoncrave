@@ -1,18 +1,24 @@
-// Navbar.js
-import { useState } from "react";
-import { Box, Flex, Image, HStack } from "@chakra-ui/react";
+
+import { useState, useContext } from "react";
+import { Box, Flex, Image, HStack , Center} from "@chakra-ui/react";
 import PropTypes from "prop-types";
 import Navlink from "./navlink";
 import { Link } from "react-router-dom";
 import Cart from "/src/assets/cart.json";
 import Lottie from "lottie-react";
 import CartDrawer from "../Cart/cart";
+import {CartContext} from "../Context/Context";
+
+
 
 function Navbar(props) {
+  const { cartItems} = useContext(CartContext);
   const { logo, navLinks } = props;
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const isAnimationPlaying = true;
+
+
 
   const openDrawer = () => {
     setIsDrawerOpen(true);
@@ -75,6 +81,20 @@ function Navbar(props) {
             play={isAnimationPlaying.toString()}
             style={{ width: 85, height: 80 }}
           />
+          <Box pos="absolute" top="1rem" right="6rem">
+            <Center
+              fontSize=".8rem"
+              fontFamily="inter"
+              fontWeight="md"
+              bg="#FFC700"
+              w="1rem"
+              p=".7rem"
+              h="1rem"
+              borderRadius="10rem"
+            >
+              {cartItems.length}
+            </Center>
+          </Box>
         </Box>
       </Flex>
 

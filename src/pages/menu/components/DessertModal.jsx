@@ -1,7 +1,9 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BiCartDownload } from "react-icons/bi";
+
+import { CartContext } from "../../components/Context/Context";
 import {
   Modal,
   ModalOverlay,
@@ -17,6 +19,8 @@ import {
 
 export function DessertModal({ onClose, dessert }) {
   const [quantity, setQuantity] = useState(1);
+   const { addToCart } = useContext(CartContext);
+
 
   const incrementQuantity = () => {
     setQuantity(quantity + 1);
@@ -33,6 +37,14 @@ export function DessertModal({ onClose, dessert }) {
      return totalPrice.toFixed(2);
    };
 
+   const handleAddToCart = () => {
+     const item = {
+       dessert: dessert,
+       quantity: quantity,
+     };
+     addToCart(item);
+     onClose();
+   };
   return (
     <Modal isCentered isOpen onClose={onClose}>
       <ModalOverlay />
@@ -85,6 +97,7 @@ export function DessertModal({ onClose, dessert }) {
             mr={3}
             color="white"
             leftIcon={<AiOutlineShoppingCart />}
+            onClick={handleAddToCart}
           >
             Add to Cart
           </Button>
