@@ -1,6 +1,6 @@
 import { VStack, HStack, Button, Text } from "@chakra-ui/react";
 import PropTypes from "prop-types";
-
+import { BiCartDownload } from "react-icons/bi";
 export function CartFooter({ hasItems }) {
   if (!hasItems) {
     return null; // Return null to render nothing when there are no items in the cart
@@ -25,6 +25,7 @@ export function CartFooter({ hasItems }) {
         p="1rem 10rem"
         bg="#FFC700"
         color="#2B2B28"
+        leftIcon={<BiCartDownload/>}
       >
         Place Order
       </Button>

@@ -19,8 +19,10 @@ import {
 
 function Beverages({activeTab}) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedBeverages, setSelectedBeverages] = useState(null);
 
- const openModal = () => {
+ const openModal = (beverages) => {
+   setSelectedBeverages(beverages);
    setIsModalOpen(true);
  };
 
@@ -102,7 +104,7 @@ function Beverages({activeTab}) {
         ))}
       </Wrap>
       {isModalOpen && activeTab === "Beverages" && (
-        <BeveragesModal onClose={closeModal} />
+        <BeveragesModal onClose={closeModal} beverages={selectedBeverages} />
       )}
     </Box>
   );

@@ -19,8 +19,10 @@ import {
 
 function Dessert({activeTab}) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
- const openModal = () => {
+  const [selectedDessert, setSelectedDessert] = useState(null);
+ 
+  const openModal = (dessert) => {
+    setSelectedDessert(dessert);
    setIsModalOpen(true);
  };
 
@@ -102,7 +104,7 @@ function Dessert({activeTab}) {
         ))}
       </Wrap>
       {isModalOpen && activeTab === "Dessert" && (
-        <DessertModal onClose={closeModal} />
+        <DessertModal onClose={closeModal} dessert={selectedDessert} />
       )}
     </Box>
   );
