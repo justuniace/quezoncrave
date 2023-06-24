@@ -11,13 +11,13 @@ function Explore() {
   return (
     <Flex className="explore" h="100vh" w="100%" position="absolute">
       <Box
-        h="242vh"
+       
         bg="white"
         w="100%"
         backgroundImage={B1}
         backgroundSize="cover"
       >
-        <Box mt="10%">
+        <Box mt="10rem" zIndex="2" pos="relative">
           <Title title="Explore Our Best Menu" />
         </Box>
         <Wrap w="100%">
