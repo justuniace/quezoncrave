@@ -7,15 +7,15 @@ import CustomButton from "../../../components/buttons";
 
 function Explore() {
   return (
-    <Flex flexDirection="column" position="relative">
+    <Flex className="explore" h="100vh" w="100%" position="absolute">
       <Box
         h="242vh"
         bg="white"
         w="100%"
-        backgroundImage="url(https://drive.google.com/uc?export=view&id=1xUnGklxZ0BlUP4IkoNgD4AMfcmZCAvQp)"
+        backgroundImage="https://drive.google.com/uc?export=view&id=1xUnGklxZ0BlUP4IkoNgD4AMfcmZCAvQp"
         backgroundSize="cover"
       >
-        <Box mt="10%" zIndex="1" pos="relative">
+        <Box mt="8%">
           <Title title="Explore Our Best Menu" />
         </Box>
         <Wrap w="100%">

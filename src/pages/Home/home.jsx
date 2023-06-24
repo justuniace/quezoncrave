@@ -8,8 +8,8 @@ function Home() {
     <div >
       <Hero />
       <Category />
-      {/* <Explore />
-      <Howitworks /> */}
+      <Explore />
+      <Howitworks />
     </div>
   );
 }
