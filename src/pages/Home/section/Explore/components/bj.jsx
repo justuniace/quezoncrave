@@ -1,5 +1,8 @@
 import { Box, HStack } from "@chakra-ui/react";
 import ExploreContent from "./ExploreContent";
+import Ellipse from "../../../../../assets/explore/explore-ellipse.webp";
+import Coconut from "../../../../../assets/explore/coconut-water.webp";
+
 
 function BukoJuice() {
   return (
@@ -13,14 +16,14 @@ function BukoJuice() {
       >
         <Box position="absolute" mt="6rem">
           <img
-            src="https://drive.google.com/uc?export=view&id=1KCyPj9x2ovMt1BH9FfUQQ5Erv5_9Xj51"
+            src={Ellipse}
             alt="Circle"
             style={{ width: "100%" }}
           />
         </Box>
         <Box w="35rem" position="relative" zIndex={1} mt="5rem" left="-51px">
           <img
-            src="https://drive.google.com/uc?export=view&id=1_BYJPY2Uhd0jM7nGEL3qvPibuhonHdrL"
+            src={Coconut}
             alt="Buko Juice"
           />
         </Box>

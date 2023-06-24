@@ -1,5 +1,7 @@
 import { Box, HStack } from "@chakra-ui/react";
 import ExploreContent from "./ExploreContent";
+import Ellipse from "../../../../../assets/explore/explore-ellipse.webp";
+import Steak from "../../../../../assets/explore/steak.webp";
 
 function Bistek() {
   return (
@@ -7,14 +9,14 @@ function Bistek() {
       <Box position="relative" w="90%" justifyContent="center" left="9%">
         <Box position="absolute" mt="6rem">
           <img
-            src="https://drive.google.com/uc?export=view&id=1KCyPj9x2ovMt1BH9FfUQQ5Erv5_9Xj51"
+            src={Ellipse}
             alt="Circle"
             style={{ width: "100%" }}
           />
         </Box>
         <Box position="relative" zIndex={1} mt="-0.5rem" left="12px">
           <img
-            src="https://drive.google.com/uc?export=view&id=1wDqCru67n3hWtp3sLd4IWJlwiLqT-mle"
+            src={Steak}
             alt="Bistek"
           />
         </Box>

@@ -4,7 +4,9 @@ import Bistek from "./components/bistek";
 import Nilupak from "./components/nilupak";
 import BukoJuice from "./components/bj";
 import CustomButton from "../../../components/buttons";
-
+import B1 from "../../../../assets/explore/explore.webp";
+import F1 from "../../../../assets/explore/firstArrow.webp";
+import F2 from "../../../../assets/explore/secondArrow.webp";
 function Explore() {
   return (
     <Flex className="explore" h="100vh" w="100%" position="absolute">
@@ -12,10 +14,10 @@ function Explore() {
         h="242vh"
         bg="white"
         w="100%"
-        backgroundImage="https://drive.google.com/uc?export=view&id=1xUnGklxZ0BlUP4IkoNgD4AMfcmZCAvQp"
+        backgroundImage={B1}
         backgroundSize="cover"
       >
-        <Box mt="8%">
+        <Box mt="10%">
           <Title title="Explore Our Best Menu" />
         </Box>
         <Wrap w="100%">
@@ -30,7 +32,7 @@ function Explore() {
             >
               <img
                 style={{ width: "30rem" }}
-                src="https://drive.google.com/uc?export=view&id=1tzpdDamRErSIMLuV10ckbyf0-GXA08T6"
+                src={F1}
               />
             </Box>
             <Nilupak />
@@ -43,7 +45,7 @@ function Explore() {
             >
               <img
                 style={{ width: "35rem" }}
-                src="https://drive.google.com/uc?export=view&id=1QUaSOkUtOMs2uxWM3GxUoVvPl09w0Lky"
+                src={F2}
               />
             </Box>
             <BukoJuice />

@@ -1,5 +1,7 @@
 import { Box, HStack } from "@chakra-ui/react";
 import ExploreContent from "./ExploreContent";
+import Ellipse from "../../../../../assets/explore/explore-ellipse.webp";
+import Niyubak from "../../../../../assets/explore/nilupak.webp";
 
 function Nilupak() {
   return (
@@ -13,14 +15,14 @@ function Nilupak() {
       >
         <Box position="absolute" mt="6rem">
           <img
-            src="https://drive.google.com/uc?export=view&id=1KCyPj9x2ovMt1BH9FfUQQ5Erv5_9Xj51"
+            src={Ellipse}
             alt="Circle"
             style={{ width: "100%" }}
           />
         </Box>
         <Box w="25rem"position="relative" zIndex={1} mt="-0.3rem" left="26px">
           <img
-            src="https://drive.google.com/uc?export=view&id=1fXRufRjGzlpLfSmG7jIsKHMJYh4ZWKm4"
+            src={Niyubak}
             alt="Nilupak"
           />
         </Box>
