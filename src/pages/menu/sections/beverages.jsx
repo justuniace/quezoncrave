@@ -34,7 +34,7 @@ function Beverages({activeTab}) {
     <Box padding="0 7rem">
       <Wrap spacing="4rem" justify="center">
         {BeveragesList.map((item, key) => (
-          <WrapItem key={key} width="calc((90% - 10rem) / 3)">
+          <WrapItem key={key} width="calc((92% - 10rem) / 3)">
             <Card
               w="100%"
               h="29rem"

@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { useState, useContext } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BiCartDownload } from "react-icons/bi";
-
+import { SingleOrder } from "./SingleOrderModal";
 import { CartContext } from "../../components/Context/Context";
 import {
   Modal,
@@ -19,8 +19,8 @@ import {
 
 export function DessertModal({ onClose, dessert }) {
   const [quantity, setQuantity] = useState(1);
-   const { addToCart } = useContext(CartContext);
-
+  const { addToCart } = useContext(CartContext);
+  const [isSingleOrderOpen, setSingleOrderOpen] = useState(false);
 
   const incrementQuantity = () => {
     setQuantity(quantity + 1);
@@ -32,20 +32,31 @@ export function DessertModal({ onClose, dessert }) {
     }
   };
 
-   const calculateTotalPrice = () => {
-     const totalPrice = dessert.price * quantity;
-     return totalPrice.toFixed(2);
-   };
+  const calculateTotalPrice = () => {
+    const totalPrice = dessert.price * quantity;
+    return totalPrice.toFixed(2);
+  };
 
-   const handleAddToCart = () => {
-     const item = {
-       dessert: dessert,
-       quantity: quantity,
-     };
-     addToCart(item);
-     onClose();
-   };
+  const handleAddToCart = () => {
+    const item = {
+      dessert: dessert,
+      quantity: quantity,
+    };
+    addToCart(item);
+    onClose();
+  };
+
+  //placeorder button
+  const handlePlaceOrder = () => {
+    setSingleOrderOpen(true);
+  };
+
+  const closeSingleOrder = () => {
+    setSingleOrderOpen(false);
+  };
+
   return (
+    <>
     <Modal isCentered isOpen onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
@@ -106,12 +117,17 @@ export function DessertModal({ onClose, dessert }) {
             fontWeight="light"
             variant="ghost"
             leftIcon={<BiCartDownload />}
+             onClick={handlePlaceOrder}
           >
             Place Order
           </Button>
         </ModalFooter>
       </ModalContent>
     </Modal>
+    {isSingleOrderOpen && (
+        <SingleOrder onClose={closeSingleOrder} dessert={dessert} />
+      )}
+      </>
   );
 }
 

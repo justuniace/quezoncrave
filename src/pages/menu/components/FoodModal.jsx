@@ -3,7 +3,7 @@ import { useState, useContext } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BiCartDownload } from "react-icons/bi"
 import { CartContext } from "../../components/Context/Context";
-
+import { SingleOrder } from "./SingleOrderModal";
 import {
   Modal,
   ModalOverlay,
@@ -20,6 +20,8 @@ import {
 export function FoodModal({ onClose, food }) {
   const [quantity, setQuantity] = useState(1);
   const { addToCart } = useContext(CartContext);
+  const [isSingleOrderOpen, setSingleOrderOpen] = useState(false);
+
 
   const incrementQuantity = () => {
     setQuantity(quantity + 1);
@@ -44,73 +46,95 @@ export function FoodModal({ onClose, food }) {
     onClose();
   };
 
-  return (
-    <Modal isCentered isOpen onClose={onClose}>
-      <ModalOverlay />
-      <ModalContent>
-        <ModalHeader>{food && food.name}</ModalHeader>
-        <ModalCloseButton />
-        <ModalBody>
-          <HStack justifyContent="space-between">
-            <Text color="#434242" ml="2" fontWeight="light" fontSize="13px">
-              Quantity
-            </Text>
-            <Text color="#434242" mr="30px" fontWeight="light" fontSize="13px">
-              Amount
-            </Text>
-          </HStack>
+  //placeorder button
+  const handlePlaceOrder = () => {
+    setSingleOrderOpen(true);
+  };
 
-          <HStack justifyContent="space-between">
-            <HStack mt="3" spacing="5">
-              <Button
-                borderRadius="30"
-                w="2rem"
-                h="2rem"
-                fontSize="12px"
-                onClick={decrementQuantity}
-                boxShadow="md"
+  const closeSingleOrder = () => {
+    setSingleOrderOpen(false);
+  };
+
+
+
+  return (
+    <>
+      <Modal isCentered isOpen onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>{food && food.name}</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <HStack justifyContent="space-between">
+              <Text color="#434242" ml="2" fontWeight="light" fontSize="13px">
+                Quantity
+              </Text>
+              <Text
+                color="#434242"
+                mr="30px"
+                fontWeight="light"
+                fontSize="13px"
               >
-                -
-              </Button>
-              <span style={{ color: "#FFC700" }}>{quantity}</span>
-              <Button
-                borderRadius="30"
-                w="2rem"
-                h="2rem"
-                fontSize="12px"
-                onClick={incrementQuantity}
-                boxShadow="md"
-              >
-                +
-              </Button>
+                Amount
+              </Text>
             </HStack>
-            <Text mr="15" color="#FFC700" fontSize="20px">
-              ₱{calculateTotalPrice()}
-            </Text>
-          </HStack>
-        </ModalBody>
-        <ModalFooter>
-          <Button
-            fontWeight="light"
-            bg="#FFC700"
-            mr={3}
-            color="white"
-            leftIcon={<AiOutlineShoppingCart />}
-            onClick={handleAddToCart}
-          >
-            Add to Cart
-          </Button>
-          <Button
-            bg="#EEEEEE"
-            fontWeight="light"
-            variant="ghost"
-            leftIcon={<BiCartDownload />}
-          >
-            Place Order
-          </Button>
-        </ModalFooter>
-      </ModalContent>
-    </Modal>
+
+            <HStack justifyContent="space-between">
+              <HStack mt="3" spacing="5">
+                <Button
+                  borderRadius="30"
+                  w="2rem"
+                  h="2rem"
+                  fontSize="12px"
+                  onClick={decrementQuantity}
+                  boxShadow="md"
+                >
+                  -
+                </Button>
+                <span style={{ color: "#FFC700" }}>{quantity}</span>
+                <Button
+                  borderRadius="30"
+                  w="2rem"
+                  h="2rem"
+                  fontSize="12px"
+                  onClick={incrementQuantity}
+                  boxShadow="md"
+                >
+                  +
+                </Button>
+              </HStack>
+              <Text mr="15" color="#FFC700" fontSize="20px">
+                ₱{calculateTotalPrice()}
+              </Text>
+            </HStack>
+          </ModalBody>
+          <ModalFooter>
+            <Button
+              fontWeight="light"
+              bg="#FFC700"
+              mr={3}
+              color="white"
+              leftIcon={<AiOutlineShoppingCart />}
+              onClick={handleAddToCart}
+            >
+              Add to Cart
+            </Button>
+            <Button
+              bg="#EEEEEE"
+              fontWeight="light"
+              variant="ghost"
+              leftIcon={<BiCartDownload />}
+              onClick={handlePlaceOrder}
+            >
+              Place Order
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+      {isSingleOrderOpen && (
+        <SingleOrder onClose={closeSingleOrder} food={food} />
+      )}
+    </>
   );
 }
 
