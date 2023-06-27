@@ -1,4 +1,4 @@
-import { BlogCarousel } from "./components/carousel";
+import BlogCarousel  from "./components/carousel";
 import { Box, Center, Highlight, Text, VStack, Image } from "@chakra-ui/react";
 import Brush from "../../assets/brush.svg";
 
