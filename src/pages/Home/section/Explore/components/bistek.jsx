@@ -8,24 +8,18 @@ function Bistek() {
     <HStack alignItems="center">
       <Box position="relative" w="90%" justifyContent="center" left="9%">
         <Box position="absolute" mt="6rem">
-          <img
-            src={Ellipse}
-            alt="Circle"
-            style={{ width: "100%" }}
-          />
+          <img src={Ellipse} alt="Circle" style={{ width: "100%" }} />
         </Box>
         <Box position="relative" zIndex={1} mt="-0.5rem" left="12px">
-          <img
-            src={Steak}
-            alt="Bistek"
-          />
+          <img src={Steak} alt="Bistek" />
         </Box>
       </Box>
-      <ExploreContent
-        title="Bistek Tagalog"
-        details="Lorem ipsum dolor sit amet. Sed laudantium veniam ea dolorum alias aut voluptates dolore qui labore enim nam accusantium incidunt ad harum saepe."
-      />
-     
+      <Box ml="18px">
+        <ExploreContent
+          title="Bistek Tagalog"
+          details="Lorem ipsum dolor sit amet. Sed laudantium veniam ea dolorum alias aut voluptates dolore qui labore enim nam accusantium incidunt ad harum saepe."
+        />
+      </Box>
     </HStack>
   );
 }

@@ -173,7 +173,12 @@ export function BeveragesModal({ onClose, beverages }) {
         </ModalContent>
       </Modal>
       {isSingleOrderOpen && (
-        <SingleOrder onClose={closeSingleOrder} beverages={beverages} />
+        <SingleOrder
+          onClose={closeSingleOrder}
+          beverages={beverages}
+          quantity={quantity}
+          size={size}
+        />
       )}
     </>
   );

@@ -1,4 +1,4 @@
-import { Box, Text,Flex,  VStack } from "@chakra-ui/react";
+import { Box, Text, Flex, VStack } from "@chakra-ui/react";
 import PropTypes from "prop-types";
 
 function ExploreContent({ title, details }) {
@@ -10,8 +10,8 @@ function ExploreContent({ title, details }) {
           borderRadius="10px"
           w="22px"
           h="22px"
-           ml="-10px"
-           mt="-3"
+          ml="-15px"
+          mt="-3"
           position="absolute"
           zIndex={0}
           opacity="0.5"

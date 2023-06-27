@@ -1,30 +1,38 @@
-
-import { Box,Center, Text, VStack } from "@chakra-ui/react";
+import { BlogCarousel } from "./components/carousel";
+import { Box, Center, Highlight, Text, VStack, Image } from "@chakra-ui/react";
+import Brush from "../../assets/brush.svg";
 
 export const Blog = () => {
   return (
     <Box w="100%" h="auto">
       <Center>
         <VStack>
-          <Text
-            top="150"
-            position="absolute"
-            fontSize="30px"
-            fontWeight="semibold"
-            justifyContent="center"
-            alignItems="center"
-            fontFamily="Abril-Fatface"
-          >
-            Lorem Ipsum
-          </Text>
-          <Box mt="200" w="30rem" textAlign="center">
-            <Text fontWeight="light" fontSize="14px">
-              Lorem ipsum dolor sit amet. Sed laudantium veniam ea dolorum alias
-              aut voluptates dolore quiLorem ipsum dolor sit amet.
+          <Box>
+            <Text
+              top="170"
+              position="relative"
+              fontSize="50px"
+              fontWeight="semibold"
+              justifyContent="center"
+              alignItems="center"
+              fontFamily="Abril-Fatface"
+            >
+              <Highlight
+                query="Home"
+                styles={{
+                  color: "#FFC700",
+                }}
+              >
+                A Taste of Home
+              </Highlight>
             </Text>
+          </Box>
+          <Box ml="14rem" mt="9rem" w="9rem">
+            <Image src={Brush} />
           </Box>
         </VStack>
       </Center>
+      <BlogCarousel />
     </Box>
   );
 };

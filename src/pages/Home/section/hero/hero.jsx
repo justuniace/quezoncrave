@@ -1,7 +1,19 @@
-import { Flex, Box, Image, Text, VStack, Icon } from "@chakra-ui/react";
+import {
+  Flex,
+  Box,
+  Image,
+  Text,
+  VStack,
+  HStack,
+  Highlight,
+  Icon,
+} from "@chakra-ui/react";
 
 import CustomButton from "../../../components/buttons";
-import { HiHome } from "react-icons/hi";
+import { SlMagnifier } from "react-icons/sl";
+import { FaOpencart } from "react-icons/fa";
+import { BiBowlHot } from "react-icons/bi";
+
 export default function Hero() {
   return (
     <Flex
@@ -88,36 +100,60 @@ export default function Hero() {
       </Box>
 
       {/* Hero Text */}
-      <Flex left="8%" top="24%" position="absolute" w="56rem">
+      <Flex left="8%" top="24%" position="absolute" w="60rem">
         <VStack align="start" w={{ base: "100%", md: "55%" }}>
           <Text
             lineHeight="120px"
             color="white"
-            fontSize="7rem"
+            fontSize="6rem"
             fontWeight="bold"
             fontFamily="Abril-Fatface"
           >
-            <span style={{ color: "white" }}>A Taste of</span>{" "}
+            <Highlight
+              query="Cravings."
+              styles={{
+                color: "#FFC700",
+              }}
+            >
+              Satisfy Your Cravings.
+            </Highlight>
+
+            {/* <span style={{ color: "white" }}>A Taste of</span>{" "}
             <span style={{ color: "#FFC700" }}>Ho</span>
             <Box display="inline-block" position="relative" top="10px">
               <Icon as={HiHome} boxSize={20} color="pallete.accent" />
             </Box>
-            <span style={{ color: "#FFC700" }}>e</span>
+            <span style={{ color: "#FFC700" }}>e</span> */}
           </Text>
           <Box w="20rem">
             <Text
               color="white"
               marginTop="30px"
-              fontFamily="Inter"
+              fontFamily="inter"
               fontWeight="thin"
               fontSize="20px"
             >
-              Indulge in Nostalgia with Every Scrumptious Bite.
+              Delight Your Palate with Quezon`s Finest {""}
+              <Icon as={BiBowlHot} />
             </Text>
           </Box>
-
-          <Box mt="50px">
-            <CustomButton buttonText="Order Now" buttonLink="/menu" />
+          <Box mt="50px" zIndex={1}>
+            <HStack spacing="15rem">
+              <CustomButton
+                icon={<FaOpencart />}
+                buttonText="Order Now!"
+                buttonLink="/menu"
+                width="13rem"
+              />
+              <CustomButton
+                icon={<SlMagnifier />}
+                buttonLink="/blog"
+                buttonText="Explore"
+                hasBorder={false}
+                isYellowButton={true}
+                width="13rem"
+              />
+            </HStack>
           </Box>
         </VStack>
       </Flex>

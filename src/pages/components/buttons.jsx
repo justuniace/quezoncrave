@@ -2,9 +2,15 @@ import { Link } from "react-router-dom";
 import { Button } from "@chakra-ui/react";
 import PropTypes from "prop-types";
 
-function CustomButton({ buttonText, buttonLink, isBlackButton }) {
+function CustomButton({
+  icon,
+  buttonText,
+  buttonLink,
+  isYellowButton,
+  width,
+  hasBorder,
+}) {
   const handleClick = () => {
-   
     console.log("Button clicked!");
   };
 
@@ -13,22 +19,30 @@ function CustomButton({ buttonText, buttonLink, isBlackButton }) {
       <Button
         position="absolute"
         padding="20px 90px"
-        bg={isBlackButton ? "transparent" : "#FFC700"}
+        bg={isYellowButton ? "transparent" : "#FFC700"}
         borderRadius="15px"
-        boxShadow="0 4px 8px 0 rgba(0, 0, 0, 0.2)" // Dropdown shadow effect
-        color={isBlackButton ? "black" : "white"}
-        border={isBlackButton ? "2px solid #FFC700" : "2px solid #FFC700"} // Border color
+        boxShadow="0 4px 8px 0 rgba(0, 0, 0, 0.2)"
+        color={isYellowButton ? "#FFC700" : "white"}
+        border={
+          hasBorder
+            ? isYellowButton
+              ? "2px solid #FFC700"
+              : "2px solid #FFC700"
+            : "none"
+        }
         fontFamily="Inter"
-        fontWeight="Medium"
+        fontWeight="bold"
+        leftIcon={icon}
         _hover={{
-          bg: isBlackButton ? "#FFC700" : "transparent",
-          color: isBlackButton ? "white" : "white",
+          bg: isYellowButton ? "#FFC700" : "transparent",
+          color: isYellowButton ? "white" : "#FFC700",
         }}
         _active={{
-          bg: isBlackButton ? "white" : "transparent",
-          color: isBlackButton ? "white" : "white",
+          bg: isYellowButton ? "white" : "transparent",
+          color: isYellowButton ? "white" : "white",
         }}
         onClick={handleClick}
+        width={width}
       >
         {buttonText}
       </Button>
@@ -39,11 +53,16 @@ function CustomButton({ buttonText, buttonLink, isBlackButton }) {
 CustomButton.propTypes = {
   buttonText: PropTypes.string.isRequired,
   buttonLink: PropTypes.string.isRequired,
-  isBlackButton: PropTypes.bool, // New prop for black button styling
+  isYellowButton: PropTypes.bool,
+  icon: PropTypes.elementType.isRequired,
+  width: PropTypes.string,
+  hasBorder: PropTypes.bool, // New prop for controlling the border color
 };
 
 CustomButton.defaultProps = {
-  isBlackButton: false, // Default value for isBlackButton prop
+  isYellowButton: false,
+  width: "auto",
+  hasBorder: true, // Default value for hasBorder prop
 };
 
 export default CustomButton;

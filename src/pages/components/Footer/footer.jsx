@@ -1,22 +1,22 @@
-import { Flex, Center, VStack , Image,Text,Box} from "@chakra-ui/react";
-import Logo from "/logo.webp"
-export const Footer = () => {
-  const backgroundImageUrl =
-    "url(https://drive.google.com/uc?export=view&id=1D-d8rAye8tmo3NRtu86Rp-DZ2DxRLY-U)";
+import { Flex, Center, VStack, Image, Text, Box } from "@chakra-ui/react";
+import Logo from "/logo.webp";
+import ft from "../../../assets/footer.webp";
+import Spoon from "../../../assets/footer-img.webp";
 
+export const Footer = () => {
   return (
     <Flex
       className="Footer"
       w="100%"
-      h="70vh"
-      backgroundImage={backgroundImageUrl}
+      h="100vh"
+      backgroundImage={ft}
       backgroundSize="cover"
       backgroundPosition="center"
       position="absolute"
     >
       <Center h="100%">
         <VStack ml="7rem" mt="12rem" align="start">
-          <Box w="10rem" h="10rem" marginLeft="2rem" marginTop="-1rem">
+          <Box w="10rem" h="10rem" marginLeft="2rem" marginTop="10rem">
             <Image src={Logo} alt="Logo" />
           </Box>
           <Box
@@ -32,6 +32,16 @@ export const Footer = () => {
           </Box>
         </VStack>
       </Center>
+      <Image
+        src={Spoon}
+        transform="rotate(180deg)"
+        ml="50rem"
+        pos="absolute"
+        mt="-20"
+        zIndex={1}
+        w="60rem"
+        h="50rem"
+      />
     </Flex>
   );
 };

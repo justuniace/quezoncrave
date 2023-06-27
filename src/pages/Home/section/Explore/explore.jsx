@@ -7,11 +7,14 @@ import CustomButton from "../../../components/buttons";
 import B1 from "../../../../assets/explore/explore.webp";
 import F1 from "../../../../assets/explore/firstArrow.webp";
 import F2 from "../../../../assets/explore/secondArrow.webp";
+
+import { TfiBook } from "react-icons/tfi";
+
 function Explore() {
   return (
     <Flex className="explore" h="100vh" w="100%" position="absolute">
       <Box
-       
+        h="242vh"
         bg="white"
         w="100%"
         backgroundImage={B1}
@@ -30,10 +33,7 @@ function Explore() {
                 transform: "rotate(25deg)",
               }}
             >
-              <img
-                style={{ width: "30rem" }}
-                src={F1}
-              />
+              <img style={{ width: "30rem" }} src={F1} />
             </Box>
             <Nilupak />
             <Box
@@ -43,18 +43,16 @@ function Explore() {
                 transform: "rotate(-10deg)",
               }}
             >
-              <img
-                style={{ width: "35rem" }}
-                src={F2}
-              />
+              <img style={{ width: "35rem" }} src={F2} />
             </Box>
             <BukoJuice />
           </VStack>
           <Box ml="72rem" mt="5rem">
             <CustomButton
+              icon={<TfiBook />}
               buttonText="See Menu"
               buttonLink="/menu"
-              isBlackButton={true}
+              isYellowButton={true}
             />
           </Box>
         </Wrap>

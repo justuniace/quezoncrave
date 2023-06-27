@@ -5,6 +5,7 @@ import Beverage from "../../../../assets/category/beverages.svg";
 import Dessert from "../../../../assets/category/dessert.svg";
 import { Box, Wrap, Image } from "@chakra-ui/react";
 import Elipse from "../../../../assets/categories-elipse.webp";
+
 function Category() {
   const items = [
     {
@@ -28,7 +29,7 @@ function Category() {
   ];
 
   return (
-    <Box position="relative"  bg="#262424">
+    <Box position="relative" bg="#262424">
       <Image
         top="0"
         h="80vh"
