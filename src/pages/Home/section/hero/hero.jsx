@@ -13,6 +13,10 @@ import CustomButton from "../../../components/buttons";
 import { SlMagnifier } from "react-icons/sl";
 import { FaOpencart } from "react-icons/fa";
 import { BiBowlHot } from "react-icons/bi";
+import L1 from "../../../../assets/hero/leaves1.webp";
+import L2 from "../../../../assets/hero/leaves2.webp";
+import Pork from "../../../../assets/hero/hero-image.webp";
+import Bg from "../../../../assets/hero/b1.webp";
 
 export default function Hero() {
   return (
@@ -32,7 +36,7 @@ export default function Hero() {
         {/* background image right*/}
         <Image
           width="8rem"
-          src="https://drive.google.com/uc?export=view&id=1dOOjY4uLDWFUQfGjIW90Ws0sdl16EnvW"
+          src={Bg}
           position="relative"
           left="70%"
           top="0"
@@ -45,7 +49,7 @@ export default function Hero() {
         {/* background image left */}
         <Image
           width="8rem"
-          src="https://drive.google.com/uc?export=view&id=1dOOjY4uLDWFUQfGjIW90Ws0sdl16EnvW"
+          src={Bg}
           position="absolute"
           right="63%"
           top="12"
@@ -57,7 +61,7 @@ export default function Hero() {
       {/* leaves right */}
       <Box>
         <Image
-          src="https://drive.google.com/uc?export=view&id=1COkxwrhf8iCrF5XosqAN8CGLKwTZa0y6"
+          src={L2}
           position="absolute"
           top="12%"
           left="82%"
@@ -68,7 +72,7 @@ export default function Hero() {
       {/* leaves left */}
       <Box>
         <Image
-          src="https://drive.google.com/uc?export=view&id=1COkxwrhf8iCrF5XosqAN8CGLKwTZa0y6"
+          src={L2}
           position="absolute"
           top="16%"
           left="40%"
@@ -79,7 +83,7 @@ export default function Hero() {
       {/* hero-image */}
       <Box>
         <Image
-          src="https://drive.google.com/uc?export=view&id=1NDWrdQk6B-fzBB582-wUVwj6bxZ9QDEH"
+          src={Pork}
           position="absolute"
           left="32%"
           top="30%"
@@ -90,7 +94,7 @@ export default function Hero() {
       {/* leaves1 bottom */}
       <Box>
         <Image
-          src="https://drive.google.com/uc?export=view&id=14jD0wyMU5pQ5hPmAlODGtlExu8k8sNcn"
+          src={L1}
           position="absolute"
           left="72%"
           top="64%"
