@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { FoodList } from "../ItemList/foodList";
+
 import { FoodModal } from "../components/FoodModal";
+import { client,urlFor } from "../../../client";
+
+
 import {
   Box,
   Wrap,
@@ -19,6 +22,34 @@ import {
 function Food({ activeTab }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedFood, setSelectedFood] = useState(null);
+  const [food, setFood] = useState([])
+
+  useEffect(() => {
+    const token =
+      "skC7esqEi6B0CSrHxGBpfJTU3mAVYd3FgnPuwBW1ZfCPvREVbO2SDlq0PIOhS1Yv4lloM7W0pKuc2wp9HnyYGufQJepH2Oshd5QcVqEyNFzCKzf3g36BmxVeZcQ9LnqcmebjpAyF3xWPBHBllmcrUNOzJnS804VjDdYFQxcvjFDXX2FBR02a";
+    client
+      .fetch(
+        `*[_type == "food"]{
+      _id,
+      name,
+      description,
+      slug,
+      price,
+      image {asset -> {url}}
+    }`,
+    {
+       headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+      )
+      .then((data) => {
+        console.log(data); // Check the value of data
+        setFood(data);
+      })
+      .catch(console.error);
+  }, []);
+
 
   const openModal = (food) => {
     setSelectedFood(food);
@@ -32,8 +63,8 @@ function Food({ activeTab }) {
   return (
     <Box padding="0 7rem">
       <Wrap spacing="4rem" justify="center">
-        {FoodList.map((item, key) => (
-          <WrapItem key={key} width="calc((90% - 10rem) / 3)">
+        {food.map((item) => (
+          <WrapItem key={item.slug.current} width="calc((90% - 10rem) / 3)">
             <Card
               w="100%"
               h="29rem"
@@ -59,21 +90,20 @@ function Food({ activeTab }) {
                 >
                   <Image
                     position="absolute"
-                    src={item.image}
+                    src={urlFor(item.image).url()}
                     w="70%"
                     h="70%"
                     top="3rem"
                     left="50%"
                     transform="translate(-50%, -50%)"
                     filter="drop-shadow(1px 1px 16px rgba(0, 0, 0, .3))"
-                    alt={item.altText}
                   />
                   <Box mt="8rem">
                     <Text textAlign="center" fontSize="20px" fontWeight="bold">
                       {item.name}
                     </Text>
                     <Text mt="1rem" textAlign="center">
-                      {item.details}
+                      {item.description}
                     </Text>
                   </Box>
                   <Divider

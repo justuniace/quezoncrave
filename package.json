@@ -17,6 +17,8 @@
     "@fontsource-variable/inter": "^5.0.3",
     "@fontsource/abril-fatface": "^5.0.3",
     "@fontsource/inter": "^5.0.3",
+    "@sanity/client": "^6.1.5",
+    "@sanity/image-url": "^1.0.2",
     "framer-motion": "^4.1.17",
     "lottie-react": "^2.4.0",
     "prop-types": "^15.8.1",
