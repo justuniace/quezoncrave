@@ -3,13 +3,13 @@ import CoConut from "../../../assets/cocnut.webp";
 export const BeveragesList = [
   {
     name: "Buko Juice",
-    details: "Lorem ipsum dolor sit amet. Sed laudantium veniam ea",
+    details: "Buko Juice is a simple refreshing and very healthy mixture of young coconut water, young coconut meat, and milk.",
     image: CoConut,
     price: 15.99,
     altText: "Beverages",
   },
   {
-    name: "Buko Juice",
+    name: "Kapeng Bigas",
     details: "Lorem ipsum dolor sit amet. Sed laudantium veniam ea",
     image: CoConut,
     price: 11.99,

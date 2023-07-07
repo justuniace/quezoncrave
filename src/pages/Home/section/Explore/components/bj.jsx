@@ -23,7 +23,7 @@ function BukoJuice() {
       <Box mt="-12em" ml="18px">
         <ExploreContent
           title="Buko Juice"
-          details="Lorem ipsum dolor sit amet. Sed laudantium veniam ea dolorum alias aut voluptates dolore qui labore enim nam accusantium incidunt ad harum saepe."
+          details="Buko Juice is a simple refreshing and very healthy mixture of young coconut water, young coconut meat, and milk."
         />
       </Box>
     </HStack>

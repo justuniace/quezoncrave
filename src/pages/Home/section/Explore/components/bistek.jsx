@@ -17,7 +17,7 @@ function Bistek() {
       <Box ml="18px">
         <ExploreContent
           title="Bistek Tagalog"
-          details="Lorem ipsum dolor sit amet. Sed laudantium veniam ea dolorum alias aut voluptates dolore qui labore enim nam accusantium incidunt ad harum saepe."
+          details="Bistek Tagalog is made of thinly sliced sirloin braised in a mixture of citrus, soy sauce, onions, and garlic. This Filipino beef steak is hearty, tasty, and perfect with steamed rice."
         />
       </Box>
     </HStack>
