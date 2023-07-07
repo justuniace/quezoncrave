@@ -1,8 +1,10 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { DessertList } from "../ItemList/dessertList";
+
 import { DessertModal } from "../components/DessertModal";
+import { client, urlFor } from "../../../client";
+
 import {
   Box,
   Wrap,
@@ -21,7 +23,30 @@ import {
 function Dessert({activeTab}) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedDessert, setSelectedDessert] = useState(null);
+  const [dessert, setDessert] = useState([]);
  
+   useEffect(() => {
+     const getProducts = async () => {
+       const dessert = await client.fetch(
+         `*[_type == "dessert"]{
+          _id,
+          price,
+          name,
+          description,
+          slug,
+          image {
+            asset -> {
+              url
+            }
+          }
+        }`
+       );
+       setDessert(dessert);
+     };
+     getProducts();
+   }, []);
+
+
   const openModal = (dessert) => {
     setSelectedDessert(dessert);
    setIsModalOpen(true);
@@ -34,9 +59,10 @@ function Dessert({activeTab}) {
   return (
     <Box padding="0 7rem">
       <Wrap spacing="4rem" justify="center">
-        {DessertList.map((item, key) => (
-          <WrapItem key={key} width="calc((90% - 10rem) / 3)">
+        {dessert.map((item) => (
+          <WrapItem key={item.slug.current} width="calc((90% - 10rem) / 3)">
             <Card
+              zIndex={2}
               w="100%"
               h="29rem"
               boxShadow="2xl"
@@ -61,21 +87,20 @@ function Dessert({activeTab}) {
                 >
                   <Image
                     position="absolute"
-                    src={item.image}
+                    src={urlFor(item.image).url()}
                     w="70%"
                     h="70%"
                     top="3rem"
                     left="50%"
                     transform="translate(-50%, -50%)"
                     filter="drop-shadow(1px 1px 16px rgba(0, 0, 0, .3))"
-                    alt={item.altText}
                   />
                   <Box mt="8rem">
                     <Text textAlign="center" fontSize="20px" fontWeight="bold">
                       {item.name}
                     </Text>
                     <Text mt="1rem" textAlign="center">
-                      {item.details}
+                      {item.description}
                     </Text>
                   </Box>
                   <Divider
@@ -92,6 +117,7 @@ function Dessert({activeTab}) {
                   <Button
                     bg="#FFC700"
                     size="md"
+                    cursor={"pointer"}
                     fontWeight="light"
                     _hover={{ opacity: 0.8 }}
                     onClick={() => openModal(item)}

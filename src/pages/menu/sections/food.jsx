@@ -25,30 +25,25 @@ function Food({ activeTab }) {
   const [food, setFood] = useState([])
 
   useEffect(() => {
-    const token =
-      "skC7esqEi6B0CSrHxGBpfJTU3mAVYd3FgnPuwBW1ZfCPvREVbO2SDlq0PIOhS1Yv4lloM7W0pKuc2wp9HnyYGufQJepH2Oshd5QcVqEyNFzCKzf3g36BmxVeZcQ9LnqcmebjpAyF3xWPBHBllmcrUNOzJnS804VjDdYFQxcvjFDXX2FBR02a";
-    client
-      .fetch(
+    const getProducts = async () => {
+      const food = await client.fetch(
         `*[_type == "food"]{
-      _id,
-      name,
-      description,
-      slug,
-      price,
-      image {asset -> {url}}
-    }`,
-    {
-       headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }
-      )
-      .then((data) => {
-        console.log(data); // Check the value of data
-        setFood(data);
-      })
-      .catch(console.error);
-  }, []);
+          _id,
+          price,
+          name,
+          description,
+          slug,
+          image {
+            asset -> {
+              url
+            }
+          }
+        }`
+      );
+      setFood(food);
+    };
+    getProducts();
+  },[])
 
 
   const openModal = (food) => {
@@ -66,6 +61,7 @@ function Food({ activeTab }) {
         {food.map((item) => (
           <WrapItem key={item.slug.current} width="calc((90% - 10rem) / 3)">
             <Card
+              zIndex={2}
               w="100%"
               h="29rem"
               boxShadow="2xl"
@@ -123,6 +119,7 @@ function Food({ activeTab }) {
                     fontWeight="light"
                     _hover={{ opacity: 0.8 }}
                     onClick={() => openModal(item)}
+                    cursor={"pointer"}
                   >
                     Add to Cart
                   </Button>

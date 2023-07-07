@@ -112,7 +112,7 @@ function Navbar(props) {
       )}
 
       {isDrawerOpen && (
-        <CartDrawer isOpen={isDrawerOpen} onClose={closeDrawer} />
+        <CartDrawer isOpen={isDrawerOpen} onClose={closeDrawer} cartItems={cartItems} />
       )}
     </Box>
   );

@@ -1,111 +1,149 @@
-import { HStack, Flex, Text, Box, Image, VStack, Center } from "@chakra-ui/react";
-import { useState , useEffect} from "react";
+import {
+  VStack,
+  HStack,
+  Text,
+  Image,
+  Flex,
+  Box,
+  Center,
+  Button,
+} from "@chakra-ui/react";
 import { DeleteIcon } from "@chakra-ui/icons";
+import { urlFor } from "../../../client";
 import PropTypes from "prop-types";
 
-export function CartBody({ image, name, size, price, quantity }) {
-  const [count, setCount] = useState(quantity);
-  const hasItems = quantity > 0;
+import { BiCartDownload } from "react-icons/bi";
 
-   useEffect(() => {
-     setCount(quantity);
-   }, [quantity]);
-  const increment = () => {
-    setCount(count + 1);
-  };
+export function Cart({ cartItems }) {
+ const calculateTotalAmount = () => {
+   let total = 0;
 
-  const decrement = () => {
-    if (count > 0) {
-      setCount(count - 1);
-    }
-  };
+   cartItems.forEach((item) => {
+     const { food, beverages, dessert, quantity } = item;
+     const details = food || beverages || dessert;
+
+     if (
+       details &&
+       typeof details.price === "number" &&
+       typeof quantity === "number"
+     ) {
+       total += details.price * quantity;
+     }
+   });
+
+   return total;
+ };
+
+
 
   return (
-    <Flex flexDir="column" p="1rem" gap="1rem" w="100%" h="100%">
-      {hasItems ? (
-        <HStack
-          w="100%"
-          borderRadius=".5em"
-          p=".5rem 1rem"
-          justifyContent="space-between"
-          bg="white"
-          align="center"
-        >
-          <HStack>
-            <Box w="6rem" mb="1">
-              <Image src={image} />
-            </Box>
-            <VStack spacing="1">
-              <HStack justifyContent="space-between">
-                {/* Displaying the name of the dish */}
-                <Text ml="1rem" fontSize="1rem" fontWeight="bold" w="20rem">
-                  {name}
+    <VStack w="100%" h="100%" p="1rem" gap="1rem">
+      {cartItems.length > 0 ? (
+        cartItems.map((item) => {
+          const { food, beverages, dessert, quantity, size } = item;
+          const details = food || beverages || dessert;
+
+          if (!details || quantity === undefined) {
+            return null;
+          }
+
+          const { name, image, price } = details;
+
+          return (
+            <HStack
+              key={item.id}
+              w="100%"
+              p=".5rem 1rem"
+              bg="white"
+              borderRadius=".5em"
+              justifyContent="space-between"
+              align="center"
+            >
+              <Box w="6rem" mb="1">
+                <Image src={urlFor(image).url()} />
+              </Box>
+              <VStack spacing="1">
+                <HStack justifyContent="space-between" w="20rem">
+                  <Text ml="1rem" fontSize="1rem" fontWeight="bold">
+                    {name}
+                  </Text>
+                  <DeleteIcon
+                    cursor="pointer"
+                    color="#FFC700"
+                    // onClick={() => handleDelete(item.id)}
+                  />
+                </HStack>
+                <Text mr="14rem" fontWeight="light" fontSize="12px" w="5rem">
+                  {size || ""}
                 </Text>
-                <Box
-                  cursor="pointer"
-                  color="#FFC700"
-                  ml="15.8rem"
-                  position="absolute"
-                >
-                  <DeleteIcon />
-                </Box>
-              </HStack>
-              {/* Displaying the serving size */}
-              <Text mr="14rem" fontWeight="light" fontSize="12px" w="5rem">
-                {size}
-              </Text>
-              {/* Displaying the currency symbol and passing the value or price */}
-              <HStack w="100%">
-                <Flex align="baseline">
-                  <Text ml="1rem" fontSize="1.2rem" fontWeight="bold">
-                    ₱
-                  </Text>
-                  <Text ml="0.5rem" fontSize="1.2rem" fontWeight="bold">
-                    {price}
-                  </Text>
-                  <button
-                    onClick={decrement}
-                    style={{
-                      marginLeft: "7.4rem",
-                      boxShadow: "0 1px 2px rgba(0, 0, 0, 0.2)",
-                      padding: "0rem 0.5rem",
-                    }}
-                  >
-                    -
-                  </button>
-                  <span style={{ marginLeft: "1rem" }}>{count}</span>
-                  <button
-                    onClick={increment}
-                    style={{
-                      marginLeft: "1rem",
-                      boxShadow: "0 1px 2px rgba(0, 0, 0, 0.2)",
-                      padding: "0rem 0.5rem",
-                    }}
-                  >
-                    +
-                  </button>
-                </Flex>
-               
-              </HStack>
-            </VStack>
-          </HStack>
-        </HStack>
+                <HStack w="100%">
+                  <Flex align="baseline">
+                    <Text ml="1rem" fontSize="1.2rem" fontWeight="bold">
+                      ₱
+                    </Text>
+                    <Text ml="0.5rem" fontSize="1.2rem" fontWeight="bold">
+                      {price}
+                    </Text>
+                  </Flex>
+                  <Flex>
+                    <button
+                      style={{
+                        marginLeft: "7.4rem",
+                        boxShadow: "0 1px 2px rgba(0, 0, 0, 0.2)",
+                        padding: "0rem 0.5rem",
+                      }}
+                    >
+                      -
+                    </button>
+                    <span style={{ marginLeft: "1rem" }}>{quantity}</span>
+                    <button
+                      style={{
+                        marginLeft: "1rem",
+                        boxShadow: "0 1px 2px rgba(0, 0, 0, 0.2)",
+                        padding: "0rem 0.5rem",
+                      }}
+                    >
+                      +
+                    </button>
+                  </Flex>
+                </HStack>
+              </VStack>
+            </HStack>
+          );
+        })
       ) : (
         <Center flex="1">
           <Text fontSize="1.2rem" fontWeight="light">
-            There is no Item in the cart
+            There is no item in the cart
           </Text>
         </Center>
       )}
-    </Flex>
+
+      <HStack justifyContent="flex-start" width="100%">
+        <Text fontSize=".8rem" fontFamily="inter">
+          Total Amount:
+        </Text>
+        <Text fontSize="1.3rem" fontWeight="bold">
+          ₱ {calculateTotalAmount()}
+        </Text>
+      </HStack>
+
+      <Button
+        boxShadow="0 4px 8px 0 rgba(0, 0, 0, 0.2)"
+        border="1px solid"
+        borderColor="#FFC700"
+        _hover={{ opacity: ".9" }}
+        p="1rem 10rem"
+        bg="#FFC700"
+        color="#2B2B28"
+        leftIcon={<BiCartDownload />}
+      >
+        Place Order
+      </Button>
+    </VStack>
   );
 }
 
-// Define PropTypes for the component props
-CartBody.propTypes = {
-  image: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  size: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-  quantity: PropTypes.number.isRequired,
+Cart.propTypes = {
+  cartItems: PropTypes.arrayOf(PropTypes.object).isRequired,
 };

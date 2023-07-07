@@ -1,7 +1,7 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { BeveragesList } from "../ItemList/beverageList";
+
 import { BeveragesModal } from "../components/BeveragesModal";
 import {
   Box,
@@ -16,10 +16,34 @@ import {
   HStack,
   Button,
 } from "@chakra-ui/react";
+import { client, urlFor } from "../../../client";
+
 
 function Beverages({activeTab}) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-    const [selectedBeverages, setSelectedBeverages] = useState(null);
+  const [selectedBeverages, setSelectedBeverages] = useState(null);
+  const [beverages, setBeverages] = useState([])
+
+ useEffect(() => {
+   const getProducts = async () => {
+     const beverages = await client.fetch(
+       `*[_type == "beverages"]{
+          _id,
+          price,
+          name,
+          description,
+          slug,
+          image {
+            asset -> {
+              url
+            }
+          }
+        }`
+     );
+     setBeverages(beverages);
+   };
+   getProducts();
+ }, []);
 
  const openModal = (beverages) => {
    setSelectedBeverages(beverages);
@@ -33,9 +57,10 @@ function Beverages({activeTab}) {
   return (
     <Box padding="0 7rem">
       <Wrap spacing="4rem" justify="center">
-        {BeveragesList.map((item, key) => (
-          <WrapItem key={key} width="calc((92% - 10rem) / 3)">
+        {beverages.map((item) => (
+          <WrapItem key={item.slug.current} width="calc((92% - 10rem) / 3)">
             <Card
+              zIndex={2}
               w="100%"
               h="29rem"
               boxShadow="2xl"
@@ -60,21 +85,20 @@ function Beverages({activeTab}) {
                 >
                   <Image
                     position="absolute"
-                    src={item.image}
+                    src={urlFor(item.image).url()}
                     w="70%"
                     h="70%"
                     top="3rem"
                     left="50%"
                     transform="translate(-50%, -50%)"
                     filter="drop-shadow(1px 1px 16px rgba(0, 0, 0, .3))"
-                    alt={item.altText}
                   />
                   <Box mt="8rem">
                     <Text textAlign="center" fontSize="20px" fontWeight="bold">
                       {item.name}
                     </Text>
                     <Text mt="1rem" textAlign="center">
-                      {item.details}
+                      {item.description}
                     </Text>
                   </Box>
                   <Divider
@@ -92,6 +116,7 @@ function Beverages({activeTab}) {
                     bg="#FFC700"
                     size="md"
                     fontWeight="light"
+                    cursor={"pointer"}
                     _hover={{ opacity: 0.8 }}
                     onClick={() => openModal(item)}
                   >

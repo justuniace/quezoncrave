@@ -1,3 +1,4 @@
+// Drawer
 import {
   Drawer,
   DrawerOverlay,
@@ -5,20 +6,15 @@ import {
   DrawerCloseButton,
   DrawerHeader,
   DrawerBody,
-  DrawerFooter,
   VStack,
   Divider,
 } from "@chakra-ui/react";
 import PropTypes from "prop-types";
-import { CartFooter } from "./CartFooter";
-import { CartBody } from "./cartBody";
 
+import { Cart } from "./cartBody";
 
-
-function CartDrawer({ isOpen, onClose }) {
-  // Example item data
-  
-
+function CartDrawer({ isOpen, onClose, cartItems }) {
+  console.log("Cart Items:", cartItems);
   return (
     <Drawer size="md" isOpen={isOpen} placement="right" onClose={onClose}>
       <DrawerOverlay />
@@ -28,15 +24,10 @@ function CartDrawer({ isOpen, onClose }) {
         <Divider />
         <DrawerBody bg="#ECECEC">
           <VStack w="100%" h="100%">
-            <CartBody
-             
-            />
+            
+            <Cart cartItems={cartItems} />
           </VStack>
         </DrawerBody>
-
-        <DrawerFooter>
-          <CartFooter  />
-        </DrawerFooter>
       </DrawerContent>
     </Drawer>
   );
@@ -45,6 +36,7 @@ function CartDrawer({ isOpen, onClose }) {
 CartDrawer.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
+  cartItems: PropTypes.array.isRequired,
 };
 
 export default CartDrawer;

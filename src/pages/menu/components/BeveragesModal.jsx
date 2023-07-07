@@ -21,8 +21,7 @@ import { SingleOrder } from "./SingleOrderModal";
 
 export function BeveragesModal({ onClose, beverages }) {
   const [quantity, setQuantity] = useState(1);
-  const [size, setSize] = useState("16oz");
-  const { addToCart } = useContext(CartContext);
+  const { addToCart, size, setSize } = useContext(CartContext); // Use size and setSize from the context
   const [isSingleOrderOpen, setSingleOrderOpen] = useState(false);
 
   const incrementQuantity = () => {
@@ -51,12 +50,13 @@ export function BeveragesModal({ onClose, beverages }) {
     const item = {
       beverages: beverages,
       quantity: quantity,
+      size:size
     };
     addToCart(item);
     onClose();
   };
 
-  //placeorder button
+  // placeorder button
   const handlePlaceOrder = () => {
     setSingleOrderOpen(true);
   };
