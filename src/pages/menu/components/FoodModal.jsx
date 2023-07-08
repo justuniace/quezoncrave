@@ -39,7 +39,7 @@ export function FoodModal({ onClose, food }) {
   };
   const handleAddToCart = () => {
     const item = {
-      food: food,
+      ...food, 
       quantity: quantity,
     };
     addToCart(item);
