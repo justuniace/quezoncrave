@@ -39,7 +39,7 @@ export function DessertModal({ onClose, dessert }) {
 
   const handleAddToCart = () => {
     const item = {
-     ...dessert,
+      dessert: dessert,
       quantity: quantity,
     };
     addToCart(item);

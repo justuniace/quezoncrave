@@ -12,14 +12,11 @@ import {
 } from "@chakra-ui/react";
 import { DeleteIcon } from "@chakra-ui/icons";
 import { urlFor } from "../../../client";
-import { CartContext } from "../Context/Context"; 
+import { CartContext } from "../Context/Context";
 import { BiCartDownload } from "react-icons/bi";
 
-
-
 export function Cart() {
-   const { cartItems, setCartItems } = useContext(CartContext);
-
+  const { cartItems, setCartItems } = useContext(CartContext);
 
   const handleDelete = (id) => {
     console.log("Item ID to delete:", id);
@@ -61,21 +58,22 @@ export function Cart() {
       }
       return item;
     });
+
     setCartItems(updatedItems);
   };
-
 
   //function for total amount
   const calculateTotalAmount = () => {
     let total = 0;
 
     cartItems.forEach((item) => {
-     
-     total += item.price;
+      total += item.price;
     });
 
     return total;
   };
+
+  console.log(cartItems);
 
   return (
     <VStack
@@ -83,16 +81,25 @@ export function Cart() {
       h="100vh"
       p="1rem 1"
       gap="1rem"
-    //    style={{
-    //   //  overflowY: "auto",
-    //    //  overscrollBehavior: "contain",
-    //      scrollbarWidth: "thin",
-    //      scrollbarColor: "#CBD5E0 transparent",
-    //  }}
+      //    style={{
+      //   //  overflowY: "auto",
+      //    //  overscrollBehavior: "contain",
+      //      scrollbarWidth: "thin",
+      //      scrollbarColor: "#CBD5E0 transparent",
+      //  }}
     >
       {cartItems.length > 0 ? (
         cartItems.map((item) => {
-       
+          // console.log(item);
+          // const { food, beverages, dessert, quantity, size } = item;
+          // const details = food || beverages || dessert;
+
+          // if (!details || quantity === undefined) {
+          //   return null;
+          // }
+
+          // const { name, image, price } = details;
+
           return (
             <HStack
               key={item._id}
@@ -216,5 +223,3 @@ export function Cart() {
     </VStack>
   );
 }
-
-
