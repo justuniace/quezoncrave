@@ -20,50 +20,49 @@ import { BiCartDownload } from "react-icons/bi";
 export function Cart() {
    const { cartItems, setCartItems } = useContext(CartContext);
 
-const handleDelete = (id) => {
-  console.log("Item ID to delete:", id);
-  const updatedCartItems = cartItems.filter(
-    (cartItem) => cartItem._id !== id
-  );
-  setCartItems(updatedCartItems);
-};
 
+  const handleDelete = (id) => {
+    console.log("Item ID to delete:", id);
+    const updatedCartItems = cartItems.filter(
+      (cartItem) => cartItem._id !== id
+    );
+    setCartItems(updatedCartItems);
+  };
 
-const handleDecrement = (itemId) => {
-  const updatedItems = cartItems.map((item) => {
-    if (item._id === itemId) {
-      const newQuantity = item.quantity > 1 ? item.quantity - 1 : 1;
-      const newPrice = item.price * newQuantity;
+  const handleDecrement = (itemId) => {
+    const updatedItems = cartItems.map((item) => {
+      if (item._id === itemId) {
+        const newQuantity = item.quantity > 1 ? item.quantity - 1 : 1;
+        const newPrice = item.price * newQuantity;
 
-      return {
-        ...item,
-        quantity: newQuantity,
-        price: newPrice,
-      };
-    }
-    return item;
-  });
+        return {
+          ...item,
+          quantity: newQuantity,
+          price: newPrice,
+        };
+      }
+      return item;
+    });
 
-  setCartItems(updatedItems);
-};
+    setCartItems(updatedItems);
+  };
 
-const handleIncrement = (itemId) => {
-  const updatedItems = cartItems.map((item) => {
-    if (item._id === itemId) {
-      const newQuantity = item.quantity + 1;
-      const newPrice = item.price * newQuantity;
+  const handleIncrement = (itemId) => {
+    const updatedItems = cartItems.map((item) => {
+      if (item._id === itemId) {
+        const newQuantity = item.quantity + 1;
+        const newPrice = item.price * newQuantity;
 
-      return {
-        ...item,
-        quantity: newQuantity,
-        price: newPrice,
-      };
-    }
-    return item;
-  });
-
-  setCartItems(updatedItems);
-};
+        return {
+          ...item,
+          quantity: newQuantity,
+          price: newPrice,
+        };
+      }
+      return item;
+    });
+    setCartItems(updatedItems);
+  };
 
 
   //function for total amount
@@ -71,16 +70,8 @@ const handleIncrement = (itemId) => {
     let total = 0;
 
     cartItems.forEach((item) => {
-      const { food, beverages, dessert, quantity } = item;
-      const details = food || beverages || dessert;
-
-      if (
-        details &&
-        typeof details.price === "number" &&
-        typeof quantity === "number"
-      ) {
-        total += details.price * quantity;
-      }
+     
+     total += item.price;
     });
 
     return total;
@@ -101,15 +92,7 @@ const handleIncrement = (itemId) => {
     >
       {cartItems.length > 0 ? (
         cartItems.map((item) => {
-          const { food, beverages, dessert, quantity, size } = item;
-          const details = food || beverages || dessert;
-
-          if (!details || quantity === undefined) {
-            return null;
-          }
-
-          const { name, image, price } = details;
-
+       
           return (
             <HStack
               key={item._id}
@@ -121,12 +104,12 @@ const handleIncrement = (itemId) => {
               align="center"
             >
               <Box w="6rem" mb="1">
-                <Image src={urlFor(image).url()} />
+                <Image src={urlFor(item.image).url()} />
               </Box>
               <VStack spacing="1">
                 <HStack justifyContent="space-between" w="20rem">
                   <Text ml="1rem" fontSize="1rem" fontWeight="bold">
-                    {name}
+                    {item.name}
                   </Text>
                   <DeleteIcon
                     cursor="pointer"
@@ -135,7 +118,7 @@ const handleIncrement = (itemId) => {
                   />
                 </HStack>
                 <Text mr="14rem" fontWeight="light" fontSize="12px" w="5rem">
-                  {size || ""}
+                  {item.size || ""}
                 </Text>
                 <HStack w="100%">
                   <Flex align="baseline">
@@ -143,7 +126,7 @@ const handleIncrement = (itemId) => {
                       ₱
                     </Text>
                     <Text ml="0.5rem" fontSize="1.2rem" fontWeight="bold">
-                      {price}
+                      {item.price}
                     </Text>
                   </Flex>
                   <Flex>
@@ -157,11 +140,11 @@ const handleIncrement = (itemId) => {
                         boxShadow: "md",
                         padding: "0rem",
                       }}
-                      onClick={() => handleDecrement(item.id)}
+                      onClick={() => handleDecrement(item._id)}
                     >
                       -
                     </Button>
-                    <span style={{ marginLeft: "1rem" }}>{quantity}</span>
+                    <span style={{ marginLeft: "1rem" }}>{item.quantity}</span>
                     <Button
                       style={{
                         marginLeft: "1rem",
@@ -172,7 +155,7 @@ const handleIncrement = (itemId) => {
                         boxShadow: "lg",
                         padding: "0rem",
                       }}
-                      onClick={() => handleIncrement(item.id)}
+                      onClick={() => handleIncrement(item._id)}
                     >
                       +
                     </Button>

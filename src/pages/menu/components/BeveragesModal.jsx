@@ -48,7 +48,7 @@ export function BeveragesModal({ onClose, beverages }) {
 
   const handleAddToCart = () => {
     const item = {
-      beverages: beverages,
+     ...beverages,
       quantity: quantity,
       size:size
     };
