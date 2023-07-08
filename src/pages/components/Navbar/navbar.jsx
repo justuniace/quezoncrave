@@ -4,9 +4,9 @@ import { Box, Flex, Image, HStack , Center} from "@chakra-ui/react";
 import PropTypes from "prop-types";
 import Navlink from "./navlink";
 import { Link } from "react-router-dom";
-import Cart from "/src/assets/cart.json";
+import CartIcon from "/src/assets/cart.json";
 import Lottie from "lottie-react";
-import CartDrawer from "../Cart/cart";
+import CartDrawer from "../Cart/Drawer";
 import {CartContext} from "../Context/Context";
 
 
@@ -77,7 +77,7 @@ function Navbar(props) {
         >
           <Lottie
             loop
-            animationData={Cart}
+            animationData={CartIcon}
             play={isAnimationPlaying.toString()}
             style={{ width: 85, height: 80 }}
           />
@@ -112,7 +112,11 @@ function Navbar(props) {
       )}
 
       {isDrawerOpen && (
-        <CartDrawer isOpen={isDrawerOpen} onClose={closeDrawer} cartItems={cartItems} />
+        <CartDrawer
+          isOpen={isDrawerOpen}
+          onClose={closeDrawer}
+          
+        />
       )}
     </Box>
   );
