@@ -72,8 +72,8 @@ function Dessert({activeTab}) {
               display="flex"
               flexDirection="column"
               cursor="pointer"
-              _hover={{ transform: "scale(1.05)" }}
-              transition={{ duration: 10 }}
+              _hover={{ transform: "scale(1.02)" }}
+              transition="all .3s ease"
             >
               <Flex flexDir="column" h="100%" justifyContent="space-between">
                 <VStack
