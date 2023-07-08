@@ -67,16 +67,7 @@ export function Cart() {
     let total = 0;
 
     cartItems.forEach((item) => {
-      const { food, beverages, dessert, quantity } = item;
-      const details = food || beverages || dessert;
-
-      if (
-        details &&
-        typeof details.price === "number" &&
-        typeof quantity === "number"
-      ) {
-        total += details.price * quantity;
-      }
+      total += item.price
     });
 
     return total;
