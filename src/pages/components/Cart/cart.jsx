@@ -81,25 +81,11 @@ export function Cart() {
       h="100vh"
       p="1rem 1"
       gap="1rem"
-      //    style={{
-      //   //  overflowY: "auto",
-      //    //  overscrollBehavior: "contain",
-      //      scrollbarWidth: "thin",
-      //      scrollbarColor: "#CBD5E0 transparent",
-      //  }}
+      
     >
       {cartItems.length > 0 ? (
         cartItems.map((item) => {
-          // console.log(item);
-          // const { food, beverages, dessert, quantity, size } = item;
-          // const details = food || beverages || dessert;
-
-          // if (!details || quantity === undefined) {
-          //   return null;
-          // }
-
-          // const { name, image, price } = details;
-
+         
           return (
             <HStack
               key={item._id}

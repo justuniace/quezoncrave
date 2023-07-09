@@ -12,19 +12,23 @@ function Category() {
       image: Food,
       dTitle: "Food",
       details:
-        "Welcome to QuezonCrave, where we bring you the rich, flavorful, and mouthwatering Quezon-inspired culinary delights of Quezon Province right to your plate! Explore the vibrant and diverse cuisine of this Philippine province known for its unique dishes and exciting flavors.",
+           "Lorem ipsum dolor sit amet. Sed laudantium veniam ea",
+        // "Welcome to QuezonCrave, where we bring you the rich, flavorful, and mouthwatering Quezon-inspired culinary delights 
+        // of Quezon Province right to your plate! Explore the vibrant and diverse cuisine of this Philippine province known for its unique dishes and exciting flavors.",
     },
     {
       image: Beverage,
       dTitle: "Beverages",
       details:
-        "At QuezonCrave, we take pride in crafting a unique and delightful selection of beverages inspired by the rich cultural heritage and natural bounty of Quezon Province. Each sip tells a story, transporting you to the bustling streets and warm hospitality of this beloved region.",
+            " Lorem ipsum dolor sit amet. Sed laudantium veniam ea",
+       // "At QuezonCrave, we take pride in crafting a unique and delightful selection of beverages inspired by the rich cultural heritage and natural bounty of Quezon Province. Each sip tells a story, transporting you to the bustling streets and warm hospitality of this beloved region.",
     },
     {
       image: Dessert,
       dTitle: "Dessert",
       details:
-        "Indulge in the rich and delightful flavors of Quezon Province with our delectable array of traditional desserts. Our desserts are inspired by the rich culinary heritage of Quezon, a province known for its brilliant culture and tasty delicacies.",
+      "Lorem ipsum dolor sit amet. Sed laudantium veniam ea"
+      //  "Indulge in the rich and delightful flavors of Quezon Province with our delectable array of traditional desserts. Our desserts are inspired by the rich culinary heritage of Quezon, a province known for its brilliant culture and tasty delicacies.",
     },
   ];
 
