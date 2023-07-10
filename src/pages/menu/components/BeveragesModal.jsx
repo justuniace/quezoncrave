@@ -23,6 +23,8 @@ export function BeveragesModal({ onClose, beverages }) {
   const [quantity, setQuantity] = useState(1);
   const { addToCart, size, setSize } = useContext(CartContext); // Use size and setSize from the context
   const [isSingleOrderOpen, setSingleOrderOpen] = useState(false);
+  const { cartItems, setCartItems } = useContext(CartContext);
+
 
   const incrementQuantity = () => {
     setQuantity(quantity + 1);
@@ -46,15 +48,40 @@ export function BeveragesModal({ onClose, beverages }) {
     return totalPrice.toFixed(2);
   };
 
-  const handleAddToCart = () => {
-    const item = {
-      ...beverages,
-      quantity: quantity,
-      size:size
-    };
-    addToCart(item);
-    onClose();
+const handleAddToCart = () => {
+  const item = {
+    ...beverages,
+    quantity: quantity,
+    size: size,
   };
+
+  const existingItem = cartItems.find(
+    (cartItem) => cartItem._id === item._id && cartItem.size === item.size
+  );
+
+  if (existingItem) {
+    const updatedItems = cartItems.map((cartItem) => {
+      if (
+        cartItem._id === existingItem._id &&
+        cartItem.size === existingItem.size
+      ) {
+        return {
+          ...cartItem,
+          quantity: cartItem.quantity + item.quantity,
+        };
+      }
+      return cartItem;
+    });
+
+    setCartItems(updatedItems);
+  } else {
+    addToCart(item);
+  }
+
+  onClose();
+};
+
+
 
   // placeorder button
   const handlePlaceOrder = () => {

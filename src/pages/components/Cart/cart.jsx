@@ -19,7 +19,6 @@ export function Cart() {
   const { cartItems, setCartItems } = useContext(CartContext);
 
   const handleDelete = (id) => {
-    console.log("Item ID to delete:", id);
     const updatedCartItems = cartItems.filter(
       (cartItem) => cartItem._id !== id
     );
@@ -30,7 +29,7 @@ export function Cart() {
     const updatedItems = cartItems.map((item) => {
       if (item._id === itemId) {
         const newQuantity = item.quantity > 1 ? item.quantity - 1 : 1;
-        const newPrice = item.price * newQuantity;
+        const newPrice = item.price /item.quantity * newQuantity;
 
         return {
           ...item,
@@ -48,7 +47,7 @@ export function Cart() {
     const updatedItems = cartItems.map((item) => {
       if (item._id === itemId) {
         const newQuantity = item.quantity + 1;
-        const newPrice = item.price * newQuantity;
+        const newPrice = item.price /item.quantity * newQuantity;
 
         return {
           ...item,
@@ -76,16 +75,9 @@ export function Cart() {
   console.log(cartItems);
 
   return (
-    <VStack
-      w="100%"
-      h="100vh"
-      p="1rem 1"
-      gap="1rem"
-      
-    >
+    <VStack w="100%" h="100vh" p="1rem 1" gap="1rem" align="stretch">
       {cartItems.length > 0 ? (
-        cartItems.map((item) => {
-         
+        [...cartItems].reverse().map((item) => {
           return (
             <HStack
               key={item._id}
@@ -95,9 +87,15 @@ export function Cart() {
               borderRadius=".5em"
               justifyContent="space-between"
               align="center"
+              maxW="500px"
             >
-              <Box w="6rem" mb="1">
-                <Image src={urlFor(item.image).url()} />
+              <Box w="10rem" h="6rem" mb="1">
+                <Image
+                  src={urlFor(item.image).url()}
+                  w="100%"
+                  h="100%"
+                  //  objectFit="cover"
+                />
               </Box>
               <VStack spacing="1">
                 <HStack justifyContent="space-between" w="20rem">

@@ -3,8 +3,24 @@ import PropTypes from "prop-types";
 
 export const CartContext = createContext();
 
+
+const getLocalItems = () => {
+  let cartItems = localStorage.getItem('cartItems');
+  console.log(cartItems)
+
+  if (cartItems) {
+    return JSON.parse(localStorage.getItem("cartItems"));
+  } else {
+    return [];
+  }
+}
+
+
+
+
+
 export const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState(getLocalItems());
   const [size, setSize] = useState("16oz");
 
   const addToCart = (item) => {
@@ -15,6 +31,7 @@ export const CartProvider = ({ children }) => {
     setSize(value);
   };
 
+  //add data to localStorage
   useEffect(() => {
     const storedCartItems = localStorage.getItem("cartItems");
     if (storedCartItems) {
