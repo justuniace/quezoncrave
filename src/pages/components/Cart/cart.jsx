@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import {
   VStack,
   HStack,
@@ -17,19 +17,22 @@ import { BiCartDownload } from "react-icons/bi";
 
 export function Cart() {
   const { cartItems, setCartItems } = useContext(CartContext);
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleDelete = (id) => {
-    const updatedCartItems = cartItems.filter(
-      (cartItem) => cartItem._id !== id
-    );
-    setCartItems(updatedCartItems);
+    const itemIndex = cartItems.findIndex((item) => item._id === id); // Find the index of the item to delete in the cartItems array
+    if (itemIndex !== -1) {
+      const updatedCartItems = [...cartItems];
+      updatedCartItems.splice(itemIndex, 1); // Remove the item from the updatedCartItems array using splice
+      setCartItems(updatedCartItems); // Update the cart items state with the updatedCartItems array
+    }
   };
 
   const handleDecrement = (itemId) => {
     const updatedItems = cartItems.map((item) => {
       if (item._id === itemId) {
         const newQuantity = item.quantity > 1 ? item.quantity - 1 : 1;
-        const newPrice = item.price /item.quantity * newQuantity;
+        const newPrice = item.price * (newQuantity / item.quantity);
 
         return {
           ...item,
@@ -47,7 +50,7 @@ export function Cart() {
     const updatedItems = cartItems.map((item) => {
       if (item._id === itemId) {
         const newQuantity = item.quantity + 1;
-        const newPrice = item.price /item.quantity * newQuantity;
+        const newPrice = (item.price / item.quantity) * newQuantity;
 
         return {
           ...item,
@@ -61,108 +64,130 @@ export function Cart() {
     setCartItems(updatedItems);
   };
 
-  //function for total amount
+  // Function for calculating the total amount
   const calculateTotalAmount = () => {
     let total = 0;
 
     cartItems.forEach((item) => {
-      total += item.price;
+     total += parseFloat(item.price);
     });
 
-    return total;
+    return total.toFixed(2);
   };
+
+  useEffect(() => {
+    if (cartItems.length > 0) {
+      setIsLoading(false);
+    }
+  }, [cartItems]);
 
   console.log(cartItems);
 
+  useEffect(() => {
+    setIsLoading(false); // Set isLoading to false after loading is complete
+  }, []);
+
   return (
-    <VStack w="100%" h="100vh" p="1rem 1" gap="1rem" align="stretch">
-      {cartItems.length > 0 ? (
-        [...cartItems].reverse().map((item) => {
-          return (
-            <HStack
-              key={item._id}
-              w="100%"
-              p="1rem 1rem"
-              bg="white"
-              borderRadius=".5em"
-              justifyContent="space-between"
-              align="center"
-              maxW="500px"
-            >
-              <Box w="10rem" h="6rem" mb="1">
-                <Image
-                  src={urlFor(item.image).url()}
-                  w="100%"
-                  h="100%"
-                  //  objectFit="cover"
-                />
-              </Box>
-              <VStack spacing="1">
-                <HStack justifyContent="space-between" w="20rem">
-                  <Text ml="1rem" fontSize="1rem" fontWeight="bold">
-                    {item.name}
-                  </Text>
-                  <DeleteIcon
-                    cursor="pointer"
-                    color="#FFC700"
-                    onClick={() => handleDelete(item._id)}
-                  />
-                </HStack>
-                <Text mr="14rem" fontWeight="light" fontSize="12px" w="5rem">
-                  {item.size || ""}
-                </Text>
-                <HStack w="100%">
-                  <Flex align="baseline">
-                    <Text ml="1rem" fontSize="1.2rem" fontWeight="bold">
-                      ₱
-                    </Text>
-                    <Text ml="0.5rem" fontSize="1.2rem" fontWeight="bold">
-                      {item.price}
-                    </Text>
-                  </Flex>
-                  <Flex>
-                    <Button
-                      style={{
-                        marginLeft: "7.4rem",
-                        borderRadius: "30px",
-                        width: "1.5rem",
-                        height: "1.5rem",
-                        fontSize: "12px",
-                        boxShadow: "md",
-                        padding: "0rem",
-                      }}
-                      onClick={() => handleDecrement(item._id)}
-                    >
-                      -
-                    </Button>
-                    <span style={{ marginLeft: "1rem" }}>{item.quantity}</span>
-                    <Button
-                      style={{
-                        marginLeft: "1rem",
-                        borderRadius: "30px",
-                        width: "1.5rem",
-                        height: "1.5rem",
-                        fontSize: "12px",
-                        boxShadow: "lg",
-                        padding: "0rem",
-                      }}
-                      onClick={() => handleIncrement(item._id)}
-                    >
-                      +
-                    </Button>
-                  </Flex>
-                </HStack>
-              </VStack>
-            </HStack>
-          );
-        })
-      ) : (
+    <VStack
+      minH="100%"
+      w="100%"
+      h="100vh"
+      p="1rem 1"
+      gap="1rem"
+      align="stretch"
+    >
+      {isLoading ? (
         <Center flex="1">
           <Text fontSize="1.2rem" fontWeight="light">
-            There is no item in the cart
+            Loading...
           </Text>
         </Center>
+      ) : cartItems.length > 0 ? (
+        <VStack w="100%" align="stretch" spacing="1rem">
+          {[...cartItems].reverse().map((item, index) => {
+            return (
+              <HStack
+                key={item._id}
+                w="100%"
+                p="1rem 1rem"
+                bg="white"
+                borderRadius=".5em"
+                justifyContent="space-between"
+                align="center"
+                maxW="500px"
+                mt={index === 0 ? "1rem" : "0"}
+              >
+                <Box w="10rem" h="6rem" mb="1">
+                  <Image src={urlFor(item.image).url()} w="100%" h="100%" />
+                </Box>
+                <VStack spacing="1" w="100%">
+                  <HStack justifyContent="space-between" w="20rem">
+                    <Text ml="1rem" fontSize="1rem" fontWeight="bold">
+                      {item.name}
+                    </Text>
+                    <DeleteIcon
+                      cursor="pointer"
+                      color="#FFC700"
+                      onClick={() => handleDelete(item._id)}
+                    />
+                  </HStack>
+                  <Text mr="14rem" fontWeight="light" fontSize="12px" w="5rem">
+                    {item.size || ""}
+                  </Text>
+                  <HStack w="100%">
+                    <Flex align="baseline">
+                      <Text ml="1rem" fontSize="1.2rem" fontWeight="bold">
+                        ₱
+                      </Text>
+                      <Text ml="0.5rem" fontSize="1.2rem" fontWeight="bold">
+                        {item.price}
+                      </Text>
+                    </Flex>
+                    <Flex>
+                      <Button
+                        style={{
+                          marginLeft: "7.4rem",
+                          borderRadius: "30px",
+                          width: "1.5rem",
+                          height: "1.5rem",
+                          fontSize: "12px",
+                          boxShadow: "md",
+                          padding: "0rem",
+                        }}
+                        onClick={() => handleDecrement(item._id)}
+                      >
+                        -
+                      </Button>
+                      <span style={{ marginLeft: "1rem" }}>
+                        {item.quantity}
+                      </span>
+                      <Button
+                        style={{
+                          marginLeft: "1rem",
+                          borderRadius: "30px",
+                          width: "1.5rem",
+                          height: "1.5rem",
+                          fontSize: "12px",
+                          boxShadow: "lg",
+                          padding: "0rem",
+                        }}
+                        onClick={() => handleIncrement(item._id)}
+                      >
+                        +
+                      </Button>
+                    </Flex>
+                  </HStack>
+                </VStack>
+              </HStack>
+            );
+          })}
+        </VStack>
+      ) : (
+        <Text fontSize="1.2rem" fontWeight="light" textAlign="center">
+          There is no item in the cart
+        </Text>
       )}
+
       {/* Footer */}
       <Spacer />
       <Box

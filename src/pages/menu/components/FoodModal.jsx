@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useState, useContext } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import { BiCartDownload } from "react-icons/bi"
+import { BiCartDownload } from "react-icons/bi";
 import { CartContext } from "../../components/Context/Context";
 import { SingleOrder } from "./SingleOrderModal";
 import {
@@ -15,13 +15,15 @@ import {
   Button,
   Text,
   HStack,
+  Radio,
+  RadioGroup,
 } from "@chakra-ui/react";
 
 export function FoodModal({ onClose, food }) {
   const [quantity, setQuantity] = useState(1);
-  const { addToCart } = useContext(CartContext);
+  const { addToCart, size, setSize } = useContext(CartContext);
   const [isSingleOrderOpen, setSingleOrderOpen] = useState(false);
-
+  const { cartItems, setCartItems } = useContext(CartContext);
 
   const incrementQuantity = () => {
     setQuantity(quantity + 1);
@@ -34,15 +36,50 @@ export function FoodModal({ onClose, food }) {
   };
 
   const calculateTotalPrice = () => {
-    const totalPrice = food.price * quantity;
+    let basePrice = food.price;
+
+    if (size === "Single") {
+      basePrice += 20;
+    } else if (size === "Family") {
+      basePrice += 40;
+    } else if (size === "Party") {
+      basePrice += 50;
+    }
+    const totalPrice = basePrice * quantity;
     return totalPrice.toFixed(2);
   };
+
   const handleAddToCart = () => {
     const item = {
       ...food,
       quantity: quantity,
+      size: size,
+      price:calculateTotalPrice(),
     };
-    addToCart(item);
+
+    const existingItem = cartItems.find(
+      (cartItem) => cartItem._id === item._id && cartItem.size === item.size
+    );
+
+    if (existingItem) {
+      const updatedItems = cartItems.map((cartItem) => {
+        if (
+          cartItem._id === existingItem._id &&
+          cartItem.size === existingItem.size
+        ) {
+          return {
+            ...cartItem,
+            quantity: cartItem.quantity + item.quantity,
+          };
+        }
+        return cartItem;
+      });
+
+      setCartItems(updatedItems);
+    } else {
+      addToCart(item);
+    }
+
     onClose();
   };
 
@@ -54,8 +91,6 @@ export function FoodModal({ onClose, food }) {
   const closeSingleOrder = () => {
     setSingleOrderOpen(false);
   };
-
-
 
   return (
     <>
@@ -107,6 +142,40 @@ export function FoodModal({ onClose, food }) {
                 ₱{calculateTotalPrice()}
               </Text>
             </HStack>
+            <Text mt="5" color="#434242" fontWeight="light" fontSize="13px">
+              Size
+            </Text>
+            <RadioGroup mt="3" value={size} onChange={setSize}>
+              <HStack>
+                <Radio
+                  sx={{
+                    color: "#FFC700",
+                    _checked: { bg: "#FFC700", borderColor: "#FFC700" },
+                  }}
+                  value="Single"
+                >
+                  Single Order
+                </Radio>
+                <Radio
+                  sx={{
+                    color: "#FFC700",
+                    _checked: { bg: "#FFC700", borderColor: "#FFC700" },
+                  }}
+                  value="Family"
+                >
+                  Family Size
+                </Radio>
+                <Radio
+                  sx={{
+                    color: "#FFC700",
+                    _checked: { bg: "#FFC700", borderColor: "#FFC700" },
+                  }}
+                  value="Party"
+                >
+                  Party Size
+                </Radio>
+              </HStack>
+            </RadioGroup>
           </ModalBody>
           <ModalFooter>
             <Button

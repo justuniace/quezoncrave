@@ -53,6 +53,7 @@ const handleAddToCart = () => {
     ...beverages,
     quantity: quantity,
     size: size,
+    price:calculateTotalPrice(),
   };
 
   const existingItem = cartItems.find(
