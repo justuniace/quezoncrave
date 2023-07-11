@@ -217,8 +217,10 @@ const handleAddToCart = () => {
         <SingleOrder
           onClose={closeSingleOrder}
           dessert={dessert}
-          quantity={quantity}
-          size={size}
+          itemName={dessert.name}
+          itemPrice={calculateTotalPrice()}
+          itemQuantity={quantity}
+          itemSize={size}
         />
       )}
     </>

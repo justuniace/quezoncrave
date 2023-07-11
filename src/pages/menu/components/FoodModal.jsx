@@ -207,6 +207,7 @@ export function FoodModal({ onClose, food }) {
       {isSingleOrderOpen && (
         <SingleOrder
           onClose={closeSingleOrder}
+          food={food}
           itemName={food.name}
           itemPrice={calculateTotalPrice()}
           itemQuantity={quantity}

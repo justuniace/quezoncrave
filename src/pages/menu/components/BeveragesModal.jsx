@@ -213,8 +213,10 @@ const resetState = () => {
         <SingleOrder
           onClose={closeSingleOrder}
           beverages={beverages}
-          quantity={quantity}
-          size={size}
+          itemName={beverages.name}
+          itemPrice={calculateTotalPrice()}
+          itemQuantity={quantity}
+          itemSize={size}
         />
       )}
     </>
