@@ -14,54 +14,101 @@ import {
 import { useState } from "react";
 import { useToast } from "@chakra-ui/react";
 import { BsPatchCheckFill } from "react-icons/bs";
+import emailjs from "@emailjs/browser";
 
+export function SingleOrder({ onClose, itemName, itemPrice, itemQuantity, itemSize }) {
+  const [name, setName] = useState("");
+  const [address, setAddress] = useState("");
+  const [contactNumber, setContactNumber] = useState("");
+  const [email, setEmail] = useState("");
+  const toast = useToast();
 
-export function SingleOrder({ onClose }) {
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
 
-const [name, setName] = useState("");
-const [address, setAddress] = useState("");
-const [contactNumber, setContactNumber] = useState("");
-const [email, setEmail] = useState("");
-const toast = useToast();
+  const handleConfirm = async () => {
+    if (!name || !address || !contactNumber || !email) {
+      toast({
+        position: "top",
+        title: "Missing Fields!",
+        description: "Please fill in all fields.",
+        status: "error",
+        duration: 1000,
+        isClosable: true,
+      });
+      return;
+    }
 
-const validateEmail = (email) => {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
-};
+    if (!validateEmail(email)) {
+      toast({
+        position: "top",
+        title: "Invalid Email!",
+        description: "Please enter a valid email address.",
+        status: "error",
+        duration: 1000,
+        isClosable: true,
+      });
+      return;
+    }
 
+    const emailContent = `
+  Shipping Information:
+  Name: ${name}
+  Address: ${address}
+  Contact Number: ${contactNumber}
+  Email: ${email}
 
-const handleConfirm = () => {
+  Item Details:
+  Name: ${itemName}
+  Price: ${itemPrice}
+  Quantity: ${itemQuantity}
+  Size: ${itemSize}
+`;
 
-  if(!name || !address || !contactNumber || !email)
- {
-    toast({
-      position: 'top',
-      title: "Missing Fields!",
-      description: "Please fill in all fields.",
-      status: "error",
-      duration: 1000,
-      isClosable: true,
+    const templateParams = {
+      to_email: email,
+      from_name: name,
+      message: emailContent,
+    };
 
-    })
-     return;
- }
+    console.log("Sending email with the following data:");
+    console.log(templateParams);
 
- if (!validateEmail(email)) {
-   toast({
-     position: "top",
-     title: "Invalid Email!",
-     description: "Please enter a valid email address.",
-     status: "error",
-     duration: 1000,
-     isClosable: true,
-   });
-   return;
- }
+    try {
+      const response = await emailjs.send(
+        "service_c7917pd",
+        "template_m0l0zdm",
+        templateParams,
+        "adU95kGqRHf8v9br6"
+      );
+      console.log(response);
+      console.log("data from response ", JSON.stringify(response));
 
- onClose();
-};
+      setName("");
+      setAddress("");
+      setContactNumber("");
+      setEmail("");
+      onClose();
 
+      toast({
+        title: "Order Placed.",
+        description: "You'll get your order within 20 minutes",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+        position: "top",
+      });
+    } catch (error) {
+      console.log(error);
 
+      setName("");
+      setAddress("");
+      setContactNumber("");
+      setEmail("");
+    }
+  };
 
   return (
     <Modal isCentered isOpen onClose={onClose}>
@@ -98,7 +145,11 @@ const handleConfirm = () => {
           </VStack>
         </ModalBody>
         <ModalFooter>
-          <Button leftIcon={<BsPatchCheckFill />} onClick={handleConfirm}>
+          <Button
+            leftIcon={<BsPatchCheckFill />}
+            onClick={handleConfirm}
+            disabled={!name || !address || !contactNumber || !email}
+          >
             Confirm
           </Button>
         </ModalFooter>
@@ -109,4 +160,8 @@ const handleConfirm = () => {
 
 SingleOrder.propTypes = {
   onClose: PropTypes.func.isRequired,
+  itemName: PropTypes.string.isRequired,
+  itemPrice: PropTypes.number.isRequired,
+  itemQuantity: PropTypes.number.isRequired,
+  itemSize: PropTypes.string.isRequired,
 };

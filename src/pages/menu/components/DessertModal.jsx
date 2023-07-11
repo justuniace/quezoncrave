@@ -39,14 +39,12 @@ export function DessertModal({ onClose, dessert }) {
   const calculateTotalPrice = () => {
     let basePrice = dessert.price;
 
-    if (size === "Single") {
+    if (size === "Family") {
       basePrice += 20;
-    } else if (size === "Family") {
-      basePrice += 40;
     }
     else if(size === "Party")
     {
-       basePrice += 50;
+       basePrice += 40;
     }
     const totalPrice = basePrice * quantity;
     return totalPrice.toFixed(2);
@@ -86,9 +84,13 @@ const handleAddToCart = () => {
   }
 
   onClose();
+  resetState();
 };
 
-  
+  const resetState = () => {
+    setQuantity(1);
+    setSize("Single");
+  };
   //placeorder button
   const handlePlaceOrder = () => {
     setSingleOrderOpen(true);
@@ -151,7 +153,12 @@ const handleAddToCart = () => {
             <Text mt="5" color="#434242" fontWeight="light" fontSize="13px">
               Size
             </Text>
-            <RadioGroup mt="3" value={size} onChange={setSize}>
+            <RadioGroup
+              mt="3"
+              value={size}
+              
+              onChange={setSize}
+            >
               <HStack>
                 <Radio
                   sx={{

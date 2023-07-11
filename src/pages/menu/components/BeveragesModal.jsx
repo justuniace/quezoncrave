@@ -80,9 +80,13 @@ const handleAddToCart = () => {
   }
 
   onClose();
+  resetState();
 };
 
-
+const resetState = () => {
+  setQuantity(1);
+  setSize("16oz");
+};
 
   // placeorder button
   const handlePlaceOrder = () => {
@@ -145,7 +149,12 @@ const handleAddToCart = () => {
             <Text mt="5" color="#434242" fontWeight="light" fontSize="13px">
               Size
             </Text>
-            <RadioGroup mt="3" value={size} onChange={setSize}>
+            <RadioGroup
+              mt="3"
+              
+              value={size}
+              onChange={setSize}
+            >
               <HStack>
                 <Radio
                   sx={{

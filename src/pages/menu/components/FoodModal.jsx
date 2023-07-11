@@ -38,12 +38,10 @@ export function FoodModal({ onClose, food }) {
   const calculateTotalPrice = () => {
     let basePrice = food.price;
 
-    if (size === "Single") {
+    if (size === "Family") {
       basePrice += 20;
-    } else if (size === "Family") {
-      basePrice += 40;
     } else if (size === "Party") {
-      basePrice += 50;
+      basePrice += 40;
     }
     const totalPrice = basePrice * quantity;
     return totalPrice.toFixed(2);
@@ -54,7 +52,7 @@ export function FoodModal({ onClose, food }) {
       ...food,
       quantity: quantity,
       size: size,
-      price:calculateTotalPrice(),
+      price: calculateTotalPrice(),
     };
 
     const existingItem = cartItems.find(
@@ -81,6 +79,12 @@ export function FoodModal({ onClose, food }) {
     }
 
     onClose();
+    resetState();
+  };
+
+  const resetState = () => {
+    setQuantity(1);
+    setSize("Single");
   };
 
   //placeorder button
@@ -201,7 +205,13 @@ export function FoodModal({ onClose, food }) {
         </ModalContent>
       </Modal>
       {isSingleOrderOpen && (
-        <SingleOrder onClose={closeSingleOrder} food={food} />
+        <SingleOrder
+          onClose={closeSingleOrder}
+          itemName={food.name}
+          itemPrice={calculateTotalPrice()}
+          itemQuantity={quantity}
+          itemSize={size}
+        />
       )}
     </>
   );

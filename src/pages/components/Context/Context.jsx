@@ -21,7 +21,7 @@ const getLocalItems = () => {
 
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState(getLocalItems());
-  const [size, setSize] = useState("16oz");
+  const [size, setSize] = useState();
 
   const addToCart = (item) => {
     setCartItems((prevItems) => [...prevItems, item]);
