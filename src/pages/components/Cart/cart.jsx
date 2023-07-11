@@ -19,14 +19,21 @@ export function Cart() {
   const { cartItems, setCartItems } = useContext(CartContext);
   const [isLoading, setIsLoading] = useState(true);
 
-  const handleDelete = (id) => {
-    const itemIndex = cartItems.findIndex((item) => item._id === id); // Find the index of the item to delete in the cartItems array
-    if (itemIndex !== -1) {
-      const updatedCartItems = [...cartItems];
-      updatedCartItems.splice(itemIndex, 1); // Remove the item from the updatedCartItems array using splice
-      setCartItems(updatedCartItems); // Update the cart items state with the updatedCartItems array
-    }
+  const handleDelete = (id, size) => {
+    const updatedCartItems = cartItems.filter(
+      (item) => item._id !== id || item.size !== size
+    );
+    setCartItems(updatedCartItems);
   };
+
+  // const handleDelete = (id) => {
+  //   const itemIndex = cartItems.findIndex((item) => item._id === id); // Find the index of the item to delete in the cartItems array
+  //   if (itemIndex !== -1) {
+  //     const updatedCartItems = [...cartItems];
+  //     updatedCartItems.splice(itemIndex, 1); // Remove the item from the updatedCartItems array using splice
+  //     setCartItems(updatedCartItems); // Update the cart items state with the updatedCartItems array
+  //   }
+  // };
 
   const handleDecrement = (itemId) => {
     const updatedItems = cartItems.map((item) => {
@@ -103,8 +110,14 @@ export function Cart() {
           </Text>
         </Center>
       ) : cartItems.length > 0 ? (
-        <VStack w="100%" align="stretch" spacing="1rem">
-          {[...cartItems].reverse().map((item, index) => {
+        <VStack
+          w="100%"
+          align="stretch"
+          spacing="1rem"
+         // overflowY="auto"
+          pb="10rem"
+        >
+          {[...cartItems].reverse().map((item) => {
             return (
               <HStack
                 key={item._id}
@@ -115,7 +128,6 @@ export function Cart() {
                 justifyContent="space-between"
                 align="center"
                 maxW="500px"
-                mt={index === 0 ? "1rem" : "0"}
               >
                 <Box w="10rem" h="6rem" mb="1">
                   <Image src={urlFor(item.image).url()} w="100%" h="100%" />
@@ -128,7 +140,7 @@ export function Cart() {
                     <DeleteIcon
                       cursor="pointer"
                       color="#FFC700"
-                      onClick={() => handleDelete(item._id)}
+                      onClick={() => handleDelete(item._id, item.size)}
                     />
                   </HStack>
                   <Text mr="14rem" fontWeight="light" fontSize="12px" w="5rem">
@@ -169,7 +181,6 @@ export function Cart() {
                           height: "1.5rem",
                           fontSize: "12px",
                           boxShadow: "lg",
-                          padding: "0rem",
                         }}
                         onClick={() => handleIncrement(item._id)}
                       >
