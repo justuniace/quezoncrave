@@ -5,7 +5,7 @@ import Logo from "/logo.webp";
 import { About } from "./pages/about/about";
 import { Blog } from "./pages/blog/blog";
 import { Menu } from "./pages/menu/menu";
-import { Footer } from "./pages/components/Footer/footer";
+// import { Footer } from "./pages/components/Footer/footer";
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/about" element={<About />} />
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </Router>
     </div>
   );

@@ -1,6 +1,6 @@
 
 import { useState, useContext } from "react";
-import { Box, Flex, Image, HStack , Center} from "@chakra-ui/react";
+import { Box, Flex, Image, HStack , Center, useMediaQuery} from "@chakra-ui/react";
 import PropTypes from "prop-types";
 import Navlink from "./navlink";
 import { Link } from "react-router-dom";
@@ -8,7 +8,8 @@ import CartIcon from "/src/assets/cart.json";
 import Lottie from "lottie-react";
 import CartDrawer from "../Cart/Drawer";
 import {CartContext} from "../Context/Context";
-
+import MobileNav from "./MobileNav";
+import breakPoints from "../../theme/breakpoints";
 
 
 function Navbar(props) {
@@ -18,7 +19,7 @@ function Navbar(props) {
 
   const isAnimationPlaying = true;
 
-
+  const [isSmallScreen] = useMediaQuery("(max-width: 48em)");
 
   const openDrawer = () => {
     setIsDrawerOpen(true);
@@ -44,7 +45,7 @@ function Navbar(props) {
         alignItems="center"
         h="100%"
         margin="auto"
-        w="95%"
+        w={breakPoints}
       >
         <Box paddingLeft="5rem">
           <Link to="/">
@@ -56,14 +57,50 @@ function Navbar(props) {
             />
           </Link>
         </Box>
-
-        <Flex flex="1" justifyContent="center">
-          <HStack spacing="5rem">
-            {navLinks.map((nav) => {
-              return <Navlink nav={nav} key={nav} />;
-            })}
+        {isSmallScreen ? (
+          <HStack spacing=".1rem">
+            <Box
+              fontSize="1.5rem"
+              transition="all .3s ease"
+              _hover={{ transform: "scale(.9)" }}
+              cursor="pointer"
+              pos="relative"
+              display={{ base: "none", md: "block" }}
+              paddingRight="5rem"
+              onClick={openDrawer}
+            >
+              <Lottie
+                loop
+                animationData={CartIcon}
+                play={isAnimationPlaying.toString()}
+                style={{ width: 85, height: 80 }}
+              />
+              <Box pos="absolute" top="1rem" right="6rem">
+                <Center
+                  fontSize=".8rem"
+                  fontFamily="inter"
+                  fontWeight="md"
+                  bg="#FFC700"
+                  w="1rem"
+                  p=".7rem"
+                  h="1rem"
+                  borderRadius="10rem"
+                >
+                  {cartItems.length}
+                </Center>
+              </Box>
+            </Box>
+            <MobileNav />
           </HStack>
-        </Flex>
+        ) : (
+          
+            <HStack spacing="5rem">
+              {navLinks.map((nav) => {
+                return <Navlink nav={nav} key={nav} />;
+              })}
+            </HStack>
+        
+        )}
 
         <Box
           fontSize="1.5rem"
@@ -112,11 +149,7 @@ function Navbar(props) {
       )}
 
       {isDrawerOpen && (
-        <CartDrawer
-          isOpen={isDrawerOpen}
-          onClose={closeDrawer}
-          
-        />
+        <CartDrawer isOpen={isDrawerOpen} onClose={closeDrawer} />
       )}
     </Box>
   );

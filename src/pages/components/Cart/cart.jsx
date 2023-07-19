@@ -14,10 +14,21 @@ import { DeleteIcon } from "@chakra-ui/icons";
 import { urlFor } from "../../../client";
 import { CartContext } from "../Context/Context";
 import { BiCartDownload } from "react-icons/bi";
+import { MultipleOrder } from "../../menu/components/MultipleOrder";
 
 export function Cart() {
   const { cartItems, setCartItems } = useContext(CartContext);
   const [isLoading, setIsLoading] = useState(true);
+const [isMultipleOrderOpen, setMultipleOrderOpen] = useState(false);
+
+
+ const handlePlaceOrder = () => {
+   setMultipleOrderOpen(true);
+ };
+
+ const closeMultipleOrder = () => {
+   setMultipleOrderOpen(false);
+ };
 
   const handleDelete = (id, size) => {
     const updatedCartItems = cartItems.filter(
@@ -34,6 +45,7 @@ export function Cart() {
   //     setCartItems(updatedCartItems); // Update the cart items state with the updatedCartItems array
   //   }
   // };
+
 
   const handleDecrement = (itemId) => {
     const updatedItems = cartItems.map((item) => {
@@ -72,7 +84,7 @@ export function Cart() {
   };
 
   // Function for calculating the total amount
-  const calculateTotalAmount = () => {
+  const totalAmount = () => {
     let total = 0;
 
     cartItems.forEach((item) => {
@@ -82,6 +94,7 @@ export function Cart() {
     return total.toFixed(2);
   };
 
+  
   useEffect(() => {
     if (cartItems.length > 0) {
       setIsLoading(false);
@@ -93,6 +106,10 @@ export function Cart() {
   useEffect(() => {
     setIsLoading(false); // Set isLoading to false after loading is complete
   }, []);
+
+   const clearCart = () => {
+     setCartItems([]);
+   };
 
   return (
     <VStack
@@ -114,7 +131,7 @@ export function Cart() {
           w="100%"
           align="stretch"
           spacing="1rem"
-         // overflowY="auto"
+          // overflowY="auto"
           pb="10rem"
         >
           {[...cartItems].reverse().map((item) => {
@@ -221,7 +238,7 @@ export function Cart() {
             Total Amount:
           </Text>
           <Text fontSize="1.3rem" fontWeight="bold">
-            ₱ {calculateTotalAmount()}
+            ₱ {totalAmount()}
           </Text>
         </HStack>
 
@@ -235,11 +252,20 @@ export function Cart() {
           p="1rem 10rem"
           bg="#FFC700"
           color="#2B2B28"
+          onClick={handlePlaceOrder}
           leftIcon={<BiCartDownload />}
         >
           Place Order
         </Button>
       </Box>
+      {isMultipleOrderOpen && (
+        <MultipleOrder
+          onClose={closeMultipleOrder}
+          cartItems={cartItems}
+          totalAmount={totalAmount}
+          clearCart={clearCart}
+        />
+      )}
     </VStack>
   );
 }
