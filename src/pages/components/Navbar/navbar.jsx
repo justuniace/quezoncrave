@@ -47,7 +47,7 @@ function Navbar(props) {
         w={breakPoints}
         margin={isSmallScreen ? "0" : "0 -7rem"}
       >
-        <Box paddingLeft={isSmallScreen ? "10rem" : "20rem"}>
+        <Box paddingLeft={isSmallScreen ? "10rem" : "18rem"}>
           <Link to="/">
             <Image
               transition="all .3s ease"
