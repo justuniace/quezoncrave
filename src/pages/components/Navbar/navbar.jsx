@@ -44,10 +44,10 @@ function Navbar(props) {
         justifyContent="space-between"
         alignItems="center"
         h="100%"
-        margin="auto"
         w={breakPoints}
+        margin={isSmallScreen ? "0" : "0 -7rem"}
       >
-        <Box paddingLeft="5rem">
+        <Box paddingLeft={isSmallScreen ? "10rem" : "20rem"}>
           <Link to="/">
             <Image
               transition="all .3s ease"
@@ -58,48 +58,49 @@ function Navbar(props) {
           </Link>
         </Box>
         {isSmallScreen ? (
-          <HStack spacing=".1rem">
-            <Box
-              fontSize="1.5rem"
-              transition="all .3s ease"
-              _hover={{ transform: "scale(.9)" }}
-              cursor="pointer"
-              pos="relative"
-              display={{ base: "none", md: "block" }}
-              paddingRight="5rem"
-              onClick={openDrawer}
-            >
-              <Lottie
-                loop
-                animationData={CartIcon}
-                play={isAnimationPlaying.toString()}
-                style={{ width: 85, height: 80 }}
-              />
-              <Box pos="absolute" top="1rem" right="6rem">
-                <Center
-                  fontSize=".8rem"
-                  fontFamily="inter"
-                  fontWeight="md"
-                  bg="#FFC700"
-                  w="1rem"
-                  p=".7rem"
-                  h="1rem"
-                  borderRadius="10rem"
-                >
-                  {cartItems.length}
-                </Center>
+          <>
+            <Spacer />
+
+            <HStack spacing=".1rem">
+              <Box
+                fontSize="1.5rem"
+                transition="all .3s ease"
+                _hover={{ transform: "scale(.9)" }}
+                cursor="pointer"
+                pos="relative"
+                display={{ base: "none", md: "block" }}
+                onClick={openDrawer}
+              >
+                <Lottie
+                  loop
+                  animationData={CartIcon}
+                  play={isAnimationPlaying.toString()}
+                  style={{ width: 85, height: 80 }}
+                />
+                <Box pos="absolute" top="1rem" right="6rem">
+                  <Center
+                    fontSize=".8rem"
+                    fontFamily="inter"
+                    fontWeight="md"
+                    bg="#FFC700"
+                    w="1rem"
+                    p=".7rem"
+                    h="1rem"
+                    borderRadius="10rem"
+                  >
+                    {cartItems.length}
+                  </Center>
+                </Box>
               </Box>
-            </Box>
-            <MobileNav />
-          </HStack>
-        ) : (
-          
-            <HStack spacing="5rem">
-              {navLinks.map((nav) => {
-                return <Navlink nav={nav} key={nav} />;
-              })}
+              <MobileNav />
             </HStack>
-        
+          </>
+        ) : (
+          <HStack spacing="5rem">
+            {navLinks.map((nav) => {
+              return <Navlink nav={nav} key={nav} />;
+            })}
+          </HStack>
         )}
 
         <Box
@@ -154,6 +155,7 @@ function Navbar(props) {
     </Box>
   );
 }
+const Spacer = () => <Box flex="1" />;
 
 Navbar.propTypes = {
   logo: PropTypes.string.isRequired,
