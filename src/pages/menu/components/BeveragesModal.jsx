@@ -1,8 +1,14 @@
 import PropTypes from "prop-types";
-import { useState, useContext } from "react";
-import { AiOutlineShoppingCart } from "react-icons/ai";
+import { useState, useContext, useEffect} from "react";
+import { AiOutlineShoppingCart, AiFillStar } from "react-icons/ai";
 import { BiCartDownload } from "react-icons/bi";
+import { urlFor } from "../../../client";
 import {
+  Icon,
+  Box,
+  VStack,
+  Flex,
+  Image,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -24,7 +30,7 @@ export function BeveragesModal({ onClose, beverages }) {
   const { addToCart, size, setSize } = useContext(CartContext); // Use size and setSize from the context
   const [isSingleOrderOpen, setSingleOrderOpen] = useState(false);
   const { cartItems, setCartItems } = useContext(CartContext);
-
+  const imageUrl = urlFor(beverages.image).url();
 
   const incrementQuantity = () => {
     setQuantity(quantity + 1);
@@ -96,116 +102,137 @@ const resetState = () => {
   const closeSingleOrder = () => {
     setSingleOrderOpen(false);
   };
+    useEffect(() => {
+      setSize("16oz");
+    }, []);
 
   return (
     <>
       <Modal isCentered isOpen onClose={onClose}>
         <ModalOverlay />
         <ModalContent padding="0 1rem ">
-          <ModalHeader>{beverages && beverages.name}</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <HStack justifyContent="space-between">
-              <Text color="#434242" fontWeight="light" fontSize="13px">
-                Quantity
+          <ModalHeader>
+            {" "}
+            <Flex
+              justifyContent="center"
+              alignItems="center"
+              flexDirection="column"
+            >
+              <Image src={imageUrl} alt={beverages.name} w="15rem" h="18rem" />
+            </Flex>
+            <HStack margin="0 18px">
+              <Text fontSize="lg" fontWeight="bold">
+                {beverages.name}
               </Text>
-              <Text
-                color="#434242"
-                mr="30px"
-                fontWeight="light"
-                fontSize="13px"
-              >
-                Amount
-              </Text>
-            </HStack>
-            <HStack justifyContent="space-between">
-              <HStack mt="3" spacing="5">
-                <Button
-                  borderRadius="30"
-                  w="2rem"
-                  h="2rem"
-                  fontSize="12px"
-                  onClick={decrementQuantity}
-                  boxShadow="md"
-                >
-                  -
-                </Button>
-                <span style={{ color: "#FFC700" }}>{quantity}</span>
-                <Button
-                  borderRadius="30"
-                  w="2rem"
-                  h="2rem"
-                  fontSize="12px"
-                  onClick={incrementQuantity}
-                  boxShadow="md"
-                >
-                  +
-                </Button>
-              </HStack>
-              <Text mr="15" color="#FFC700" fontSize="20px">
+              <Text ml="145px" color="#FFC700" fontSize="20px">
                 ₱{calculateTotalPrice()}
               </Text>
             </HStack>
-            <Text mt="5" color="#434242" fontWeight="light" fontSize="13px">
-              Size
+          </ModalHeader>
+          <ModalCloseButton />
+          <ModalBody margin="0 20px">
+            <Text fontSize="15px" mb="15px">
+              {beverages.description}
             </Text>
-            <RadioGroup
-              mt="3"
-              
-              value={size}
-              onChange={setSize}
-            >
-              <HStack>
-                <Radio
-                  sx={{
-                    color: "#FFC700",
-                    _checked: { bg: "#FFC700", borderColor: "#FFC700" },
-                  }}
-                  value="16oz"
-                >
-                  16oz
-                </Radio>
-                <Radio
-                  sx={{
-                    color: "#FFC700",
-                    _checked: { bg: "#FFC700", borderColor: "#FFC700" },
-                  }}
-                  value="24oz"
-                >
-                  24oz
-                </Radio>
-                <Radio
-                  sx={{
-                    color: "#FFC700",
-                    _checked: { bg: "#FFC700", borderColor: "#FFC700" },
-                  }}
-                  value="32oz"
-                >
-                  32oz
-                </Radio>
-              </HStack>
-            </RadioGroup>
+            <HStack>
+              <Icon as={AiFillStar} color="#FFC700" fontSize="22px" />
+              <Text fontSize="12px">{beverages.rating}</Text>
+              <Text fontSize="12px">( {beverages.people} )</Text>
+            </HStack>
+
+            <HStack justifyContent="space-between">
+              <Box>
+                <Text mt="5" color="#434242" fontWeight="light" fontSize="13px">
+                  Size
+                </Text>
+                <RadioGroup mt="3" value={size} onChange={setSize}>
+                  <VStack align="start">
+                    <Radio
+                      sx={{
+                        color: "#FFC700",
+                        _checked: { bg: "#FFC700", borderColor: "#FFC700" },
+                      }}
+                      value="16oz"
+                    >
+                      16oz
+                    </Radio>
+                    <Radio
+                      sx={{
+                        color: "#FFC700",
+                        _checked: { bg: "#FFC700", borderColor: "#FFC700" },
+                      }}
+                      value="24oz"
+                    >
+                      24oz
+                    </Radio>
+                    <Radio
+                      sx={{
+                        color: "#FFC700",
+                        _checked: { bg: "#FFC700", borderColor: "#FFC700" },
+                      }}
+                      value="32oz"
+                    >
+                      32oz
+                    </Radio>
+                  </VStack>
+                </RadioGroup>
+              </Box>
+              <Box mb="2rem">
+                <Text color="#434242" fontWeight="light" fontSize="13px">
+                  Quantity
+                </Text>
+
+                <HStack justifyContent="space-between">
+                  <HStack mt="3" spacing="5">
+                    <Button
+                      borderRadius="30"
+                      w="2rem"
+                      h="2rem"
+                      fontSize="12px"
+                      onClick={decrementQuantity}
+                      boxShadow="md"
+                    >
+                      -
+                    </Button>
+                    <span style={{ color: "#FFC700" }}>{quantity}</span>
+                    <Button
+                      borderRadius="30"
+                      w="2rem"
+                      h="2rem"
+                      fontSize="12px"
+                      onClick={incrementQuantity}
+                      boxShadow="md"
+                    >
+                      +
+                    </Button>
+                  </HStack>
+                </HStack>
+              </Box>
+            </HStack>
           </ModalBody>
-          <ModalFooter>
-            <Button
-              fontWeight="light"
-              bg="#FFC700"
-              mr={3}
-              color="white"
-              leftIcon={<AiOutlineShoppingCart />}
-              onClick={handleAddToCart}
-            >
-              Add to Cart
-            </Button>
-            <Button
-              bg="#EEEEEE"
-              fontWeight="light"
-              variant="ghost"
-              leftIcon={<BiCartDownload />}
-              onClick={handlePlaceOrder}
-            >
-              Place Order
-            </Button>
+          <ModalFooter margin="0 20px">
+            <HStack>
+              <Button
+                fontWeight="light"
+                bg="#FFC700"
+                w="10rem"
+                color="white"
+                leftIcon={<AiOutlineShoppingCart />}
+                onClick={handleAddToCart}
+              >
+                Add to Cart
+              </Button>
+              <Button
+                w="10rem"
+                bg="#EEEEEE"
+                fontWeight="light"
+                variant="ghost"
+                leftIcon={<BiCartDownload />}
+                onClick={handlePlaceOrder}
+              >
+                Place Order
+              </Button>
+            </HStack>
           </ModalFooter>
         </ModalContent>
       </Modal>

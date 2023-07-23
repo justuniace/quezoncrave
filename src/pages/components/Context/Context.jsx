@@ -21,11 +21,12 @@ const getLocalItems = () => {
 
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState(getLocalItems());
-  const [size, setSize] = useState();
+  const [size, setSize] = useState(CartContext);
 
   const addToCart = (item) => {
     setCartItems((prevItems) => [...prevItems, item]);
   };
+  
 
   const setSizeValue = (value) => {
     setSize(value);

@@ -1,4 +1,4 @@
-import { Box, Center, Text } from "@chakra-ui/react";
+import { Box, Center, Text, useMediaQuery } from "@chakra-ui/react";
 import MenuNav from "./components/menuNav";
 import Food from "./sections/food";
 import Dessert from "./sections/dessert";
@@ -12,16 +12,20 @@ export const Menu = () => {
     setActiveTab(tab);
   };
 
+  // Use media query hook to check for screen sizes
+  const [isMobileScreen] = useMediaQuery("(max-width: 40em)");
+  const [isTabletScreen] = useMediaQuery("(max-width: 768px)");
+
   return (
     <Box w="100%" h="auto">
       <Center h="10rem">
         <Text
           top="50%"
           position="relative"
-          fontSize="25"
+          fontSize={isMobileScreen ? "20px" : isTabletScreen ? "22px" : "25px"}
           fontWeight="semibold"
           justifyContent="center"
-          alignItems="center"
+          textAlign="center"
           fontFamily="Abril-Fatface"
         >
           Heartwarming Traditions, Savored in Every Bite!

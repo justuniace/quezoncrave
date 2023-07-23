@@ -119,6 +119,7 @@ const [isMultipleOrderOpen, setMultipleOrderOpen] = useState(false);
       p="1rem 1"
       gap="1rem"
       align="stretch"
+     
     >
       {isLoading ? (
         <Center flex="1">
@@ -146,12 +147,12 @@ const [isMultipleOrderOpen, setMultipleOrderOpen] = useState(false);
                 align="center"
                 maxW="500px"
               >
-                <Box w="10rem" h="6rem" mb="1">
+                <Box ml="20px"  w="10rem" h="6rem" mb="1">
                   <Image src={urlFor(item.image).url()} w="100%" h="100%" />
                 </Box>
-                <VStack spacing="1" w="100%">
+                <VStack ml="10px"spacing="1" w="100%" align="start">
                   <HStack justifyContent="space-between" w="20rem">
-                    <Text ml="1rem" fontSize="1rem" fontWeight="bold">
+                    <Text fontSize="1rem" fontWeight="bold">
                       {item.name}
                     </Text>
                     <DeleteIcon
@@ -163,18 +164,19 @@ const [isMultipleOrderOpen, setMultipleOrderOpen] = useState(false);
                   <Text mr="14rem" fontWeight="light" fontSize="12px" w="5rem">
                     {item.size || ""}
                   </Text>
-                  <HStack w="100%">
+                  <HStack w="100%" aling="start">
                     <Flex align="baseline">
-                      <Text ml="1rem" fontSize="1.2rem" fontWeight="bold">
+                      <Text fontSize="1.2rem" fontWeight="bold">
                         ₱
                       </Text>
-                      <Text ml="0.5rem" fontSize="1.2rem" fontWeight="bold">
+                      <Text fontSize="1.2rem" fontWeight="bold">
                         {item.price}
                       </Text>
                     </Flex>
-                    <Flex>
+                    <Flex >
                       <Button
                         style={{
+
                           marginLeft: "7.4rem",
                           borderRadius: "30px",
                           width: "1.5rem",
@@ -211,9 +213,11 @@ const [isMultipleOrderOpen, setMultipleOrderOpen] = useState(false);
           })}
         </VStack>
       ) : (
-        <Text fontSize="1.2rem" fontWeight="light" textAlign="center">
-          There is no item in the cart
-        </Text>
+        <Box align="center" mt="15rem">
+          <Text fontSize="1.2rem" fontWeight="light" textAlign="center">
+            There is no item in the cart
+          </Text>
+        </Box>
       )}
 
       {/* Footer */}

@@ -7,11 +7,11 @@
 function Home() {
   return (
     <div>
-      {/* <Hero />
-      <Category />
+      {/* <Hero /> */}
+      {/* <Category />
       <Explore />
-      <Howitworks /> */}
-      {/* <BusinessHours /> */}
+      <Howitworks /> 
+      <BusinessHours /> */}
     </div>
   );
 }

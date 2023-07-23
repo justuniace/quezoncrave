@@ -10,6 +10,8 @@ import {
   Button,
   Input,
   VStack,
+  Select,
+  Textarea,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { useToast } from "@chakra-ui/react";
@@ -21,6 +23,15 @@ export function SingleOrder({ onClose, itemName, itemPrice, itemQuantity, itemSi
   const [address, setAddress] = useState("");
   const [contactNumber, setContactNumber] = useState("");
   const [email, setEmail] = useState("");
+  const [barangay, setBarangay]= useState("");
+  const [street, setStreet] = useState("");
+  const [houseno, setHouseno] = useState("");
+  const [landmark, setLandMark] = useState("");
+  const [message, setMessage] = useState("");
+  const [gender, setGender] = useState("");
+
+
+
   const toast = useToast();
 
   const validateEmail = (email) => {
@@ -29,7 +40,7 @@ export function SingleOrder({ onClose, itemName, itemPrice, itemQuantity, itemSi
   };
 
   const handleConfirm = async () => {
-    if (!name || !address || !contactNumber || !email) {
+    if (!name || !gender || !contactNumber || !barangay || !street || !houseno || !landmark) {
       toast({
         position: "top",
         title: "Missing Fields!",
@@ -56,8 +67,10 @@ export function SingleOrder({ onClose, itemName, itemPrice, itemQuantity, itemSi
     const emailContent = `
   Shipping Information:
   Name: ${name}
-  Address: ${address}
+  Gender: ${gender}
   Contact Number: ${contactNumber}
+  Address: ${barangay} +(" ")+ ${street} +(" ")+${houseno}
+  Landmark: ${landmark}
   Email: ${email}
 
   Item Details:
@@ -124,6 +137,17 @@ export function SingleOrder({ onClose, itemName, itemPrice, itemQuantity, itemSi
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
+            <Select
+              fontWeight="light"
+              fontSize="14px"
+              placeholder="Gender"
+              color="gray.600"
+              value={gender}
+              onChange={(e) => setGender(e.target.value)}
+            >
+              <option value="female">Female</option>
+              <option value="male">Male</option>
+            </Select>
             <Input
               type="text"
               placeholder="Contact Number"
@@ -132,15 +156,39 @@ export function SingleOrder({ onClose, itemName, itemPrice, itemQuantity, itemSi
             />
             <Input
               type="text"
-              placeholder="Address"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
+              placeholder="Barangay"
+              value={barangay}
+              onChange={(e) => setBarangay(e.target.value)}
             />
+            <Input
+              type="text"
+              placeholder="Street"
+              value={street}
+              onChange={(e) => setStreet(e.target.value)}
+            />
+            <Input
+              type="text"
+              placeholder="House Number"
+              value={houseno}
+              onChange={(e) => setHouseno(e.target.value)}
+            />
+            <Input
+              type="text"
+              placeholder="Landmark"
+              value={landmark}
+              onChange={(e) => setLandMark(e.target.value)}
+            />
+
             <Input
               type="email"
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+            />
+            <Textarea
+              placeholder="Message"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
             />
           </VStack>
         </ModalBody>

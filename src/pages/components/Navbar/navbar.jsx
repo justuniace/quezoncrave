@@ -1,25 +1,32 @@
-
 import { useState, useContext } from "react";
-import { Box, Flex, Image, HStack , Center, useMediaQuery} from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Image,
+  HStack,
+  Center,
+  useBreakpointValue,
+  useMediaQuery,
+} from "@chakra-ui/react";
 import PropTypes from "prop-types";
 import Navlink from "./navlink";
 import { Link } from "react-router-dom";
 import CartIcon from "/src/assets/cart.json";
 import Lottie from "lottie-react";
 import CartDrawer from "../Cart/Drawer";
-import {CartContext} from "../Context/Context";
+import { CartContext } from "../Context/Context";
 import MobileNav from "./MobileNav";
 import breakPoints from "../../theme/breakpoints";
 
-
 function Navbar(props) {
-  const { cartItems} = useContext(CartContext);
+  const { cartItems } = useContext(CartContext);
   const { logo, navLinks } = props;
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const isAnimationPlaying = true;
 
-  const [isSmallScreen] = useMediaQuery("(max-width: 48em)");
+  const [isMobileScreen] = useMediaQuery("(max-width: 48em)");
+  const [isSmallScreen] = useMediaQuery("(max-width: 768px)");
 
   const openDrawer = () => {
     setIsDrawerOpen(true);
@@ -28,6 +35,19 @@ function Navbar(props) {
   const closeDrawer = () => {
     setIsDrawerOpen(false);
   };
+
+  const logoPadding = useBreakpointValue({
+    base: "1rem", // Small screens (breakpoint: 0px)
+    md: "2px", // Medium screens (breakpoint: 768px)
+    // Add more breakpoints and corresponding padding values as needed
+  });
+
+  const navLinksSpacing = useBreakpointValue({
+    base: "1px", 
+    sm: "10px",// Small screens (breakpoint: 0px)
+    md: "12px", // Medium screens (breakpoint: 768px)
+    lg:"6rem"// Add more breakpoints and corresponding spacing values as needed
+  });
 
   return (
     <Box
@@ -45,9 +65,10 @@ function Navbar(props) {
         alignItems="center"
         h="100%"
         w={breakPoints}
-        margin={isSmallScreen ? "0" : "0 -7rem"}
+        paddingX={logoPadding} // Use the calculated padding for the logo
       >
-        <Box paddingLeft={isSmallScreen ? "10rem" : "18rem"}>
+        
+        <Box paddingLeft={isMobileScreen ? "1rem" : "9rem"}>
           <Link to="/">
             <Image
               transition="all .3s ease"
@@ -57,18 +78,17 @@ function Navbar(props) {
             />
           </Link>
         </Box>
-        {isSmallScreen ? (
-          <>
-            <Spacer />
 
-            <HStack spacing=".1rem">
+        {isMobileScreen ? (
+          <>
+            <Box flex="1" /> {/* Spacer for small screens */}
+            <HStack spacing={navLinksSpacing}>
               <Box
                 fontSize="1.5rem"
                 transition="all .3s ease"
                 _hover={{ transform: "scale(.9)" }}
                 cursor="pointer"
                 pos="relative"
-                display={{ base: "none", md: "block" }}
                 onClick={openDrawer}
               >
                 <Lottie
@@ -77,8 +97,13 @@ function Navbar(props) {
                   play={isAnimationPlaying.toString()}
                   style={{ width: 85, height: 80 }}
                 />
-                <Box pos="absolute" top="1rem" right="6rem">
-                  <Center
+                <Center
+                  pos="absolute"
+                  top="0"
+                  right="0"
+                  transform="translate(-70%, 60%)"
+                >
+                  <Box
                     fontSize=".8rem"
                     fontFamily="inter"
                     fontWeight="md"
@@ -88,15 +113,15 @@ function Navbar(props) {
                     h="1rem"
                     borderRadius="10rem"
                   >
-                    {cartItems.length}
-                  </Center>
-                </Box>
+                    <Center lineHeight="0.1rem">{cartItems.length}</Center>
+                  </Box>
+                </Center>
               </Box>
               <MobileNav />
             </HStack>
           </>
         ) : (
-          <HStack spacing="5rem">
+          <HStack spacing={navLinksSpacing}>
             {navLinks.map((nav) => {
               return <Navlink nav={nav} key={nav} />;
             })}
@@ -109,9 +134,9 @@ function Navbar(props) {
           _hover={{ transform: "scale(.9)" }}
           cursor="pointer"
           pos="relative"
-          display={{ base: "none", md: "block" }}
           paddingRight="5rem"
           onClick={openDrawer}
+          display={isSmallScreen ? "none" : "block"}
         >
           <Lottie
             loop
@@ -155,7 +180,6 @@ function Navbar(props) {
     </Box>
   );
 }
-const Spacer = () => <Box flex="1" />;
 
 Navbar.propTypes = {
   logo: PropTypes.string.isRequired,

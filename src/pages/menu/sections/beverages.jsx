@@ -1,9 +1,8 @@
-
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-
 import { BeveragesModal } from "../components/BeveragesModal";
 import {
+  Icon,
   Box,
   Wrap,
   WrapItem,
@@ -15,9 +14,10 @@ import {
   Flex,
   HStack,
   Button,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import { client, urlFor } from "../../../client";
-
+import { AiFillStar } from "react-icons/ai";
 
 function Beverages({activeTab}) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -33,6 +33,8 @@ function Beverages({activeTab}) {
           name,
           description,
           slug,
+          rating,
+          people,
           image {
             asset -> {
               url
@@ -53,16 +55,37 @@ function Beverages({activeTab}) {
   const closeModal = () => {
     setIsModalOpen(false);
   };
+  const cardWidth = useBreakpointValue({
+    base: "20rem", // Mobile phones
+    md: "calc((90% - 2rem) / 2)",
+    lg: "calc((90% - 10rem) / 3)",
+  });
+
+  const imageWidth = useBreakpointValue({
+    base: "70%", // Mobile phones
+    md: "90%", // iPad size
+    lg: "80%",
+  });
+   const fSize = useBreakpointValue({
+     base: "25px",
+     md: "12px",
+     lg: "18px",
+   });
+   const buttonWidth = useBreakpointValue({
+     base: "100px", // Full width on mobile phones
+     md: "100px", // Fixed width on larger screens (e.g., iPad size)
+     lg: "110px",
+   });
 
   return (
     <Box padding="0 7rem">
       <Wrap spacing="4rem" justify="center">
         {beverages.map((item) => (
-          <WrapItem key={item.slug.current} width="calc((92% - 10rem) / 3)">
+          <WrapItem key={item.slug.current} width={cardWidth}>
             <Card
               zIndex={2}
-              w="100%"
-              h="29rem"
+              w="18rem"
+              h="25rem"
               boxShadow="2xl"
               borderRadius="30px"
               marginTop="50px"
@@ -86,7 +109,7 @@ function Beverages({activeTab}) {
                   <Image
                     position="absolute"
                     src={urlFor(item.image).url()}
-                    w="70%"
+                    w={imageWidth}
                     h="70%"
                     top="3rem"
                     left="50%"
@@ -97,28 +120,33 @@ function Beverages({activeTab}) {
                     <Text textAlign="center" fontSize="20px" fontWeight="bold">
                       {item.name}
                     </Text>
-                    <Text mt="1rem" textAlign="center">
-                      {item.description}
-                    </Text>
                   </Box>
+                  <HStack>
+                    <Icon as={AiFillStar} color="#FFC700" fontSize="22px" />
+                    <Text fontSize="12px">{item.rating}</Text>
+                    <Text fontSize="12px">( {item.people} )</Text>
+                  </HStack>
                   <Divider
                     w="16.5rem"
                     mt="4"
                     borderWidth="1.5px"
                     borderRadius="1rem"
+                    alignItems="center"
                   />
                 </VStack>
                 <HStack p="2rem" justifyContent="space-around" align="center">
-                  <Text fontSize="1.2rem">₱</Text>
-                  <Text fontSize="1.2rem">{item.price}</Text>
+                  <Text fontSize={fSize} fontWeight="bold">
+                    ₱ {item.price}.00
+                  </Text>
                   <Divider orientation="vertical" h="50px" />
                   <Button
+                    w={buttonWidth}
                     bg="#FFC700"
-                    size="md"
-                    fontWeight="light"
-                    cursor={"pointer"}
+                    fontWeight="medium"
                     _hover={{ opacity: 0.8 }}
-                    onClick={() => openModal(item)}
+                    onClick={() => openModal(item, item.image)}
+                    cursor={"pointer"}
+                    fontSize="12px"
                   >
                     Add to Cart
                   </Button>

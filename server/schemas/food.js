@@ -35,5 +35,15 @@ export default {
       title: 'Price',
       type: 'number',
     },
+    {
+      name: 'rating',
+      title: 'rating',
+      type: 'number'
+    },
+    {
+      name: 'people',
+      title: 'people',
+      type: 'number'
+    }
   ],
 }
