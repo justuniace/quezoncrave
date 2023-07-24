@@ -7,7 +7,7 @@ export default function MenuNav({ activeTab, onTabChange }) {
     { label: "Breakfast", link: "Food" },
     {label: "Lunch", link:"Lunch"},
     {label:"Dinner", link:"Dinner"},
-    { label: "Drinks", link: "Beverages" },
+    { label: "Beverages", link: "Beverages" },
     { label: "Dessert", link: "Dessert" },
   ];
 

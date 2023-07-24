@@ -37,16 +37,16 @@ function Navbar(props) {
   };
 
   const logoPadding = useBreakpointValue({
-    base: "1rem", // Small screens (breakpoint: 0px)
-    md: "2px", // Medium screens (breakpoint: 768px)
-    // Add more breakpoints and corresponding padding values as needed
+    base: "1rem", 
+    md: "2px", 
+   
   });
 
   const navLinksSpacing = useBreakpointValue({
     base: "1px", 
-    sm: "10px",// Small screens (breakpoint: 0px)
-    md: "12px", // Medium screens (breakpoint: 768px)
-    lg:"6rem"// Add more breakpoints and corresponding spacing values as needed
+    sm: "10px",
+    md: "12px", 
+    lg:"6rem"
   });
 
   return (
@@ -65,7 +65,7 @@ function Navbar(props) {
         alignItems="center"
         h="100%"
         w={breakPoints}
-        paddingX={logoPadding} // Use the calculated padding for the logo
+        paddingX={logoPadding} 
       >
         
         <Box paddingLeft={isMobileScreen ? "1rem" : "9rem"}>

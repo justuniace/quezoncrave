@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { BsPatchCheckFill } from "react-icons/bs";
 import emailjs from "@emailjs/browser";
-import { useToast } from "@chakra-ui/react";
+//import { useToast } from "@chakra-ui/react";
 import ConfirmModal from "./ConfirmationModal";
 import { useState, useEffect} from "react";
 
@@ -21,12 +21,15 @@ import {
   Button,
   Divider
 } from "@chakra-ui/react";
+import { useToast } from "@chakra-ui/react";
+
 
 export function Shipping({ onClose, shippingData }) {
 
-  const toast = useToast();
+  //const toast = useToast();
 const [isModalOpen, setIsModalOpen] = useState(false);
 const [emailSent, setEmailSent] = useState(false);
+  const toast = useToast();
 
   const {
     name,
@@ -84,14 +87,14 @@ const [emailSent, setEmailSent] = useState(false);
 
        
 
-        toast({
+       toast({
           title: "Order Placed.",
           description: "Send Successfully",
           status: "success",
           duration: 3000,
           isClosable: true,
-          position: "top",
-        });
+          position: "bottom",
+        }); 
       
           setEmailSent(true);
       } catch (error) {
@@ -150,7 +153,7 @@ const totalAmount = (itemPrice) => {
               <HStack gap="3.7rem">
                 <Text fontWeight="bold">Address:</Text>
                 <Text>
-                  Barangay {barangay} {street}, {houseno}
+                  Barangay {barangay} St. {street}, {houseno}
                 </Text>
               </HStack>
               <HStack gap="3rem">
@@ -202,7 +205,14 @@ const totalAmount = (itemPrice) => {
           </ModalFooter>
         </ModalContent>
       </Modal>
-      {emailSent && <ConfirmModal onClose={() => setIsModalOpen(false)} />}
+      {emailSent && (
+        <ConfirmModal
+          onClose={() => {
+            setIsModalOpen(false);
+            onClose();
+          }}
+        />
+      )}
     </>
   );
 }

@@ -16,16 +16,16 @@ import {
 
 export function ConfirmModal({ onClose }) {
   const [isAnimationPlaying, setIsAnimationPlaying] = useState(true);
-
+const [isOpen, setIsOpen] = useState(true);
   const handleClose = () => {
     setIsAnimationPlaying(false);
-  
+  setIsOpen(false);  
     onClose();
   };
 
   return (
     <Modal
-      isOpen={true}
+      isOpen={isOpen}
       onClose={handleClose}
       isCentered
       returnFocusOnClose={false}
