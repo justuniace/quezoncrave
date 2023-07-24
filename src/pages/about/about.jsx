@@ -8,37 +8,44 @@ export const About = () => {
 
   return (
     <Box w="100%" h="auto">
-      <Box mt="120px" w={isMobileScreen ? "100%" : "40rem"} ml={isMobileScreen ? "120px" : "20px"}>
-        <img src={aboutImage} alt="Image 1" height="250px" width="250px" />
+      <Box mt={isMobileScreen ? "120px" : "120px"} w={isMobileScreen ? "100%" : "20rem"} ml={isMobileScreen ? "0" : "-20px"}>
+        <img src={aboutImage} alt="Image 1" height="250px" width="250px" style={{ display: "block", margin: "0 auto" }} />
       </Box>
 
-      <Box mt={isMobileScreen ? "10px" : "-200px"} w={isMobileScreen ? "100%" : "30rem"} ml={isMobileScreen ? "120px" : "300px"}>
-        <img src={aboutImage} alt="Image 2" height="250px" width="250px" />
+      <Box mt={isMobileScreen ? "10px" : "-200px"} w={isMobileScreen ? "100%" : "30rem"} ml={isMobileScreen ? "0px" : "200px"}>
+        <img src={aboutImage} alt="Image 2" height="250px" width="250px" style={{ display: "block", margin: "0 auto" }} />
       </Box>
 
-      <Box mt="10px" w={isMobileScreen ? "100%" : "40rem"} ml={isMobileScreen ? "120px" : "20px"}>
-        <img src={aboutImage} alt="Image 1" height="250px" width="250px" />
+      <Box mt="10px" w={isMobileScreen ? "100%" : "40rem"} ml={isMobileScreen ? "0px" : "-180px"}>
+        <img src={aboutImage} alt="Image 1" height="250px" width="250px" style={{ display: "block", margin: "0 auto" }}/>
       </Box>
 
-      <Box mt={isMobileScreen ? "10px" : "-200px"} w={isMobileScreen ? "100%" : "30rem"} ml={isMobileScreen ? "120px" : "300px"}>
-        <img src={aboutImage} alt="Image 4" height="250px" width="250px" />
+      <Box mt={isMobileScreen ? "10px" : "-200px"} w={isMobileScreen ? "100%" : "30rem"} ml={isMobileScreen ? "0px" : "200px"}>
+        <img src={aboutImage} alt="Image 4" height="250px" width="250px" style={{ display: "block", margin: "0 auto" }}/>
       </Box>
 
-      <Box mt={isMobileScreen ? "20px" : "-600px"} w={isMobileScreen ? "100%" : "30rem"} ml={isMobileScreen ? "185px" : "600px"}>
+      <Box mt={isMobileScreen ? "20px" : "-600px"} w={isMobileScreen ? "100%" : "30rem"} ml={isMobileScreen ? "0px" : "600px"}>
         <Text
           position="relative"
           fontSize={isMobileScreen ? "30px" : "50px"}
           fontWeight="semibold"
           justifyContent="center"
           alignItems="center"
+          textAlign={isMobileScreen ? "center":""}
           fontFamily="Abril-Fatface"
         >
           About <span style={{ color: "#FFC700" }}>Us</span>
-          <hr style={{ border: "1px solid black", width: isMobileScreen ? "200px" : "650px", margin: "10px -30px -70px" }}/>
+          <hr
+            style={{
+              border: "1px solid black",
+              width: isMobileScreen ? "200px" : "650px",
+              margin: "10px auto",
+            }}
+          />
         </Text>
       </Box>
 
-      <Box mt="100px" w={isMobileScreen ? "100%" : "30rem"} ml={isMobileScreen ? "0" : "650px"}>
+      <Box mt="20px" w={isMobileScreen ? "100%" : "30rem"} ml={isMobileScreen ? "0" : "700px"}>
         <Text
           position="relative"
           fontSize={isMobileScreen ? "20px" : isTabletScreen ? "22px" : "20px"}
@@ -58,25 +65,32 @@ export const About = () => {
         </Text>
       </Box>
 
-      <Box mt={isMobileScreen ? "20px" : "230px"} w={isMobileScreen ? "100%" : "40rem"} ml={isMobileScreen ? "185px" : "30px"}>
+      <Box mt={isMobileScreen ? "20px" : "230px"} w={isMobileScreen ? "100%" : "40rem"} ml={isMobileScreen ? "0px" : "30px"}>
         <Text
           position="relative"
           fontSize={isMobileScreen ? "30px" : "50px"}
           fontWeight="semibold"
           justifyContent="center"
           alignItems="center"
+          textAlign="center"
           fontFamily="Abril-Fatface"
         >
           You Crave ?<br /><span style={{ color: "#FFC700" }}>We Cook</span>
-          <hr style={{ border: "1px solid black", width: isMobileScreen ? "200px" : "650px", margin: "10px -30px -70px" }}/>
+          <hr
+            style={{
+              border: "1px solid black",
+              width: isMobileScreen ? "200px" : "650px",
+              margin: "10px auto",
+            }}
+          />
         </Text>
       </Box>
 
-      <Box position="relative" top={isMobileScreen ? "30px" : "-100px"} left={isMobileScreen ? "0" : "700px"}>
-        <img src={blob} alt="Blob Image" height={isMobileScreen ? "400px" : "500px"} width={isMobileScreen ? "100%" : "500px"} />
+      <Box position="relative" top={isMobileScreen ? "px" : "-250px"} left={isMobileScreen ? "0" : "350px"}>
+        <img src={blob} alt="Blob Image" height={isMobileScreen ? "400px" : "500px"} width={isMobileScreen ? "100%" : "500px"} style={{ display: "block", margin: "0 auto" }} />
       </Box>
 
-      <Box mt={isMobileScreen ? "-50px" : "-400px"} w={isMobileScreen ? "100%" : "30rem"} ml={isMobileScreen ? "0" : "50px"}>
+      <Box mt={isMobileScreen ? "-50px" : "-480px"} w={isMobileScreen ? "100%" : "30rem"} ml={isMobileScreen ? "0" : "100px"}>
         <Text
           position="relative"
           fontSize={isMobileScreen ? "20px" : "20px"}
