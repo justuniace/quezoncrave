@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { FoodModal } from "../components/MenuModals/FoodModal";
-import { client, urlFor } from "../../../client";
+import { DinnerModal } from "../components/MenuModals/DinnerModal";
 import {
+  Icon,
   Box,
   Wrap,
   WrapItem,
@@ -15,49 +15,46 @@ import {
   HStack,
   Button,
   useBreakpointValue,
-  Icon,
 } from "@chakra-ui/react";
- import {AiFillStar} from "react-icons/ai";
+import { client, urlFor } from "../../../client";
+import { AiFillStar } from "react-icons/ai";
 
-function Food({ activeTab }) {
+function Dinner({ activeTab }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedFood, setSelectedFood] = useState(null);
-
-  const [food, setFood] = useState([]);
+  const [selectedDinner, setSelectedDinner] = useState(null);
+  const [dinner, setDinner] = useState([]);
 
   useEffect(() => {
     const getProducts = async () => {
-      const food = await client.fetch(
-        `*[_type == "food"]{
+      const dinner = await client.fetch(
+        `*[_type == "dinner"]{
           _id,
           price,
           name,
-          slug,
           description,
-          rating, 
+          slug,
+          rating,
           people,
           image {
             asset -> {
               url
             }
           }
-          
         }`
       );
-      setFood(food);
+      setDinner(dinner);
     };
     getProducts();
   }, []);
 
-  const openModal = (food) => {
-    setSelectedFood(food);
+  const openModal = (dinner) => {
+    setSelectedDinner(dinner);
     setIsModalOpen(true);
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
   };
-
   const cardWidth = useBreakpointValue({
     base: "20rem", // Mobile phones
     md: "calc((90% - 2rem) / 2)",
@@ -69,23 +66,21 @@ function Food({ activeTab }) {
     md: "90%", // iPad size
     lg: "80%",
   });
-
   const fSize = useBreakpointValue({
     base: "25px",
     md: "12px",
-    lg: "18px"
-
-  })
-   const buttonWidth = useBreakpointValue({
-     base: "100px", // Full width on mobile phones
-     md: "100px", // Fixed width on larger screens (e.g., iPad size)
-     lg:"110px"
-   });
+    lg: "18px",
+  });
+  const buttonWidth = useBreakpointValue({
+    base: "100px", 
+    md: "100px", 
+    lg: "110px",
+  });
 
   return (
     <Box padding="0 7rem">
-      <Wrap spacing="2rem" justify="center">
-        {food.map((item) => (
+      <Wrap spacing="4rem" justify="center">
+        {dinner.map((item) => (
           <WrapItem key={item.slug.current} width={cardWidth}>
             <Card
               zIndex={2}
@@ -161,19 +156,15 @@ function Food({ activeTab }) {
           </WrapItem>
         ))}
       </Wrap>
-      {isModalOpen && activeTab === "Food" && (
-        <FoodModal
-          onClose={closeModal}
-          food={selectedFood}
-       
-        />
+      {isModalOpen && activeTab === "Dinner" && (
+        <DinnerModal onClose={closeModal} dinner={selectedDinner} />
       )}
     </Box>
   );
 }
 
-Food.propTypes = {
+Dinner.propTypes = {
   activeTab: PropTypes.string.isRequired,
 };
 
-export default Food;
+export default Dinner;

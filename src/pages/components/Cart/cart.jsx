@@ -1,4 +1,6 @@
 import { useState, useEffect, useContext } from "react";
+import EmptyIcon from "/src/assets/order_empty.json";
+import Lottie from "lottie-react";
 import {
   VStack,
   HStack,
@@ -14,7 +16,7 @@ import { DeleteIcon } from "@chakra-ui/icons";
 import { urlFor } from "../../../client";
 import { CartContext } from "../Context/Context";
 import { BiCartDownload } from "react-icons/bi";
-import { MultipleOrder } from "../../menu/components/MultipleOrder";
+import { MultipleOrder } from "../../menu/components/MultipleOrder/MultipleOrder";
 
 export function Cart() {
   const { cartItems, setCartItems } = useContext(CartContext);
@@ -25,10 +27,11 @@ const [isMultipleOrderOpen, setMultipleOrderOpen] = useState(false);
  const handlePlaceOrder = () => {
    setMultipleOrderOpen(true);
  };
+ 
 
- const closeMultipleOrder = () => {
-   setMultipleOrderOpen(false);
- };
+//  const closeMultipleOrder = () => {
+//    setMultipleOrderOpen(false);
+//  };
 
   const handleDelete = (id, size) => {
     const updatedCartItems = cartItems.filter(
@@ -101,16 +104,15 @@ const [isMultipleOrderOpen, setMultipleOrderOpen] = useState(false);
     }
   }, [cartItems]);
 
-  console.log(cartItems);
+console.log("cartItems in Cart component:", cartItems);
 
   useEffect(() => {
-    setIsLoading(false); // Set isLoading to false after loading is complete
+    setIsLoading(false); 
   }, []);
 
-   const clearCart = () => {
-     setCartItems([]);
-   };
+ 
 
+     const isAnimationPlaying = true;
   return (
     <VStack
       minH="100%"
@@ -119,7 +121,6 @@ const [isMultipleOrderOpen, setMultipleOrderOpen] = useState(false);
       p="1rem 1"
       gap="1rem"
       align="stretch"
-     
     >
       {isLoading ? (
         <Center flex="1">
@@ -147,10 +148,10 @@ const [isMultipleOrderOpen, setMultipleOrderOpen] = useState(false);
                 align="center"
                 maxW="500px"
               >
-                <Box ml="20px"  w="10rem" h="6rem" mb="1">
+                <Box ml="20px" w="10rem" h="6rem" mb="1">
                   <Image src={urlFor(item.image).url()} w="100%" h="100%" />
                 </Box>
-                <VStack ml="10px"spacing="1" w="100%" align="start">
+                <VStack ml="10px" spacing="1" w="100%" align="start">
                   <HStack justifyContent="space-between" w="20rem">
                     <Text fontSize="1rem" fontWeight="bold">
                       {item.name}
@@ -173,10 +174,9 @@ const [isMultipleOrderOpen, setMultipleOrderOpen] = useState(false);
                         {item.price}
                       </Text>
                     </Flex>
-                    <Flex >
+                    <Flex>
                       <Button
                         style={{
-
                           marginLeft: "7.4rem",
                           borderRadius: "30px",
                           width: "1.5rem",
@@ -213,9 +213,16 @@ const [isMultipleOrderOpen, setMultipleOrderOpen] = useState(false);
           })}
         </VStack>
       ) : (
-        <Box align="center" mt="15rem">
+        <Box align="center" mt="10rem">
+          <Lottie
+            loop
+            animationData={EmptyIcon}
+            play={isAnimationPlaying.toString()}
+            style={{ width: 200, height: 200 }}
+          />
+
           <Text fontSize="1.2rem" fontWeight="light" textAlign="center">
-            There is no item in the cart
+            Your cart is empty!
           </Text>
         </Box>
       )}
@@ -236,7 +243,6 @@ const [isMultipleOrderOpen, setMultipleOrderOpen] = useState(false);
           zIndex: "1",
         }}
       >
-        {/* Total amount */}
         <HStack justifyContent="flex-start" width="100%">
           <Text fontSize=".8rem" fontFamily="inter">
             Total Amount:
@@ -251,11 +257,11 @@ const [isMultipleOrderOpen, setMultipleOrderOpen] = useState(false);
           mt="1rem"
           boxShadow="0 4px 8px 0 rgba(0, 0, 0, 0.2)"
           border="1px solid"
-          borderColor="#FFC700"
+          borderColor="#452B1A"
           _hover={{ opacity: ".9" }}
           p="1rem 10rem"
-          bg="#FFC700"
-          color="#2B2B28"
+          bg="#452B1A"
+          color="white"
           onClick={handlePlaceOrder}
           leftIcon={<BiCartDownload />}
         >
@@ -264,10 +270,12 @@ const [isMultipleOrderOpen, setMultipleOrderOpen] = useState(false);
       </Box>
       {isMultipleOrderOpen && (
         <MultipleOrder
-          onClose={closeMultipleOrder}
+          onClose={() => {
+            setMultipleOrderOpen(false);
+            
+          }}
           cartItems={cartItems}
-          totalAmount={totalAmount}
-          clearCart={clearCart}
+          totalAmount={totalAmount()}
         />
       )}
     </VStack>

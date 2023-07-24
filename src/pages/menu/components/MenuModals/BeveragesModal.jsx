@@ -1,10 +1,9 @@
 import PropTypes from "prop-types";
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect} from "react";
 import { AiOutlineShoppingCart, AiFillStar } from "react-icons/ai";
+
 import { BiCartDownload } from "react-icons/bi";
-import { SingleOrder } from "./SingleOrderModal";
-import { CartContext } from "../../components/Context/Context";
-import { urlFor } from "../../../client";
+import { urlFor } from "../../../../client";
 import {
   Icon,
   Box,
@@ -24,13 +23,15 @@ import {
   Radio,
   RadioGroup,
 } from "@chakra-ui/react";
+import { CartContext } from "../../../components/Context/Context";
+import { SingleOrder } from "../SingleOrderModal";
 
-export function DessertModal({ onClose, dessert }) {
+export function BeveragesModal({ onClose, beverages }) {
   const [quantity, setQuantity] = useState(1);
-  const { addToCart, size, setSize  } = useContext(CartContext);
+  const { addToCart, size, setSize } = useContext(CartContext); // Use size and setSize from the context
   const [isSingleOrderOpen, setSingleOrderOpen] = useState(false);
   const { cartItems, setCartItems } = useContext(CartContext);
-  const imageUrl = urlFor(dessert.image).url();
+  const imageUrl = urlFor(beverages.image).url();
 
   const incrementQuantity = () => {
     setQuantity(quantity + 1);
@@ -42,29 +43,24 @@ export function DessertModal({ onClose, dessert }) {
     }
   };
 
-//total amount
   const calculateTotalPrice = () => {
-    let basePrice = dessert.price;
+    let basePrice = beverages.price;
 
-    if (size === "Family") {
+    if (size === "24oz") {
       basePrice += 20;
-    }
-    else if(size === "Party")
-    {
-       basePrice += 40;
+    } else if (size === "32oz") {
+      basePrice += 40;
     }
     const totalPrice = basePrice * quantity;
     return totalPrice.toFixed(2);
   };
 
-
-
 const handleAddToCart = () => {
   const item = {
-    ...dessert,
+    ...beverages,
     quantity: quantity,
     size: size,
-    price: calculateTotalPrice(),
+    price:calculateTotalPrice(),
   };
 
   const existingItem = cartItems.find(
@@ -94,41 +90,40 @@ const handleAddToCart = () => {
   resetState();
 };
 
-  const resetState = () => {
-    setQuantity(1);
-    setSize("Single");
-  };
-  //placeorder button
+const resetState = () => {
+  setQuantity(1);
+  setSize("16oz");
+};
+
+  // placeorder button
   const handlePlaceOrder = () => {
     setSingleOrderOpen(true);
   };
 
-  const closeSingleOrder = () => {
-    setSingleOrderOpen(false);
-  };
-
+ 
     useEffect(() => {
-      setSize("Single");
+      setSize("16oz");
     }, []);
 
   return (
     <>
       <Modal isCentered isOpen onClose={onClose}>
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent padding="0 1rem ">
           <ModalHeader>
+            {" "}
             <Flex
               justifyContent="center"
               alignItems="center"
               flexDirection="column"
             >
-              <Image src={imageUrl} alt={dessert.name} w="15rem" h="18rem" />
+              <Image src={imageUrl} alt={beverages.name} w="15rem" h="18rem" />
             </Flex>
-            <HStack margin="0 20px">
+            <HStack margin="0 18px">
               <Text fontSize="lg" fontWeight="bold">
-                {dessert.name}
+                {beverages.name}
               </Text>
-              <Text ml="160px" color="#FFC700" fontSize="20px">
+              <Text ml="145px" color="#FFC700" fontSize="20px">
                 ₱{calculateTotalPrice()}
               </Text>
             </HStack>
@@ -136,12 +131,12 @@ const handleAddToCart = () => {
           <ModalCloseButton />
           <ModalBody margin="0 20px">
             <Text fontSize="15px" mb="15px">
-              {dessert.description}
+              {beverages.description}
             </Text>
             <HStack>
               <Icon as={AiFillStar} color="#FFC700" fontSize="22px" />
-              <Text fontSize="12px">{dessert.rating}</Text>
-              <Text fontSize="12px">( {dessert.people} )</Text>
+              <Text fontSize="12px">{beverages.rating}</Text>
+              <Text fontSize="12px">( {beverages.people} )</Text>
             </HStack>
 
             <HStack justifyContent="space-between">
@@ -156,33 +151,33 @@ const handleAddToCart = () => {
                         color: "#FFC700",
                         _checked: { bg: "#FFC700", borderColor: "#FFC700" },
                       }}
-                      value="Single"
+                      value="16oz"
                     >
-                      Single Order
+                      16oz
                     </Radio>
                     <Radio
                       sx={{
                         color: "#FFC700",
                         _checked: { bg: "#FFC700", borderColor: "#FFC700" },
                       }}
-                      value="Family"
+                      value="24oz"
                     >
-                      Family Size
+                      24oz
                     </Radio>
                     <Radio
                       sx={{
                         color: "#FFC700",
                         _checked: { bg: "#FFC700", borderColor: "#FFC700" },
                       }}
-                      value="Party"
+                      value="32oz"
                     >
-                      Party Size
+                      32oz
                     </Radio>
                   </VStack>
                 </RadioGroup>
               </Box>
               <Box mb="2rem">
-                <Text color="#434242" ml="8" fontWeight="light" fontSize="13px">
+                <Text color="#434242" fontWeight="light" fontSize="13px">
                   Quantity
                 </Text>
 
@@ -219,7 +214,7 @@ const handleAddToCart = () => {
               <Button
                 fontWeight="light"
                 bg="#FFC700"
-                w="11rem"
+                w="10rem"
                 color="white"
                 leftIcon={<AiOutlineShoppingCart />}
                 onClick={handleAddToCart}
@@ -227,7 +222,7 @@ const handleAddToCart = () => {
                 Add to Cart
               </Button>
               <Button
-                w="11rem"
+                w="10rem"
                 bg="#EEEEEE"
                 fontWeight="light"
                 variant="ghost"
@@ -242,9 +237,13 @@ const handleAddToCart = () => {
       </Modal>
       {isSingleOrderOpen && (
         <SingleOrder
-          onClose={closeSingleOrder}
-          dessert={dessert}
-          itemName={dessert.name}
+          onClose={() => {
+            setSingleOrderOpen(false);
+            onClose();
+          }}
+          din
+          beverages={beverages}
+          itemName={beverages.name}
           itemPrice={calculateTotalPrice()}
           itemQuantity={quantity}
           itemSize={size}
@@ -254,7 +253,7 @@ const handleAddToCart = () => {
   );
 }
 
-DessertModal.propTypes = {
+BeveragesModal.propTypes = {
   onClose: PropTypes.func.isRequired,
-  dessert: PropTypes.object,
+  beverages: PropTypes.object,
 };

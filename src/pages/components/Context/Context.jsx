@@ -23,6 +23,14 @@ export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState(getLocalItems());
   const [size, setSize] = useState(CartContext);
 
+ 
+  const [totalAmount, setTotalAmount] = useState(0);
+
+  // Function to update cart items and total amount
+  const updateCart = (newCartItems, newTotalAmount) => {
+    setCartItems(newCartItems);
+    setTotalAmount(newTotalAmount);
+  };
   const addToCart = (item) => {
     setCartItems((prevItems) => [...prevItems, item]);
   };
@@ -52,6 +60,8 @@ export const CartProvider = ({ children }) => {
         addToCart,
         size,
         setSize: setSizeValue,
+        totalAmount,
+        updateCart
       }}
     >
       {children}
@@ -61,4 +71,5 @@ export const CartProvider = ({ children }) => {
 
 CartProvider.propTypes = {
   children: PropTypes.node.isRequired,
+  
 };
