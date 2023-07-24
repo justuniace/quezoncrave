@@ -13,21 +13,18 @@ import {
   Select,
   Textarea,
 } from "@chakra-ui/react";
+// import { CartContext } from "../../../components/Context/Context";
 import { useState } from "react";
 import { useToast } from "@chakra-ui/react";
 import { BsPatchCheckFill } from "react-icons/bs";
+import {MultiDetails} from "./MultiShipDetails";
+// import emailjs from "@emailjs/browser";
 
-import Shipping from "./ShippingDetails";
 
-export function SingleOrder({
-  onClose,
-  itemName,
-  itemPrice,
-  itemQuantity,
-  itemSize,
-}) {
+
+export function MultipleOrder({ onClose, cartItems, totalAmount }) {
+ console.log("cartItems:", cartItems);
   const [name, setName] = useState("");
-
   const [contactNumber, setContactNumber] = useState("");
   const [email, setEmail] = useState("");
   const [barangay, setBarangay] = useState("");
@@ -36,8 +33,9 @@ export function SingleOrder({
   const [landmark, setLandMark] = useState("");
   const [message, setMessage] = useState("");
   const [gender, setGender] = useState("");
-  const [isShippingModalOpen, setIsShippingModalOpen] = useState(false);
+  const [isMultiDetailsOpen, setIsMultiDetailsOpen] = useState(false);
 
+  
   const toast = useToast();
 
   const validateEmail = (email) => {
@@ -74,24 +72,30 @@ export function SingleOrder({
         status: "error",
         duration: 1000,
         isClosable: true,
+       
       });
       return;
     }
 
-    setIsShippingModalOpen(true);
+   setIsMultiDetailsOpen(true);
+   
 
-    
+  //  clearCart();
   };
 
+console.log("Received cartItems:", cartItems);
+console.log("Received totalAmount:", totalAmount);
   return (
     <>
-      {isShippingModalOpen && (
-        <Shipping
+      {isMultiDetailsOpen && (
+        <MultiDetails
           onClose={() => {
-            setIsShippingModalOpen(false);
+            setIsMultiDetailsOpen(false);
             onClose();
           }}
-          shippingData={{
+          cartItems={cartItems} // Pass the cartItems prop here
+          totalAmount={totalAmount} // Pass the totalAmount prop here
+          shippingDetails={{
             name,
             gender,
             contactNumber,
@@ -101,15 +105,18 @@ export function SingleOrder({
             houseno,
             message,
             email,
-            itemName,
-            itemPrice,
-            itemQuantity,
-            itemSize,
           }}
         />
       )}
-      {!isShippingModalOpen && (
-        <Modal closeOnOverlayClick={false} isCentered isOpen onClose={onClose}>
+      {!isMultiDetailsOpen && (
+        <Modal
+          isCentered
+          isOpen
+          onClose={onClose}
+          returnFocusOnClose={false}
+          motionPreset="none"
+          
+        >
           <ModalOverlay />
           <ModalContent>
             <ModalHeader>Shipping Information</ModalHeader>
@@ -181,7 +188,6 @@ export function SingleOrder({
               <Button
                 leftIcon={<BsPatchCheckFill />}
                 onClick={() => handleConfirm()}
-                disabled={!name || !contactNumber || !email}
               >
                 Confirm
               </Button>
@@ -193,10 +199,9 @@ export function SingleOrder({
   );
 }
 
-SingleOrder.propTypes = {
+MultipleOrder.propTypes = {
   onClose: PropTypes.func.isRequired,
-  itemName: PropTypes.string.isRequired,
-  itemPrice: PropTypes.number.isRequired,
-  itemQuantity: PropTypes.number.isRequired,
-  itemSize: PropTypes.string.isRequired,
+  cartItems: PropTypes.array.isRequired,
+  totalAmount: PropTypes.number.isRequired,
+
 };

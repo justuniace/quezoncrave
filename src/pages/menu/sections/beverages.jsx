@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { BeveragesModal } from "../components/BeveragesModal";
+import { BeveragesModal } from "../components/MenuModals/BeveragesModal";
 import {
   Icon,
   Box,

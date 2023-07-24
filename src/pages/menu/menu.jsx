@@ -12,7 +12,7 @@ export const Menu = () => {
     setActiveTab(tab);
   };
 
-  // Use media query hook to check for screen sizes
+ 
   const [isMobileScreen] = useMediaQuery("(max-width: 40em)");
   const [isTabletScreen] = useMediaQuery("(max-width: 768px)");
 

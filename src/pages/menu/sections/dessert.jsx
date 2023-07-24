@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { DessertModal } from "../components/DessertModal";
+import { DessertModal } from "../components/MenuModals/DessertModal";
 import { client, urlFor } from "../../../client";
 
 import {

@@ -2,9 +2,9 @@ import PropTypes from "prop-types";
 import { useState, useContext, useEffect } from "react";
 import { AiOutlineShoppingCart, AiFillStar } from "react-icons/ai";
 import { BiCartDownload } from "react-icons/bi";
-import { CartContext } from "../../components/Context/Context";
-import { SingleOrder } from "./SingleOrderModal";
-import { urlFor } from "../../../client";
+import { CartContext } from "../../../components/Context/Context";
+import { SingleOrder } from "../SingleOrderModal";
+import { urlFor } from "../../../../client";
 
 import {
   Icon,
@@ -24,7 +24,6 @@ import {
   Radio,
   RadioGroup,
   Image,
-
 } from "@chakra-ui/react";
 
 export function FoodModal({ onClose, food }) {
@@ -101,18 +100,30 @@ export function FoodModal({ onClose, food }) {
     setSingleOrderOpen(true);
   };
 
-  const closeSingleOrder = () => {
-    setSingleOrderOpen(false);
-  };
-   
-    useEffect(() => {
-      setSize("Single");
-    }, []);
 
-   
+
+  useEffect(() => {
+    setSize("Single");
+  }, []);
+
   return (
     <>
-      <Modal isCentered isOpen onClose={onClose}>
+    {isSingleOrderOpen && (
+        <SingleOrder
+          onClose={() => {
+            setSingleOrderOpen(false);
+            onClose();
+          }}
+          food={food}
+          itemName={food.name}
+          itemPrice={calculateTotalPrice()}
+          itemQuantity={quantity}
+          itemSize={size}
+        />
+      )}
+
+      {!isSingleOrderOpen && (
+      <Modal isCentered isOpen onClose={onClose} motionPreset="slideInBottom">
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>
@@ -238,15 +249,6 @@ export function FoodModal({ onClose, food }) {
           </ModalFooter>
         </ModalContent>
       </Modal>
-      {isSingleOrderOpen && (
-        <SingleOrder
-          onClose={closeSingleOrder}
-          food={food}
-          itemName={food.name}
-          itemPrice={calculateTotalPrice()}
-          itemQuantity={quantity}
-          itemSize={size}
-        />
       )}
     </>
   );
@@ -255,5 +257,4 @@ export function FoodModal({ onClose, food }) {
 FoodModal.propTypes = {
   onClose: PropTypes.func.isRequired,
   food: PropTypes.object,
- 
 };
