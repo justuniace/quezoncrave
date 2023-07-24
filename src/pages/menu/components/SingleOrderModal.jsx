@@ -56,7 +56,7 @@ export function SingleOrder({
       !landmark
     ) {
       toast({
-        position: "top",
+        position: "bottom",
         title: "Missing Fields!",
         description: "Please fill in all fields.",
         status: "error",
@@ -68,7 +68,7 @@ export function SingleOrder({
 
     if (!validateEmail(email)) {
       toast({
-        position: "top",
+        position: "bottom",
         title: "Invalid Email!",
         description: "Please enter a valid email address.",
         status: "error",

@@ -3,6 +3,8 @@ import MenuNav from "./components/menuNav";
 import Food from "./sections/food";
 import Dessert from "./sections/dessert";
 import Beverage from "./sections/beverages";
+import Lunch from "./sections/lunch";
+import Dinner from "./sections/dinner";
 import { useState } from "react";
 
 export const Menu = () => {
@@ -38,6 +40,8 @@ export const Menu = () => {
         {activeTab === "Food" && <Food activeTab={activeTab} />}
         {activeTab === "Beverages" && <Beverage activeTab={activeTab} />}
         {activeTab === "Dessert" && <Dessert activeTab={activeTab} />}
+        {activeTab === "Lunch" && <Lunch activeTab={activeTab} />}
+        {activeTab === "Dinner" && <Dinner activeTab={activeTab} />}
       </Box>
     </Box>
   );
