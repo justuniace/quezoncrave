@@ -1,6 +1,6 @@
 import beverages from './beverages';
-import food from './food';
+import breakfast from './breakfast'
 import dessert from './dessert';
 import lunch from "./lunch";
 import dinner from "./dinner"
-export const schemaTypes = [beverages, food, dessert,lunch, dinner]
+export const schemaTypes = [beverages, breakfast, dessert, lunch, dinner]

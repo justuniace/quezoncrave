@@ -4,10 +4,10 @@ import PropTypes from "prop-types";
 
 export default function MenuNav({ activeTab, onTabChange }) {
   const tabs = [
-    { label: "Breakfast", link: "Food" },
+    { label: "Breakfast", link: "Breakfast" },
     {label: "Lunch", link:"Lunch"},
     {label:"Dinner", link:"Dinner"},
-    { label: "Drinks", link: "Beverages" },
+    { label: "Beverages", link: "Beverages" },
     { label: "Dessert", link: "Dessert" },
   ];
 

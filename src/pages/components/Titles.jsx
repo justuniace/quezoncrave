@@ -2,10 +2,10 @@ import PropTypes from "prop-types";
 import { Divider,Text, VStack} from "@chakra-ui/react";
 
 
-function Title({title}) {
+function Title({title, fontSize}) {
     return (
       <VStack>
-        <Text fontFamily="body" fontSize="30px">
+        <Text fontFamily="Abril-Fatface" fontSize={fontSize}>
           {title}
         </Text>
         <Divider
@@ -19,6 +19,7 @@ function Title({title}) {
 }
 Title.propTypes = {
     title: PropTypes.string.isRequired,
+    fontSize: PropTypes.number.isRequired,
 };
 
 export default Title;

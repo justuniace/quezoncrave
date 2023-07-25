@@ -79,7 +79,7 @@ function Dinner({ activeTab }) {
 
   return (
     <Box padding="0 7rem">
-      <Wrap spacing="4rem" justify="center">
+      <Wrap spacing="5rem" justify="center">
         {dinner.map((item) => (
           <WrapItem key={item.slug.current} width={cardWidth}>
             <Card

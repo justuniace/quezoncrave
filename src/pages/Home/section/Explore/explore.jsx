@@ -1,4 +1,4 @@
-import { Flex, Box, Wrap, VStack } from "@chakra-ui/react";
+import { Flex, Box, Wrap, VStack,useMediaQuery } from "@chakra-ui/react";
 import Title from "../../../components/Titles";
 import Bistek from "./components/bistek";
 import Nilupak from "./components/nilupak";
@@ -11,8 +11,11 @@ import F2 from "../../../../assets/explore/secondArrow.webp";
 import { TfiBook } from "react-icons/tfi";
 
 function Explore() {
+
+ const [isMobile] = useMediaQuery("(max-width: 767px)");
+
   return (
-    <Flex className="explore" h="100vh" w="100%" position="absolute">
+    <Flex top="-10rem" className="explore" w="100%" position="relative">
       <Box
         h="242vh"
         bg="white"
@@ -21,7 +24,7 @@ function Explore() {
         backgroundSize="cover"
       >
         <Box mt="10rem" zIndex="2" pos="relative">
-          <Title title="Explore Our Best Menu" />
+          <Title fontSize={isMobile ? "20px" : "25px"} title="Popular Dishes" />
         </Box>
         <Wrap w="100%">
           <VStack>

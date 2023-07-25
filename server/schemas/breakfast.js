@@ -1,7 +1,7 @@
 export default {
-  name: 'food',
+  name: 'breakfast',
   type: 'document',
-  title: 'Food',
+  title: 'Breakfast',
   fields: [
     {
       name: 'image',
@@ -38,12 +38,12 @@ export default {
     {
       name: 'rating',
       title: 'rating',
-      type: 'number'
+      type: 'number',
     },
     {
       name: 'people',
       title: 'people',
-      type: 'number'
-    }
+      type: 'number',
+    },
   ],
 }

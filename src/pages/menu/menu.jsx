@@ -1,12 +1,14 @@
 import { Box, Center, Text, useMediaQuery } from "@chakra-ui/react";
 import MenuNav from "./components/menuNav";
-import Food from "./sections/food";
+import Breakfast from "./sections/breakfast";
 import Dessert from "./sections/dessert";
 import Beverage from "./sections/beverages";
+import Lunch from "./sections/lunch";
+import Dinner from "./sections/dinner";
 import { useState } from "react";
 
 export const Menu = () => {
-  const [activeTab, setActiveTab] = useState("Food");
+  const [activeTab, setActiveTab] = useState("Breakfast");
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
@@ -34,10 +36,12 @@ export const Menu = () => {
       <Center paddingTop="5rem">
         <MenuNav activeTab={activeTab} onTabChange={handleTabChange} />
       </Center>
-      <Box>
-        {activeTab === "Food" && <Food activeTab={activeTab} />}
+      <Box mb="4rem">
+        {activeTab === "Food" && <Breakfast activeTab={activeTab} />}
         {activeTab === "Beverages" && <Beverage activeTab={activeTab} />}
         {activeTab === "Dessert" && <Dessert activeTab={activeTab} />}
+        {activeTab === "Lunch" && <Lunch activeTab={activeTab} />}
+        {activeTab === "Dinner" && <Dinner activeTab={activeTab} />}
       </Box>
     </Box>
   );
