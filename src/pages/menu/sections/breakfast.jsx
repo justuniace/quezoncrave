@@ -91,139 +91,158 @@ function Breakfast({ activeTab }) {
 
   return (
     <Box padding="0 7rem">
+      {/* Skeleton Loading Effect for all Cards */}
       <Wrap spacing="5rem" justify="center">
-        {isLoading ? (
-          <WrapItem key="skeleton" width={cardWidth}>
-            <Card
-              zIndex={2}
-              w="18rem"
-              h="25rem"
-              boxShadow="2xl"
-              borderRadius="30px"
-              marginTop="50px"
-              overflow="visible"
-              display="flex"
-              flexDirection="column"
-              cursor="pointer"
-              _hover={{ transform: "scale(1.05)" }}
-              transition={{ duration: 10 }}
-            >
-              <Flex flexDir="column" h="100%" justifyContent="space-between">
-                <VStack
-                  w="100%"
-                  p="1rem"
-                  justify="center"
-                  flex={1}
-                  spacing={4}
-                  align="center"
-                  marginBottom="-5rem"
+        {isLoading
+          ? // Display skeleton placeholders while isLoading is true
+            Array.from({ length: 6 }).map((_, index) => (
+              <WrapItem key={`skeleton-${index}`} width={cardWidth}>
+                <Card
+                  zIndex={2}
+                  w="18rem"
+                  h="25rem"
+                  boxShadow="2xl"
+                  borderRadius="30px"
+                  marginTop="50px"
+                  overflow="visible"
+                  display="flex"
+                  flexDirection="column"
+                  cursor="pointer"
+                  _hover={{ transform: "scale(1.05)" }}
+                  transition={{ duration: 10 }}
                 >
-                  <Skeleton w={imageWidth} h="70%" my="3rem" />
-
-                  <Skeleton w="80%" h="1.5rem" />
-
-                  <Skeleton w="60%" h="1rem" />
-                  <Skeleton w="80%" h="1rem" />
-
-                  <Divider
-                    w="16.5rem"
-                    mt="4"
-                    borderWidth="1.5px"
-                    borderRadius="1rem"
-                    alignItems="center"
-                  />
-                </VStack>
-                <HStack p="2rem" justifyContent="space-around" align="center">
-                  <Skeleton w={fSize} h="1rem" />
-
-                  <Divider orientation="vertical" h="50px" />
-
-                  <Skeleton w={buttonWidth} h="2rem" />
-                </HStack>
-              </Flex>
-            </Card>
-          </WrapItem>
-        ) : (
-          breakfast.map((item) => (
-            <WrapItem key={item.slug.current} width={cardWidth}>
-              <Card
-                zIndex={2}
-                w="18rem"
-                h="25rem"
-                boxShadow="2xl"
-                borderRadius="30px"
-                marginTop="50px"
-                overflow="visible"
-                display="flex"
-                flexDirection="column"
-                cursor="pointer"
-                _hover={{ transform: "scale(1.05)" }}
-                transition={{ duration: 10 }}
-              >
-                <Flex flexDir="column" h="100%" justifyContent="space-between">
-                  <VStack
-                    w="100%"
-                    p="1rem"
-                    justify="center"
-                    flex={1}
-                    spacing={4}
-                    align="center"
-                    marginBottom="-5rem"
+                  <Flex
+                    flexDir="column"
+                    h="100%"
+                    justifyContent="space-between"
                   >
-                    <Image
-                      position="absolute"
-                      src={urlFor(item.image).url()}
-                      w={imageWidth}
-                      h="70%"
-                      top="3rem"
-                      left="50%"
-                      transform="translate(-50%, -50%)"
-                      filter="drop-shadow(1px 1px 16px rgba(0, 0, 0, .3))"
-                    />
-                    <Box mt="8rem">
-                      <Text
-                        textAlign="center"
-                        fontSize="20px"
-                        fontWeight="bold"
-                      >
-                        {item.name}
-                      </Text>
-                    </Box>
-                    <HStack>
-                      <Icon as={AiFillStar} color="#FFC700" fontSize="22px" />
-                      <Text fontSize="12px">{item.rating}</Text>
-                      <Text fontSize="12px">( {item.people} )</Text>
-                    </HStack>
-                    <Divider
-                      w="16.5rem"
-                      mt="4"
-                      borderWidth="1.5px"
-                      borderRadius="1rem"
-                      alignItems="center"
-                    />
-                  </VStack>
-                  <HStack p="2rem" justifyContent="space-around" align="center">
-                    <Text fontSize={fSize} fontWeight="bold">
-                      ₱ {item.price}.00
-                    </Text>
-                    <Divider orientation="vertical" h="50px" />
-                    <Button
-                      w={buttonWidth}
-                      bg="#FFC700"
-                      fontWeight="medium"
-                      _hover={{ opacity: 0.8 }}
-                      onClick={() => openModal(item, item.image)}
-                      cursor={"pointer"}
-                      fontSize="12px"
+                    <VStack
+                      w="100%"
+                      p="1rem"
+                      justify="center"
+                      flex={1}
+                      spacing={4}
+                      align="center"
+                      marginBottom="-5rem"
                     >
-                      Add to Cart
-                    </Button>
-                  </HStack>
-                </Flex>
-              </Card>
-            </WrapItem>
-          ))
-        )}
+                      <Skeleton w={imageWidth} h="70%" my="3rem" />
+
+                      <Skeleton w="80%" h="1.5rem" />
+
+                      <Skeleton w="60%" h="1rem" />
+                      <Skeleton w="80%" h="1rem" />
+
+                      <Divider
+                        w="16.5rem"
+                        mt="4"
+                        borderWidth="1.5px"
+                        borderRadius="1rem"
+                        alignItems="center"
+                      />
+                    </VStack>
+                    <HStack
+                      p="2rem"
+                      justifyContent="space-around"
+                      align="center"
+                    >
+                      <Skeleton w={fSize} h="1rem" />
+
+                      <Divider orientation="vertical" h="50px" />
+
+                      <Skeleton w={buttonWidth} h="2rem" />
+                    </HStack>
+                  </Flex>
+                </Card>
+              </WrapItem>
+            ))
+          : // Display the actual data once isLoading is false
+            breakfast.map((item) => (
+              <WrapItem key={item.slug.current} width={cardWidth}>
+                <Card
+                  zIndex={2}
+                  w="18rem"
+                  h="25rem"
+                  boxShadow="2xl"
+                  borderRadius="30px"
+                  marginTop="50px"
+                  overflow="visible"
+                  display="flex"
+                  flexDirection="column"
+                  cursor="pointer"
+                  _hover={{ transform: "scale(1.05)" }}
+                  transition={{ duration: 10 }}
+                >
+                  <Flex
+                    flexDir="column"
+                    h="100%"
+                    justifyContent="space-between"
+                  >
+                    <VStack
+                      w="100%"
+                      p="1rem"
+                      justify="center"
+                      flex={1}
+                      spacing={4}
+                      align="center"
+                      marginBottom="-5rem"
+                    >
+                      <Image
+                        position="absolute"
+                        src={urlFor(item.image).url()}
+                        w={imageWidth}
+                        h="70%"
+                        top="3rem"
+                        left="50%"
+                        transform="translate(-50%, -50%)"
+                        filter="drop-shadow(1px 1px 16px rgba(0, 0, 0, .3))"
+                      />
+                      <Box mt="8rem">
+                        <Text
+                          textAlign="center"
+                          fontSize="20px"
+                          fontWeight="bold"
+                        >
+                          {item.name}
+                        </Text>
+                      </Box>
+                      <HStack>
+                        <Icon as={AiFillStar} color="#FFC700" fontSize="22px" />
+                        <Text fontSize="12px">{item.rating}</Text>
+                        <Text fontSize="12px">( {item.people} )</Text>
+                      </HStack>
+                      <Divider
+                        w="16.5rem"
+                        mt="4"
+                        borderWidth="1.5px"
+                        borderRadius="1rem"
+                        alignItems="center"
+                      />
+                    </VStack>
+                    <HStack
+                      p="2rem"
+                      justifyContent="space-around"
+                      align="center"
+                    >
+                      <Text fontSize={fSize} fontWeight="bold">
+                        ₱ {item.price}.00
+                      </Text>
+                      <Divider orientation="vertical" h="50px" />
+                      <Button
+                        w={buttonWidth}
+                        bg="#FFC700"
+                        fontWeight="medium"
+                        _hover={{ opacity: 0.8 }}
+                        onClick={() => openModal(item, item.image)}
+                        cursor={"pointer"}
+                        fontSize="12px"
+                      >
+                        Add to Cart
+                      </Button>
+                    </HStack>
+                  </Flex>
+                </Card>
+              </WrapItem>
+            ))}
       </Wrap>
       {isModalOpen && activeTab === "Breakfast" && (
         <BreakfastModal onClose={closeModal} breakfast={selectedBreakfast} />
