@@ -157,7 +157,7 @@ function Lunch({ activeTab }) {
         ))}
       </Wrap>
       {isModalOpen && activeTab === "Lunch" && (
-        <LunchModal onClose={closeModal} dinner={selectedLunch} />
+        <LunchModal onClose={closeModal} lunch={selectedLunch} />
       )}
     </Box>
   );
