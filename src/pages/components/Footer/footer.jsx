@@ -196,7 +196,7 @@ export const Footer = () => {
             <Link to="/menu">
               <Text fontSize="15px">Menu</Text>
             </Link>
-            <Link to="/blog">
+            <Link to="/about">
               <Text fontSize="15px">Blog</Text>
             </Link>
           </VStack>
@@ -260,18 +260,20 @@ export const Footer = () => {
           mt={isMobile ? "2rem" : "2rem"}
           direction={{ base: "column", md: "row" }}
           fontFamily="inter"
-          w="100%"
+          w="90%"
           align={{ base: "center", md: "start" }}
-          gap={isMobile ? "" : "35rem"}
-          justifyContent="space-evenly"
+          justifyContent="space-between"
           color="white"
           fontSize={isMobile ? "7px" : "12px"}
           opacity=".8"
         >
-          <Text>Copyright 2023 Quezon Crave | All rights reserved.</Text>
-          <HStack>
-            <Text>Privacy Policy </Text>
-            <Text>| Term of Use </Text>
+          <Text>Copyright 2023 Quezon Crave.</Text>
+          <HStack mr={isMobile ? "" : "3rem"}>
+            <Link to="privacy-policy">
+              <Text>Privacy Policy </Text>
+            </Link>
+
+            <Text>| All rights reserved.</Text>
           </HStack>
         </Stack>
       </Center>

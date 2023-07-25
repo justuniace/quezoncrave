@@ -12,21 +12,19 @@ function How() {
   const items = [
     {
       image: Menu,
-      dTitle: "Menu",
-      details:
-        "Lorem ipsum dolor sit amet. Sed laudantium veniam ea dolorum alias aut voluptates dolore qui labore enim nam accusantium incidunt ad harum saepe.",
+      dTitle: "Order from the Menu",
+      details: "Browse through our menu for your authentic quezon cravings",
     },
     {
       image: Meal,
-      dTitle: "Meal",
+      dTitle: "We Make Your Meal",
       details:
-        "Lorem ipsum dolor sit amet. Sed laudantium veniam ea dolorum alias aut voluptates dolore qui labore enim nam accusantium incidunt ad harum saepe.",
+        "Rest assured that your order is freshly made hot and ready to go.",
     },
     {
       image: Delivery,
-      dTitle: "Delivery",
-      details:
-        "Lorem ipsum dolor sit amet. Sed laudantium veniam ea dolorum alias aut voluptates dolore qui labore enim nam accusantium incidunt ad harum saepe.",
+      dTitle: "We Deliver",
+      details: "Fast and safe delivery right to your door!",
     },
   ];
 
