@@ -116,8 +116,8 @@ export default function Hero() {
           src={L1}
           position="absolute"
           left={isMobileScreen ? "80%":"72%"}
-          top={isMobileScreen ? "10%":"64%"}
-          w={isMobileScreen ? "35%":"50%"}
+          top={isMobileScreen ? "28%":"64%"}
+          w={isMobileScreen ? "36%":"50%"}
           zIndex="2"
         />
       </Box>
