@@ -65,9 +65,8 @@ function Navbar(props) {
         alignItems="center"
         h="100%"
         w={breakPoints}
-        paddingX={logoPadding} 
+        paddingX={logoPadding}
       >
-        
         <Box paddingLeft={isMobileScreen ? "1rem" : "9rem"}>
           <Link to="/">
             <Image
@@ -95,7 +94,7 @@ function Navbar(props) {
                   loop
                   animationData={CartIcon}
                   play={isAnimationPlaying.toString()}
-                  style={{ width: 85, height: 80 }}
+                  style={{ width: 87, height: 80 }}
                 />
                 <Center
                   pos="absolute"
@@ -107,7 +106,7 @@ function Navbar(props) {
                     fontSize=".8rem"
                     fontFamily="inter"
                     fontWeight="md"
-                    bg="#FFC700"
+                    bg="#262424"
                     w="1rem"
                     p=".7rem"
                     h="1rem"

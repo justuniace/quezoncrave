@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { FoodModal } from "../components/MenuModals/FoodModal";
+import { BreakfastModal } from "../components/MenuModals/BreakfastModal";
 import { client, urlFor } from "../../../client";
 import {
   Box,
@@ -19,15 +19,15 @@ import {
 } from "@chakra-ui/react";
  import {AiFillStar} from "react-icons/ai";
 
-function Food({ activeTab }) {
+function Breakfast({ activeTab }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedFood, setSelectedFood] = useState(null);
 
-  const [food, setFood] = useState([]);
+  const [breakfast, setBreakfast] = useState([]);
 
   useEffect(() => {
     const getProducts = async () => {
-      const food = await client.fetch(
+      const breakfast = await client.fetch(
         `*[_type == "food"]{
           _id,
           price,
@@ -44,7 +44,7 @@ function Food({ activeTab }) {
           
         }`
       );
-      setFood(food);
+      setBreakfast(breakfast);
     };
     getProducts();
   }, []);
@@ -84,8 +84,8 @@ function Food({ activeTab }) {
 
   return (
     <Box padding="0 7rem">
-      <Wrap spacing="2rem" justify="center">
-        {food.map((item) => (
+      <Wrap spacing="5rem" justify="center">
+        {breakfast.map((item) => (
           <WrapItem key={item.slug.current} width={cardWidth}>
             <Card
               zIndex={2}
@@ -162,18 +162,14 @@ function Food({ activeTab }) {
         ))}
       </Wrap>
       {isModalOpen && activeTab === "Food" && (
-        <FoodModal
-          onClose={closeModal}
-          food={selectedFood}
-       
-        />
+        <BreakfastModal onClose={closeModal} food={selectedFood} />
       )}
     </Box>
   );
 }
 
-Food.propTypes = {
+Breakfast.propTypes = {
   activeTab: PropTypes.string.isRequired,
 };
 
-export default Food;
+export default Breakfast;

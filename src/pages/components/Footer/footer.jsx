@@ -78,11 +78,11 @@ export const Footer = () => {
 
   return (
     <Center
-      mt="4rem"
+      //mt="4rem"
       p="1rem"
       w="100%"
-      h={isMobile ? "auto" : "20rem"}
-      bg="#452B1A"
+      h={isMobile ? "auto" : "25rem"}
+      bg="#262424"
       display="flex"
     >
       <Center w={breakPoints} margin="5rem" flexDir="column">
@@ -97,13 +97,15 @@ export const Footer = () => {
               <Image src={Logo} />
             </Box>
 
-            <Box w={isTablet ? "" : "16rem"} mt="-2rem">
+            <Box
+              w={isMobile ? "16rem" : isTablet ? "9rem" : "16rem"}
+              mt="-2rem"
+            >
               <Text
-                w={isTablet ? "10rem" : "16rem"}
-                ml={isMobile ? "" : isTablet ? "2rem" : "4rem"}
+                w={isMobile ? "16rem" : isTablet ? "9rem" : "16rem"}
+                ml={isMobile ? "4rem" : isTablet ? "1rem" : "4rem"}
                 fontSize={isMobile ? "14px" : isTablet ? "12px" : "14px"}
-                color="#FFF0DC"
-                justifyContent={isMobile ? "center" : "justify"}
+                color="white"
               >
                 Indulge in Nostalgia with Every Scrumptious Bite.
               </Text>
@@ -116,13 +118,37 @@ export const Footer = () => {
               opacity=".8"
               mt="2rem"
             >
-              <Box color="#FFF0DC">
+              <Box
+                as="a"
+                href="#"
+                color="white"
+                _hover={{
+                  transform: "scale(1.2)",
+                  transition: "transform 0.3s ease",
+                }}
+              >
                 <BsFacebook />
               </Box>
-              <Box color="#FFF0DC">
+              <Box
+                as="a"
+                href="#"
+                color="white"
+                _hover={{
+                  transform: "scale(1.2)",
+                  transition: "transform 0.3s ease",
+                }}
+              >
                 <AiFillInstagram />
               </Box>
-              <Box color="#FFF0DC">
+              <Box
+                as="a"
+                href="#"
+                color="white"
+                _hover={{
+                  transform: "scale(1.2)",
+                  transition: "transform 0.3s ease",
+                }}
+              >
                 <GrMail />
               </Box>
             </HStack>
@@ -131,25 +157,37 @@ export const Footer = () => {
               spacing="1rem"
               fontSize="1rem"
               opacity=".8"
-              color="#FFF0DC"
+              color="white"
               mt="1.7rem"
               mb="2rem"
               ml={isMobile ? "" : "2rem"}
             >
-              <Box>
+              <Box
+                as="a"
+                href="#"
+                color="white"
+                _hover={{
+                  transform: "scale(1.2)",
+                  transition: "transform 0.3s ease",
+                }}
+              >
                 <BsTelephoneFill />
               </Box>
-              <Text>0994 575 4100 </Text>
+              <Text fontSize="14px">0994 575 4100 </Text>
             </HStack>
           </VStack>
 
           <VStack
             align="center"
-            ml={isMobile ? "4.5rem":isTablet ?"5rem" : ""}
+            ml={isMobile ? "4.5rem" : isTablet ? "5rem" : ""}
             mt={isMobile ? "3rem" : "7rem"}
-            color="#FFF0DC"
+            color="white"
           >
-            <Text mb="1rem" fontSize={isTablet ?"12px":"18px"} fontWeight="medium">
+            <Text
+              mb="1rem"
+              fontSize={isTablet ? "12px" : isMobile ? "18px" : "18px"}
+              fontWeight="medium"
+            >
               Quick Links
             </Text>
             <Link to="/">
@@ -163,7 +201,7 @@ export const Footer = () => {
             </Link>
           </VStack>
 
-          <VStack mt={isMobile ? "5rem" : "7.1rem"} color="#FFF0DC">
+          <VStack mt={isMobile ? "5rem" : "7.1rem"} color="white">
             <Text mr={isMobile ? "" : "7.1rem"} fontWeight="medium">
               Get In Touch
             </Text>
@@ -172,7 +210,7 @@ export const Footer = () => {
                 color="black"
                 type="email"
                 placeholder="Email"
-                bg="#FFF0DC"
+                bg="white"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -190,12 +228,21 @@ export const Footer = () => {
               fontFamily="inter"
               spacing="1rem"
               opacity=".8"
-              color="#FFF0DC"
+              color="white"
               mt="1rem"
               mr={isMobile ? "" : "10rem"}
               align="center"
             >
-              <Box fontSize="1.8rem">
+              <Box
+                fontSize="1.8rem"
+                as="a"
+                href="#"
+                color="white"
+                _hover={{
+                  transform: "scale(1.2)",
+                  transition: "transform 0.3s ease",
+                }}
+              >
                 <MdLocationOn />
               </Box>
               <Text
@@ -209,55 +256,26 @@ export const Footer = () => {
             </HStack>
           </VStack>
         </Stack>
+        <Stack
+          mt={isMobile ? "2rem" : "2rem"}
+          direction={{ base: "column", md: "row" }}
+          fontFamily="inter"
+          w="100%"
+          align={{ base: "center", md: "start" }}
+          gap={isMobile ? "" : "35rem"}
+          justifyContent="space-evenly"
+          color="white"
+          fontSize={isMobile ? "7px" : "12px"}
+          opacity=".8"
+        >
+          <Text>Copyright 2023 Quezon Crave | All rights reserved.</Text>
+          <HStack>
+            <Text>Privacy Policy </Text>
+            <Text>| Term of Use </Text>
+          </HStack>
+        </Stack>
       </Center>
     </Center>
   );
 };
 
-// import { Flex, Center, VStack, Image, Text, Box } from "@chakra-ui/react";
-// import Logo from "/logo.webp";
-// import ft from "../../../assets/footer.webp";
-// import Spoon from "../../../assets/footer-img.webp";
-
-// export const Footer = () => {
-//   return (
-//     <Flex
-//       className="Footer"
-//       w="100%"
-//       h="100vh"
-//       backgroundImage={ft}
-//       backgroundSize="cover"
-//       backgroundPosition="center"
-//       position="absolute"
-//     >
-//       <Center h="100%">
-//         <VStack ml="7rem" mt="12rem" align="start">
-//           <Box w="10rem" h="10rem" marginLeft="2rem" marginTop="10rem">
-//             <Image src={Logo} alt="Logo" />
-//           </Box>
-//           <Box
-//             w="20rem"
-//             marginLeft="2.9rem"
-//             marginTop="-3rem"
-//             fontWeight="300"
-//             fontFamily="Inter"
-//           >
-//             <Text color="white">
-//               Lorem ipsum dolor sit amet. Sed laudantium veniam ea dolorum
-//             </Text>
-//           </Box>
-//         </VStack>
-//       </Center>
-//       <Image
-//         src={Spoon}
-//         transform="rotate(180deg)"
-//         ml="50rem"
-//         pos="absolute"
-//         mt="-20"
-//         zIndex={1}
-//         w="60rem"
-//         h="50rem"
-//       />
-//     </Flex>
-//   );
-// };

@@ -13,7 +13,7 @@ import {
   Wrap,
   WrapItem,
 } from "@chakra-ui/react";
-import { FoodModal } from "./FoodModal";
+import { BreakfastModal } from "./BreakfastModal";
 import { BeveragesModal } from "./BeveragesModal";
 import { DessertModal } from "./DessertModal";
 
@@ -35,8 +35,8 @@ function ProductCard({ image, name, details, price, altText }) {
   const renderModal = () => {
     if (isModalOpen) {
       switch (activeTab) {
-        case "Food":
-          return <FoodModal onClose={closeModal} activeTab={activeTab} />;
+        case "Breakfast":
+          return <BreakfastModal onClose={closeModal} activeTab={activeTab} />;
         case "Beverages":
           return <BeveragesModal onClose={closeModal} activeTab={activeTab} />;
         case "Dessert":

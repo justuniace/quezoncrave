@@ -241,7 +241,7 @@ const resetState = () => {
             setSingleOrderOpen(false);
             onClose();
           }}
-          din
+         // din
           beverages={beverages}
           itemName={beverages.name}
           itemPrice={calculateTotalPrice()}
