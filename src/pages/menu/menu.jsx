@@ -37,7 +37,7 @@ export const Menu = () => {
         <MenuNav activeTab={activeTab} onTabChange={handleTabChange} />
       </Center>
       <Box mb="4rem">
-        {activeTab === "Food" && <Breakfast activeTab={activeTab} />}
+        {activeTab === "Breakfast" && <Breakfast activeTab={activeTab} />}
         {activeTab === "Beverages" && <Beverage activeTab={activeTab} />}
         {activeTab === "Dessert" && <Dessert activeTab={activeTab} />}
         {activeTab === "Lunch" && <Lunch activeTab={activeTab} />}

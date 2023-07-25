@@ -21,14 +21,14 @@ import {
 
 function Breakfast({ activeTab }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedFood, setSelectedFood] = useState(null);
+  const [selectedBreakfast, setSelectedBreakfast] = useState(null);
 
   const [breakfast, setBreakfast] = useState([]);
 
   useEffect(() => {
     const getProducts = async () => {
       const breakfast = await client.fetch(
-        `*[_type == "food"]{
+        `*[_type == "breakfast"]{
           _id,
           price,
           name,
@@ -49,8 +49,8 @@ function Breakfast({ activeTab }) {
     getProducts();
   }, []);
 
-  const openModal = (food) => {
-    setSelectedFood(food);
+  const openModal = (breakfast) => {
+    setSelectedBreakfast(breakfast);
     setIsModalOpen(true);
   };
 
@@ -161,8 +161,8 @@ function Breakfast({ activeTab }) {
           </WrapItem>
         ))}
       </Wrap>
-      {isModalOpen && activeTab === "Food" && (
-        <BreakfastModal onClose={closeModal} food={selectedFood} />
+      {isModalOpen && activeTab === "Breakfast" && (
+        <BreakfastModal onClose={closeModal} breakfast={selectedBreakfast} />
       )}
     </Box>
   );
