@@ -1,9 +1,12 @@
-import { Box, Text, useMediaQuery } from "@chakra-ui/react";
+import { Box, Text, useMediaQuery, Center, Highlight, VStack, Image} from "@chakra-ui/react";
 import aboutImage from "../../assets/aboutimage.webp";
 import blob from "../../assets/blob.svg";
 
+ import BlogCarousel  from "./components/carousel";
+import Brush from "../../assets/brush.svg";
+
 export const About = () => {
-  const [isMobileScreen] = useMediaQuery("(max-width: 40em)");
+  const [isMobileScreen] = useMediaQuery("(max-width: 60em)");
   const [isTabletScreen] = useMediaQuery("(max-width: 768px)");
 
   return (
@@ -106,6 +109,38 @@ export const About = () => {
           We are here to bring the deliciousness of Quezon cuisine directly to your table.
         </Text>
       </Box>
+
+     <Box w="100%" h="auto">
+       <Center>
+         <VStack>
+           <Box>
+             <Text
+               top="170"
+               position="relative"
+               fontSize="50px"
+               fontWeight="semibold"
+               justifyContent="center"
+               alignItems="center"
+               fontFamily="Abril-Fatface"
+             >
+               <Highlight
+                 query="Home"
+                 styles={{
+                   color: "#FFC700",
+                 }}
+               >
+                 A Taste of Home
+               </Highlight>
+             </Text>
+           </Box>
+           <Box ml="14rem" mt="9rem" w="9rem">
+             <Image src={Brush} />
+           </Box>
+         </VStack>
+       </Center>
+       <BlogCarousel />
+    </Box>
+
     </Box>
   );
 };
