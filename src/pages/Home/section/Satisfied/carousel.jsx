@@ -1,49 +1,62 @@
 import { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import Slider from "react-slick";
-import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
-import { Box } from "@chakra-ui/react";
+import {
+  BsFillArrowLeftCircleFill,
+  BsFillArrowRightCircleFill,
+} from "react-icons/bs";
+//import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
+import { Box,Icon,HStack,VStack, Text} from "@chakra-ui/react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import {  AiFillStar } from "react-icons/ai";
 
-const BlogCarousel = () => {
+
+const BlogCarousel = ({carouselItems}) => {
   const [imageIndex, setImageIndex] = useState(0);
   const [isSliding, setIsSliding] = useState(false);
   const sliderRef = useRef(null);
 
-  const NextArrow = ({ onClick }) => (
-    <div
-      style={{
-        position: "absolute",
-        cursor: isSliding ? "default" : "pointer",
-        top: "50%",
-        right: 20,
-        transform: "translateY(-50%)",
-        zIndex: 10,
-        marginRight: "-90px",
-      }}
-      onClick={isSliding ? null : onClick}
-    >
-      <FaArrowRight />
-    </div>
-  );
+ const NextArrow = ({ onClick }) => (
+   <div
+     style={{
+       position: "absolute",
+       cursor: isSliding ? "default" : "pointer",
+       top: "130%",
+       right: "45%", // Adjust the right value to center horizontally
+       transform: "translateY(-50%)",
+       zIndex: 10,
+     }}
+     onClick={isSliding ? null : onClick}
+   >
+     <BsFillArrowRightCircleFill style={{ fontSize: "30px" }} />
+   </div>
+ );
 
   const PrevArrow = ({ onClick }) => (
     <div
       style={{
         position: "absolute",
         cursor: isSliding ? "default" : "pointer",
-        top: "50%",
-        left: 20,
+        top: "130%",
+        left: "45%",
         transform: "translateY(-50%)",
         zIndex: 10,
-        marginLeft: "-90px", // Added margin
+        
       }}
       onClick={isSliding ? null : onClick}
     >
-      <FaArrowLeft />
+      <BsFillArrowLeftCircleFill
+        style={{
+          fontSize: "30px",
+          boxShadow: "2xl",
+          _hover: { transform: "scale(5)" },
+          transition: "transform 0.1s",
+        }}
+      />
     </div>
   );
+
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -94,21 +107,15 @@ const BlogCarousel = () => {
   };
 
   return (
-    <Box
-      w="80%"
-      margin="10rem 10rem"
-      h="200px"
-      textAlign="center"
-      position="relative"
-    >
+    <Box w="80%" margin=" 7rem  10rem 12rem" textAlign="center" position="relative">
       <Slider {...settings}>
-        {Array.from({ length: 5 }).map((_, idx) => (
+        {carouselItems.map((item, idx) => (
           <Box
             key={idx}
             className={idx === imageIndex ? "slide activeSlide" : "slide"}
             sx={{
               opacity: idx === imageIndex ? 1 : 0.5,
-              transform: `scale(${idx === imageIndex ? 1.1 : 0.9})`,
+              transform: `scale(${idx === imageIndex ? 1.1 : 0.7})`,
               transition: "transform 300ms",
               zIndex: idx === imageIndex ? 1 : 0,
               display: "flex",
@@ -119,14 +126,30 @@ const BlogCarousel = () => {
               fontSize: "20px",
               fontWeight: "bold",
               border: "2px solid white",
-              borderRadius: "8px",
-              height: "120px",
-              width: "300px",
-              padding: "10px",
+              borderRadius: "50px",
+              height: "13rem",
+              width: "10rem",
+              padding: "30px",
               boxSizing: "border-box",
+             
+             
             }}
           >
-            Slide {idx + 1}
+            <VStack spacing="2rem">
+              <HStack mt="2" justifyContent="center">
+                <Icon as={AiFillStar} color="#FFC700" fontSize="22px" />
+                <Icon as={AiFillStar} color="#FFC700" fontSize="22px" />
+                <Icon as={AiFillStar} color="#FFC700" fontSize="22px" />
+                <Icon as={AiFillStar} color="#FFC700" fontSize="22px" />
+                <Icon as={AiFillStar} color="#FFC700" fontSize="22px" />
+              </HStack>
+              <Text fontSize="14px" fontWeight="light">
+                &ldquo;{item.text}&ldquo;
+              </Text>
+              <Text fontSize="18px" mt="-4">
+                {item.author}
+              </Text>
+            </VStack>
           </Box>
         ))}
       </Slider>
@@ -136,6 +159,12 @@ const BlogCarousel = () => {
 
 BlogCarousel.propTypes = {
   onClick: PropTypes.func.isRequired,
+  carouselItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      text: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired, // Add the author propType
+    })
+  ).isRequired,
 };
 
 export default BlogCarousel;

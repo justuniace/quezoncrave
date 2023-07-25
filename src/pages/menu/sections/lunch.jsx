@@ -72,8 +72,8 @@ function Lunch({ activeTab }) {
     lg: "18px",
   });
   const buttonWidth = useBreakpointValue({
-    base: "100px", 
-    md: "100px", 
+    base: "100px",
+    md: "100px",
     lg: "110px",
   });
 

@@ -148,6 +148,7 @@ export default function Reserve() {
             flexDir="column"
           >
             <Box
+            bg="gray.100"
               ml={isMobile ? "2rem" : ""}
               borderRadius="25px"
               h={isMobile ? "20rem" : "32rem"}
