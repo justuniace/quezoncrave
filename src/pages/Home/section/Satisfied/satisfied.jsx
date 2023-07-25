@@ -40,9 +40,9 @@ function Satisfied() {
   ];
 
   return (
-    <Box w="100%" mt="5rem" position="relative" backgroundImage={B1}>
+    <Box w="100%" mt="7rem" position="relative" backgroundImage={B1}>
       <Title
-        fontSize={isMobile ? "20px" : "25px"}
+        fontSize={isMobile ? "20px" : "30px"}
         title="Our Satisfied Customer"
       />
 

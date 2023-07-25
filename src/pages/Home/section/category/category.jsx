@@ -1,27 +1,28 @@
 
 import CatProps from "./categoryProps";
-import Food from "../../../../assets/category/food.svg";
-import Beverage from "../../../../assets/category/beverages.svg";
-import Dessert from "../../../../assets/category/dessert.svg";
+import Order from "../../../../assets/category/order.png";
+import Deliver from "../../../../assets/category/deliver.png";
+import Quality from "../../../../assets/category/quality.png";
 import { Box, Wrap, Image } from "@chakra-ui/react";
 import Elipse from "../../../../assets/categories-elipse.webp";
 
 function Category() {
   const items = [
     {
-      image: Food,
-      dTitle: "Food",
-      details: "Lorem ipsum dolor sit amet. Sed laudantium veniam ea",
+      image: Order,
+      dTitle: "Easy to Order",
+      details: "Customer friendly navigation and ordering method.",
     },
     {
-      image: Beverage,
-      dTitle: "Beverages",
-      details: "Lorem ipsum dolor sit amet. Sed laudantium veniam ea",
+      image: Deliver,
+      dTitle: "Faster Delivery",
+      details: "Rest easy as we ensure a quick delivery of your order.",
     },
     {
-      image: Dessert,
-      dTitle: "Dessert",
-      details: "Lorem ipsum dolor sit amet. Sed laudantium veniam ea",
+      image: Quality,
+      dTitle: "Best Quality",
+      details:
+        "Finest authentic foods from Quezon Province!",
     },
   ];
 

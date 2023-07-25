@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { BreakfastModal } from "../components/MenuModals/BreakfastModal";
 import { client, urlFor } from "../../../client";
+
 import {
   Box,
   Wrap,
@@ -83,7 +84,7 @@ function Breakfast({ activeTab }) {
    });
 
   return (
-    <Box padding="0 7rem">
+    <Box padding="0 7rem" >
       <Wrap spacing="5rem" justify="center">
         {breakfast.map((item) => (
           <WrapItem key={item.slug.current} width={cardWidth}>

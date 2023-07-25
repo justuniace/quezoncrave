@@ -6,7 +6,7 @@ import Beverage from "./sections/beverages";
 import Lunch from "./sections/lunch";
 import Dinner from "./sections/dinner";
 import { useState } from "react";
-//import B1 from "../../assets/explore/explore.webp";
+import B1 from "../../assets/explore/explore.webp";
 
 export const Menu = () => {
   const [activeTab, setActiveTab] = useState("Breakfast");
@@ -20,7 +20,7 @@ export const Menu = () => {
   const [isTabletScreen] = useMediaQuery("(max-width: 768px)");
 
   return (
-    <Box w="100%" h="auto" >
+    <Box w="100%" h="auto" backgroundImage={B1}>
       <Center h="10rem">
         <Text
           top="50%"

@@ -33,7 +33,7 @@ function How() {
   return (
     <Flex className="How" mt="-10rem" position="relative">
       <Box w="100%">
-        <Title fontSize={isMobile ? "20px" : "25px"} title="How To Order" />
+        <Title fontSize={isMobile ? "20px" : "30px"} title="How To Order" />
         <Wrap justify="center" spacing="8rem" mt="5rem">
           {items.map((item) => (
             <HowProps items={item} key={item.details} />
