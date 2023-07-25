@@ -3,9 +3,12 @@ import HowProps from "./howProps";
 import Menu from "../../../../assets/how-it-works/menu.svg";
 import Meal from "../../../../assets/how-it-works/meal.svg";
 import Delivery from "../../../../assets/how-it-works/delivery.svg";
-import { Box, Flex, Wrap } from "@chakra-ui/react";
+import { Box, Flex, Wrap, useMediaQuery } from "@chakra-ui/react";
 
 function How() {
+
+   const [isMobile] = useMediaQuery("(max-width: 767px)");
+
   const items = [
     {
       image: Menu,
@@ -28,9 +31,9 @@ function How() {
   ];
 
   return (
-    <Flex className="How" mt="140%" h="10vh" w="100%" position="relative">
-      <Box mt="-18rem" h="100vh" w="100%">
-        <Title title="How It Works" />
+    <Flex className="How" mt="-10rem" position="relative">
+      <Box w="100%">
+        <Title fontSize={isMobile ? "20px" : "30px"} title="How To Order" />
         <Wrap justify="center" spacing="8rem" mt="5rem">
           {items.map((item) => (
             <HowProps items={item} key={item.details} />

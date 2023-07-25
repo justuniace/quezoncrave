@@ -106,7 +106,7 @@ function Navbar(props) {
                     fontSize=".8rem"
                     fontFamily="inter"
                     fontWeight="md"
-                    bg="#262424"
+                    bg="#FFC700"
                     w="1rem"
                     p=".7rem"
                     h="1rem"

@@ -112,7 +112,7 @@ export function BreakfastModal({ onClose, breakfast }) {
             setSingleOrderOpen(false);
             onClose();
           }}
-          food={breakfast}
+          breakfast={breakfast}
           itemName={breakfast.name}
           itemPrice={calculateTotalPrice()}
           itemQuantity={quantity}

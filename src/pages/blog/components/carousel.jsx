@@ -23,7 +23,7 @@ const BlogCarousel = () => {
         right: 20,
         transform: "translateY(-50%)",
         zIndex: 10,
-        marginRight: "-90px", // Added margin
+        marginRight: "-90px", 
       }}
       onClick={isSliding ? null : onClick}
     >
@@ -40,7 +40,7 @@ const BlogCarousel = () => {
         left: 20,
         transform: "translateY(-50%)",
         zIndex: 10,
-        marginLeft: "-90px", // Added margin
+        marginLeft: "-90px", 
       }}
       onClick={isSliding ? null : onClick}
     >

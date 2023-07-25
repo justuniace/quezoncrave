@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Button } from "@chakra-ui/react";
+import { Button, useMediaQuery} from "@chakra-ui/react";
 import PropTypes from "prop-types";
 
 function CustomButton({
@@ -13,10 +13,13 @@ function CustomButton({
   const handleClick = () => {
     console.log("Button clicked!");
   };
+  const [isMobileScreen] = useMediaQuery("(max-width: 40em)");
 
   return (
     <Link to={buttonLink}>
       <Button
+     
+        fontSize={isMobileScreen ? "10px" :""}
         position="absolute"
         padding="20px 90px"
         bg={isYellowButton ? "transparent" : "#FFC700"}

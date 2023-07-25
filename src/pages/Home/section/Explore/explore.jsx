@@ -15,7 +15,7 @@ function Explore() {
  const [isMobile] = useMediaQuery("(max-width: 767px)");
 
   return (
-    <Flex top="-10rem" className="explore" w="100%" position="relative">
+    <Flex top="-15rem" className="explore" w="100%" position="relative">
       <Box
         h="242vh"
         bg="white"
@@ -24,7 +24,7 @@ function Explore() {
         backgroundSize="cover"
       >
         <Box mt="10rem" zIndex="2" pos="relative">
-          <Title fontSize={isMobile ? "20px" : "25px"} title="Popular Dishes" />
+          <Title fontSize={isMobile ? "20px" : "30px"} title="Popular Dishes" />
         </Box>
         <Wrap w="100%">
           <VStack>
