@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import Slider from "react-slick";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
-import { Box } from "@chakra-ui/react";
+import { Box, useBreakpointValue } from "@chakra-ui/react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -65,10 +65,12 @@ const BlogCarousel = () => {
     setIsSliding(false);
   };
 
+  const slidesToShow = useBreakpointValue({ base: 1, md: 3, lg: 3});
+
   const settings = {
     centerMode: true,
     centerPadding: "10px",
-    slidesToShow: 3,
+    slidesToShow,
     responsive: [
       {
         breakpoint: 768,
@@ -96,13 +98,16 @@ const BlogCarousel = () => {
     ref: sliderRef,
   };
 
+ 
+
   return (
     <Box
-      w="80%"
-      margin="10rem 10rem"
-      h="200px"
+      w="100%"
+      margin="10rem 0"
+      h="200%"
       textAlign="center"
       position="relative"
+      px={{ base: "20px", md: "50px" }}
     >
       <Slider {...settings}>
         {images.map((img, idx) => (
@@ -116,7 +121,7 @@ const BlogCarousel = () => {
               zIndex: idx === imageIndex ? 1 : 0,
             }}
           >
-            <img src={img} alt={`Slide ${idx + 1}`} width="95%" />
+            <img src={img} alt={`Slide ${idx + 1}`} width="95%"/>
           </Box>
         ))}
       </Slider>
