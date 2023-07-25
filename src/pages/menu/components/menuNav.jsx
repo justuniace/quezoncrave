@@ -29,8 +29,8 @@ export default function MenuNav({ activeTab, onTabChange }) {
         top={isMobile ? "14.5rem" : "14rem"}
         position="absolute"
         borderRadius="20px"
-        background="linear-gradient(145deg, #ececec, #ffffff)"
-        boxShadow="28px 28px 55px #d4d4d4, -28px -28px 55px #ffffff"
+        background="linear-gradient(145deg, #F6F4EB, #f0f0f0)"
+        boxShadow="0px 0px 20px #d4d4d4, 0px 0px 10px #d4d4d4"
         zIndex="-1"
       ></Box>
       <Box>

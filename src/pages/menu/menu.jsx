@@ -20,7 +20,16 @@ export const Menu = () => {
   const [isTabletScreen] = useMediaQuery("(max-width: 768px)");
 
   return (
-    <Box w="100%" h="auto" backgroundImage={B1}>
+    <Box
+      w="100%"
+      h="auto"
+      style={{
+        backgroundImage: `url(${B1})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+       
+      }}
+    >
       <Center h="10rem">
         <Text
           top="50%"
