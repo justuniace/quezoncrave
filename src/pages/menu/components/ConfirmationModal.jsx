@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 import{ useState } from "react";
 import Lottie from "lottie-react";
-import ConfirmIcon from "/src/assets/confirm.json";
+import ConfirmIcon from "/src/assets/confirm2.json";
 import {
   Modal,
   ModalOverlay,

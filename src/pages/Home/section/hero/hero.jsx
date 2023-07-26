@@ -6,8 +6,7 @@ import {
   VStack,
   HStack,
   Highlight,
-  useMediaQuery
- 
+  useMediaQuery,
 } from "@chakra-ui/react";
 
 import CustomButton from "../../../components/buttons";
@@ -18,10 +17,17 @@ import L1 from "../../../../assets/hero/leaves1.webp";
 import L2 from "../../../../assets/hero/leaves2.webp";
 import Pork from "../../../../assets/hero/hero.svg";
 import Bg from "../../../../assets/hero/b1.webp";
+// import { motion } from "framer-motion";
+//import {Reveal} from "../../../components/Observer/useObserver"
 
 export default function Hero() {
-
   const [isMobileScreen] = useMediaQuery("(max-width: 40em)");
+  // const { ref, isInView } = useObserver();
+
+  // const slideInAnimation = {
+  //   hidden: { opacity: 0, y: 30 },
+  //   visible: { opacity: 1, y: 0 },
+  // };
 
   return (
     <Flex
@@ -80,8 +86,8 @@ export default function Hero() {
         <Image
           src={L2}
           position="absolute"
-          top={isMobileScreen ? "16%":"25%"}
-          left={isMobileScreen ? "80%":"78%"}
+          top={isMobileScreen ? "16%" : "25%"}
+          left={isMobileScreen ? "80%" : "78%"}
           w="20%"
           transform="rotate(150deg)"
         />
@@ -91,9 +97,9 @@ export default function Hero() {
         <Image
           src={L2}
           position="absolute"
-          top={isMobileScreen ? "15%":"16%"}
-          left={isMobileScreen ? "51%":"45%"}
-          w="20%"
+          top={isMobileScreen ? "23%":"16%"}
+          left={isMobileScreen ? "59%":"45%"}
+          w={isMobileScreen ? "20%":"20%"}
           transform="rotate(20deg)"
           zIndex=""
         />
@@ -104,9 +110,9 @@ export default function Hero() {
         <Image
           src={Pork}
           position="absolute"
-          left="50%"
-          top={isMobileScreen ?"15%":"5%"}
-          w={isMobileScreen ? "12rem":"75rem"}
+          left={isMobileScreen ? "60%":"50%"}
+          top={isMobileScreen ?"16%":"5%"}
+          w={isMobileScreen ? "15rem":"75rem"}
           zIndex="1"
         />
       </Box>
@@ -115,21 +121,26 @@ export default function Hero() {
         <Image
           src={L1}
           position="absolute"
-          left="72%"
-          top={isMobileScreen ? "10%":"64%"}
-          w={isMobileScreen ? "30%":"50%"}
+          left={isMobileScreen ? "80%":"72%"}
+          top={isMobileScreen ? "28%":"64%"}
+          w={isMobileScreen ? "36%":"50%"}
           zIndex="2"
         />
       </Box>
 
       {/* Hero Text */}
-      <Flex left="10%" top={isMobileScreen ?"15%":"24%" } position="absolute" w="40rem">
+      <Flex
+        left="10%"
+        top={isMobileScreen ? "15%" : "24%"}
+        position="absolute"
+        w="40rem"
+      >
         <VStack align="start" w={{ base: "100%", md: "55%" }}>
           <Box w={isMobileScreen ?"10rem":"40rem"}>
           <Text
-            lineHeight={isMobileScreen ? "":"120px"}
+            lineHeight={isMobileScreen ? "2rem":"120px"}
             color="white"
-           fontSize={isMobileScreen ?"1.5rem": "6rem"}
+           fontSize={isMobileScreen ?"2rem": "6rem"}
             fontWeight="semi-bold"
             fontFamily="Abril-Fatface"
           >
@@ -143,36 +154,34 @@ export default function Hero() {
             </Highlight>
           </Text>
           </Box>
-          
-          <Box w={isMobileScreen ? "10rem":"30rem"}>
+
+          <Box w={isMobileScreen ? "10rem" : "30rem"}>
             <Text
               color="white"
-              marginTop={isMobileScreen ? "45px":"30px"}
+              marginTop={isMobileScreen ? "45px" : "30px"}
               fontFamily="inter"
               fontWeight="medium"
-              fontSize={isMobileScreen ? "12px":"18px"}
+              fontSize={isMobileScreen ? "12px" : "18px"}
             >
               Delight Your Palate with Quezon`s Finest. {""}
               {/* <Icon as={BiBowlHot} /> */}
             </Text>
           </Box>
           <Box mt="50px" zIndex={1}>
-            <HStack spacing={isMobileScreen ? "10rem":"15rem"}>
+            <HStack spacing={isMobileScreen ? "10rem" : "15rem"}>
               <CustomButton
-              
                 icon={<FaOpencart />}
                 buttonText="Order Now!"
                 buttonLink="/menu"
-                width={isMobileScreen ? "10rem":"13rem"}
+                width={isMobileScreen ? "10rem" : "13rem"}
               />
               <CustomButton
-               
                 icon={<SlMagnifier />}
                 buttonLink="/blog"
                 buttonText="Explore"
                 hasBorder={false}
                 isYellowButton={true}
-                width="13rem"
+                width={isMobileScreen ? "1.2rem":"13rem"}
               />
             </HStack>
           </Box>
