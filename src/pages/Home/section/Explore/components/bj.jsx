@@ -2,6 +2,7 @@ import { Box, HStack } from "@chakra-ui/react";
 import ExploreContent from "./ExploreContent";
 import Ellipse from "../../../../../assets/explore/explore-ellipse.webp";
 import Coconut from "../../../../../assets/explore/coconut-water.webp";
+import { Reveal } from "../../../../components/Observer/useObserver";
 
 function BukoJuice() {
   return (
@@ -14,10 +15,14 @@ function BukoJuice() {
         left="9%"
       >
         <Box position="absolute" mt="6rem">
-          <img src={Ellipse} alt="Circle" style={{ width: "100%" }} />
+          <Reveal width="fit-content">
+            <img src={Ellipse} alt="Circle" style={{ width: "100%" }} />
+          </Reveal>
         </Box>
         <Box w="35rem" position="relative" zIndex={1} mt="5rem" left="-51px">
-          <img src={Coconut} alt="Buko Juice" />
+          <Reveal width="fit-content">
+            <img src={Coconut} alt="Buko Juice" />
+          </Reveal>
         </Box>
       </Box>
       <Box mt="-12em" ml="10rem">

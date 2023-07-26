@@ -1,13 +1,15 @@
 import PropTypes from "prop-types";
 import { Divider,Text, VStack} from "@chakra-ui/react";
-
+import {Reveal} from "./Observer/useObserver"
 
 function Title({title, fontSize}) {
     return (
       <VStack>
-        <Text fontFamily="Abril-Fatface" fontSize={fontSize}>
-          {title}
-        </Text>
+        <Reveal width="fit-content">
+          <Text fontFamily="Abril-Fatface" fontSize={fontSize}>
+            {title}
+          </Text>
+        </Reveal>
         <Divider
           borderWidth="2px"
           borderRadius="1rem"
