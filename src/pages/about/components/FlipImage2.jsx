@@ -1,62 +1,55 @@
 import React from 'react';
-import Flip from "../../../assets/Flip.webp";
-import { Center, Box } from '@chakra-ui/react';
+import laing from "../../../assets/Blog/laing.webp";
+import { Center, Box, Button ,Text} from '@chakra-ui/react';
 
-const FlipImageCard = ({ frontText, backText, shape }) => {
-  const [isFlipped, setIsFlipped] = React.useState(false);
-
-  const flipCard = () => {
-    setIsFlipped(!isFlipped);
-  };
+const FlipImageCard = ({ frontText}) => {
 
   const shapeStyles = {
     width: '300px',
     height: '400px',
     borderRadius: '10px',
-    background: '#452B1A',
+    background: '#FFF0DC',
     transition: 'transform 2.5s',
     transformStyle: 'preserve-3d',
-    transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0)',
   };
-
-  const frontStyles = {
-    position: 'relative',
-    top: '0',
-    left: '0',
-    right: '0',
-    bottom: '0',
-    backfaceVisibility: 'hidden', // Hide the backface of the card
-  };
-
 
   return (
+
     <Box
     className="container1"
-    onMouseEnter={() => setIsFlipped(true)}
-
-    onClick={flipCard} // Toggle the flip state on click
-    onTouchStart={flipCard}
-    style={shapeStyles}
+    bg="gray.100"
+    boxShadow="2xl"
+    _hover={{ transform: "scale(1.05)" }}
+    transition={{ duration: 10 }}
   >
-      <Box className="front" style={frontStyles}>
+      <Box className="front" style={shapeStyles}>
         <Center>
       <img
-          mt="5px"
-          src={Flip}
+          src={laing}
           alt="Front Image"
-          style={{ width: '95%', height: '100%', borderRadius: '10px'}}
+          style={{ width: '280px', 
+          height: '300px', 
+          borderRadius: '10px', 
+          marginTop: "5px",
+          marginRight: "5px",
+          marginBottom: "5px",
+          marginLeft: "5px"}}
         />
         </Center>
         <h2>{frontText}</h2>
-        <p>
-          Dish Name
-        </p>
-      </Box>
-      <Box className="back" style={{ ...frontStyles, transform: 'rotateY(180deg)' }}>
-        <h2>{backText}</h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi, nisi.
-        </p>
+        <Text textAlign="center"
+              fontWeight="semibold"
+              fontSize="20px"
+              fontFamily="Abril-Fatface">
+          Laing
+        </Text>
+        <Center mt="1rem">
+          <Button onClick="Recipe-1" 
+                  colorScheme="yellow" 
+                  backgroundColor="#452B1A">
+                    See Recipe 
+                    </Button>
+        </Center>
       </Box>
     </Box>
   );
@@ -65,7 +58,7 @@ const FlipImageCard = ({ frontText, backText, shape }) => {
 const App = () => {
     return (
       <Box className="container">
-        <FlipImageCard frontText="Recipe 2" />
+        <FlipImageCard/>
       </Box>
     );
   };

@@ -1,7 +1,8 @@
 import { Box, Text, useMediaQuery, Center, HStack, VStack, Image} from "@chakra-ui/react";
 import aboutImage from "../../assets/aboutimage.webp";
 import blob from "../../assets/blob.svg";
-
+import AboutUsBg from "../../assets/aboutUsBg.webp";
+import B1 from "../../assets/explore/explore.webp";
 import BlogCarousel  from "./components/carousel";
 import Brush from "../../assets/brush.svg";
 import FlipImageCard1 from './components/FlipImage1';
@@ -12,74 +13,59 @@ import FlipImageCard4 from './components/FlipImage4';
 export const About = () => {
   const [isMobileScreen] = useMediaQuery("(max-width: 60em)");
   const [isTabletScreen] = useMediaQuery("(max-width: 768px)");
-
   
   return (
-    <Box w="100%" h="auto">
-      <Box mt={isMobileScreen ? "120px" : "120px"} 
-            w={isMobileScreen ? "100%" : "20rem"} 
-            ml={isMobileScreen ? "0" : "-20px"}>
-        <img src={aboutImage} alt="Image 1" 
-            height="250px" 
-            width="250px" 
-            style={{ display: "block", margin: "0 auto" }} />
-      </Box>
+    <Box w="100%" h="auto" 
+            style={{
+              backgroundImage: `url(${B1})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",}}>
+    <Center>
+    <Box>
+    <Image
+          src={AboutUsBg}
+          position="absolute"
+          justifyContent="center"
+          alignItems="center"
+          left="0"
+          right="0"
+          h="45rem"
+          w="90rem"
+          opacity="0.3"
+        />
+    </Box>
+    </Center>
 
-      <Box mt={isMobileScreen ? "10px" : "-200px"} 
+    <Center>
+      <Box mt={isMobileScreen ? "20px" : "130px"} 
             w={isMobileScreen ? "100%" : "30rem"} 
-            ml={isMobileScreen ? "0px" : "200px"}>
-        <img src={aboutImage} alt="Image 2" 
-            height="250px" 
-            width="250px" 
-            style={{ display: "block", margin: "0 auto" }} />
-      </Box>
-
-      <Box mt="10px" w={isMobileScreen ? "100%" : "40rem"} 
-            ml={isMobileScreen ? "0px" : "-180px"}>
-        <img src={aboutImage} alt="Image 1" 
-              height="250px" width="250px" 
-              style={{ display: "block", margin: "0 auto" }}/>
-      </Box>
-
-      <Box mt={isMobileScreen ? "10px" : "-200px"} 
-            w={isMobileScreen ? "100%" : "30rem"} 
-            ml={isMobileScreen ? "0px" : "200px"}>
-        <img src={aboutImage} alt="Image 4" 
-              height="250px" width="250px" 
-              style={{ display: "block", margin: "0 auto" }}/>
-      </Box>
-
-      <Box mt={isMobileScreen ? "20px" : "-600px"} 
-            w={isMobileScreen ? "100%" : "30rem"} 
-            ml={isMobileScreen ? "0px" : "600px"}>
+            ml={isMobileScreen ? "0px" : "10px"}>
         <Text
           position="relative"
           fontSize={isMobileScreen ? "30px" : "50px"}
           fontWeight="semibold"
           justifyContent="center"
           alignItems="center"
-          textAlign={isMobileScreen ? "center":""}
+          textAlign={isMobileScreen ? "center":"center"}
           fontFamily="Abril-Fatface"
         >
           About <span style={{ color: "#FFC700" }}>Us</span>
           <hr
             style={{
               border: "1px solid black",
-              width: isMobileScreen ? "200px" : "550px",
+              width: isMobileScreen ? "200px" : "500px",
               margin: "10px auto",
             }}
           />
         </Text>
       </Box>
+      </Center>
 
       <Box mt="20px" w={isMobileScreen ? "100%" : "30rem"} 
-            ml={isMobileScreen ? "0" : "650px"}>
+            ml={isMobileScreen ? "0" : "410px"}>
         <Text
-          position="relative"
           fontSize={isMobileScreen ? "20px" : isTabletScreen ? "22px" : "20px"}
           fontWeight="light"
-          justifyContent="center"
-          alignItems="center"
           textAlign="center"
           fontFamily="Abril-Fatface"
           maxW={isMobileScreen ? "100%" : "500px"}
@@ -92,10 +78,11 @@ export const About = () => {
           By staying true to Quezon cuisine's authenticity, the aim is to contribute to the sustainability and appreciation of the local food culture.
         </Text>
       </Box>
+      
 
       <Box mt={isMobileScreen ? "20px" : "150px"} 
             w={isMobileScreen ? "100%" : "40rem"} 
-            ml={isMobileScreen ? "0px" : "30px"}>
+            ml={isMobileScreen ? "0px" : "100px"}>
         <Text
           position="relative"
           fontSize={isMobileScreen ? "30px" : "50px"}
@@ -109,24 +96,25 @@ export const About = () => {
           <hr
             style={{
               border: "1px solid black",
-              width: isMobileScreen ? "200px" : "650px",
+              width: isMobileScreen ? "200px" : "500px",
               margin: "10px auto",
+              marginLeft: "0px",
             }}
           />
         </Text>
       </Box>
 
-      <Box position="relative" top={isMobileScreen ? "0px" : "-200px"} 
+      <Box position="relative" top={isMobileScreen ? "0px" : "-300px"} 
             left={isMobileScreen ? "0" : "350px"}>
-        <img src={blob} alt="Blob Image" 
-              height={isMobileScreen ? "400px" : "500px"} 
-              width={isMobileScreen ? "100%" : "500px"} 
+            <img src={blob} alt="Blob Image" 
+              height={isMobileScreen ? "400px" : "700px"} 
+              width={isMobileScreen ? "100%" : "700px"} 
               style={{ display: "block", margin: "0 auto" }} />
       </Box>
 
-      <Box mt={isMobileScreen ? "-50px" : "-480px"} 
+      <Box mt={isMobileScreen ? "-50px" : "-700px"} 
             w={isMobileScreen ? "100%" : "30rem"} 
-            ml={isMobileScreen ? "0" : "100px"}>
+            ml={isMobileScreen ? "0" : "120px"}>
         <Text
           position="relative"
           fontSize={isMobileScreen ? "20px" : "20px"}
@@ -135,7 +123,7 @@ export const About = () => {
           alignItems="center"
           textAlign="center"
           fontFamily="Abril-Fatface"
-          maxW={isMobileScreen ? "100%" : "400px"}
+          maxW={isMobileScreen ? "100%" : "500px"}
         >
           At Quezoncrave, we understand that there's nothing quite like the taste of home.
           If you find yourself craving the authentic flavors of Quezon Province, look no further.
@@ -202,20 +190,50 @@ export const About = () => {
       <FlipImageCard1/>
     </Box>
 
-    <Box w="100%" h="auto" position="relative" mt="50px" ml="-15px" mb="10px">
+    <Box w="100%" h="auto" position="relative" mt="50px" ml="-5px" mr="px" mb="10px">
       <FlipImageCard2/>
     </Box>
 
-    <Box w="100%" h="auto" position="relative" mt="50px" ml="-15px" mb="10px">
+    <Box w="100%" h="auto" position="relative" mt="50px" ml="-5px" mr="-5px" mb="10px">
       <FlipImageCard3/>
     </Box>
 
-    <Box w="100%" h="auto" position="relative" mt="50px" ml="-30x" mb="10px">
+    <Box w="100%" h="auto" position="relative" mt="50px" ml="-15x" mb="10px">
       <FlipImageCard4/>
     </Box>
-
 </HStack>
 
+<Box mt={isMobileScreen ? "20px" : "100px"} 
+            w={isMobileScreen ? "100%" : "40rem"} 
+            ml={isMobileScreen ? "0px" : "300px"}>
+       <Center>
+         <VStack>
+           <Box>
+           <Text
+            position="relative"
+            fontSize={isMobileScreen ? "30px" : "50px"}
+            fontWeight="semibold"
+            justifyContent="center"
+            alignItems="center"
+            textAlign={isMobileScreen ? "center":""}
+            fontFamily="Abril-Fatface">
+              Meet <span style={{ color: "#FFC700" }}>Our Chefs</span>
+          </Text>
+           </Box>
+           <Box ml="100px" mt="-15px" w="200px">
+             <Image src={Brush}/>
+           </Box>
+         </VStack>
+       </Center>
+    </Box>
+
+    <Center>
+       <Box width="180%" height="200%" mt="-100px" ml="10">
+       
+       </Box>
+       </Center>
+
+       
   </Box>
   );
 };
