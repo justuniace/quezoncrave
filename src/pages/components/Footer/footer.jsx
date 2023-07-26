@@ -9,6 +9,7 @@ import {
   Input,
   Button,
   useMediaQuery,
+  
 } from "@chakra-ui/react";
 import Logo from "/logo.webp";
 import breakPoints from "../../theme/breakpoints";
@@ -22,6 +23,8 @@ import { useState } from "react";
 import emailjs from "@emailjs/browser";
 
 export const Footer = () => {
+
+  // const history = useHistory();
 
    const facebookProfileURL =
      "https://www.facebook.com/profile.php?id=YOUR_PROFILE_ID";
@@ -232,7 +235,7 @@ export const Footer = () => {
                   background: "#FFF0DC",
                 }}
               >
-                Subscribed
+                Subscribe
               </Button>
             </HStack>
             <HStack
@@ -280,10 +283,14 @@ export const Footer = () => {
         >
           <Text>Copyright 2023 Quezon Crave.</Text>
           <HStack mr={isMobile ? "" : "3rem"}>
-            <Link to="privacy-policy">
-              <Text>Privacy Policy </Text>
-            </Link>
-
+            <Link
+            
+             
+              to="privacy-policy"
+              
+            >
+              <Text>Privacy Policy</Text>
+            </Link>{" "}
             <Text>| All rights reserved.</Text>
           </HStack>
         </Stack>

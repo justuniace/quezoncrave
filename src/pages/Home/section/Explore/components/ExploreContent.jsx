@@ -20,15 +20,17 @@ function ExploreContent({ title, details }) {
           {title}
         </Text>
       </Flex>
-      <Text
-        w="40%"
-        fontSize="18px"
-        fontFamily="inter"
-        textAlign="justify"
-        mt="1rem"
-      >
-        {details}
-      </Text>
+      <Box   w="40%">
+        <Text
+        
+          fontSize="18px"
+          fontFamily="inter"
+          textAlign="justify"
+          mt="1rem"
+        >
+          {details}
+        </Text>
+      </Box>
     </VStack>
   );
 }

@@ -1,5 +1,6 @@
 import Title from "../../../components/Titles";
 import Confirm from "./confirmModal";
+
 import {
   Stack,
   Center,
@@ -11,6 +12,7 @@ import {
   Input,
   Button,
   Select,
+  Flex
 } from "@chakra-ui/react";
 import PropTypes from "prop-types";
 import emailjs from "@emailjs/browser";
@@ -131,7 +133,6 @@ export default function Reserve() {
         w="100%"
         //h="25rem"
         position="relative"
-       
         backgroundImage={B1}
       >
         <VStack>
@@ -148,7 +149,7 @@ export default function Reserve() {
             flexDir="column"
           >
             <Box
-            bg="gray.100"
+              bg="gray.100"
               ml={isMobile ? "2rem" : ""}
               borderRadius="25px"
               h={isMobile ? "20rem" : "32rem"}
@@ -189,85 +190,110 @@ export default function Reserve() {
                       <Text> 10:00am - 8:00pm</Text>
                     </HStack>
                     <Stack direction={isMobile ? "row" : "column"}>
-                      <VStack align="start" spacing="1rem">
-                        <HStack mt="3rem" spacing={isMobile ? "1rem" : "2rem"}>
-                          <Input
-                            bg="white"
-                            type="text"
-                            placeholder="Name"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                          />
-                          <Input
-                            bg="white"
-                            type="text"
-                            placeholder="Contact Number"
-                            value={contact}
-                            onChange={(e) => setContact(e.target.value)}
-                          />
-                        </HStack>
-                        <HStack
-                          justifyContent="space-around"
-                          spacing={isMobile ? "1rem" : "2rem"}
-                        >
-                          <DatePicker
-                            customInput={
-                              <Input
-                                bg="white"
-                                style={customDatePickerInputStyles}
-                              />
-                            }
-                            className="custom-date-picker"
-                            showIcon
-                            selected={startDate}
-                            onChange={(date) => setStartDate(date)}
-                            fixedHeight
-                            filterDate={filterPastAndTodayDates}
-                            placeholderText="Date"
-                          />
-                          <DatePicker
-                            customInput={
-                              <Input
-                                bg="white"
-                                style={customDatePickerInputStyles}
-                              />
-                            }
-                            className="custom-date-picker"
-                            showIcon
-                            fixedHeight
-                            selected={startDate}
-                            onChange={(date) => setStartDate(date)}
-                            showTimeSelect
-                            showTimeSelectOnly
-                            timeIntervals={15}
-                            timeCaption="Time"
-                            dateFormat="h:mm aa"
-                            placeholderText="Time"
-                          />
-                        </HStack>
-                        <HStack spacing={isMobile ? "1rem" : "3rem"}>
-                          <Input
-                            w="15rem"
-                            bg="white"
-                            type="text"
-                            placeholder="People"
-                            value={people}
-                            onChange={(e) => setPeople(e.target.value)}
-                          />
-                          <Select
-                            fontWeight="light"
-                            color="gray"
-                            w="15rem"
-                            placeholder="Place"
-                            bg="white"
-                            value={place}
-                            onChange={(e) => setPlace(e.target.value)}
+                      <Box w="100%">
+                        <VStack align="start" spacing="1rem">
+                          <HStack
+                            mt="3rem"
+                            spacing={isMobile ? "1rem" : "2rem"}
                           >
-                            <option value="smoking">Smoking</option>
-                            <option value="non-smoking">Non-Smoking</option>
-                          </Select>
-                        </HStack>
-                      </VStack>
+                            <Input
+                              w="100%"
+                              bg="white"
+                              type="text"
+                              placeholder="Name"
+                              value={name}
+                              onChange={(e) => setName(e.target.value)}
+                            />
+                            <Input
+                              w="100%"
+                              bg="white"
+                              type="text"
+                              placeholder="Contact Number"
+                              value={contact}
+                              onChange={(e) => setContact(e.target.value)}
+                            />
+                          </HStack>
+                          <HStack
+                            justifyContent="space-around"
+                            spacing={isMobile ? "1rem" : "2rem"}
+                          >
+                            <div
+                              style={{
+                                position: "relative",
+                              }}
+                            >
+                              <DatePicker
+                                customInput={
+                                  <Input
+                                    w="100%"
+                                    bg="white"
+                                    style={customDatePickerInputStyles}
+                                  />
+                                }
+                                className="custom-date-picker"
+                                showIcon
+                                selected={startDate}
+                                onChange={(date) => setStartDate(date)}
+                                fixedHeight
+                                filterDate={filterPastAndTodayDates}
+                                placeholderText="Date"
+                              />
+                            </div>
+                            <div
+                              style={{
+                                position: "relative",
+                              }}
+                            >
+                              <DatePicker
+                                customInput={
+                                  <Input
+                                    w="100%"
+                                    bg="white"
+                                    style={customDatePickerInputStyles}
+                                  />
+                                }
+                                className="custom-date-picker"
+                                showIcon
+                                fixedHeight
+                                selected={startDate}
+                                onChange={(date) => setStartDate(date)}
+                                showTimeSelect
+                                showTimeSelectOnly
+                                timeIntervals={15}
+                                timeCaption="Time"
+                                dateFormat="h:mm aa"
+                                placeholderText="Time"
+                              />
+                            </div>
+                          </HStack>
+                          <Flex
+                            w="100%"
+                            justifyContent={
+                              isMobile ? "center" : "space-between"
+                            }
+                          >
+                            <Input
+                              w={isMobile ? "100%" : "16rem"}
+                              bg="white"
+                              type="text"
+                              placeholder="People"
+                              value={people}
+                              onChange={(e) => setPeople(e.target.value)}
+                            />
+                            <Select
+                              w={isMobile ? "100%" : "16rem"}
+                              fontWeight="light"
+                              color="gray"
+                              bg="white"
+                              value={place}
+                              onChange={(e) => setPlace(e.target.value)}
+                            >
+                              <option value="smoking">Smoking</option>
+                              <option value="non-smoking">Non-Smoking</option>
+                            </Select>
+                          </Flex>
+                        </VStack>
+                      </Box>
                     </Stack>
 
                     <Button bg="#FFC700" onClick={handleConfirm} mt="2rem">
