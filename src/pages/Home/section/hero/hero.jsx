@@ -91,9 +91,9 @@ export default function Hero() {
         <Image
           src={L2}
           position="absolute"
-          top={isMobileScreen ? "23%":"16%"}
-          left={isMobileScreen ? "59%":"45%"}
-          w={isMobileScreen ? "20%":"20%"}
+          top={isMobileScreen ? "15%":"16%"}
+          left={isMobileScreen ? "51%":"45%"}
+          w="20%"
           transform="rotate(20deg)"
           zIndex=""
         />
@@ -104,9 +104,9 @@ export default function Hero() {
         <Image
           src={Pork}
           position="absolute"
-          left={isMobileScreen ? "60%":"50%"}
-          top={isMobileScreen ?"16%":"5%"}
-          w={isMobileScreen ? "15rem":"75rem"}
+          left="50%"
+          top={isMobileScreen ?"15%":"5%"}
+          w={isMobileScreen ? "12rem":"75rem"}
           zIndex="1"
         />
       </Box>
@@ -115,9 +115,9 @@ export default function Hero() {
         <Image
           src={L1}
           position="absolute"
-          left={isMobileScreen ? "80%":"72%"}
-          top={isMobileScreen ? "28%":"64%"}
-          w={isMobileScreen ? "36%":"50%"}
+          left="72%"
+          top={isMobileScreen ? "10%":"64%"}
+          w={isMobileScreen ? "30%":"50%"}
           zIndex="2"
         />
       </Box>
@@ -127,9 +127,9 @@ export default function Hero() {
         <VStack align="start" w={{ base: "100%", md: "55%" }}>
           <Box w={isMobileScreen ?"10rem":"40rem"}>
           <Text
-            lineHeight={isMobileScreen ? "2rem":"120px"}
+            lineHeight={isMobileScreen ? "":"120px"}
             color="white"
-           fontSize={isMobileScreen ?"2rem": "6rem"}
+           fontSize={isMobileScreen ?"1.5rem": "6rem"}
             fontWeight="semi-bold"
             fontFamily="Abril-Fatface"
           >
@@ -172,7 +172,7 @@ export default function Hero() {
                 buttonText="Explore"
                 hasBorder={false}
                 isYellowButton={true}
-                width={isMobileScreen ? "1.2rem":"13rem"}
+                width="13rem"
               />
             </HStack>
           </Box>
