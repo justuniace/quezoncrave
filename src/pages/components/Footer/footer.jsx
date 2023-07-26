@@ -22,6 +22,13 @@ import { useState } from "react";
 import emailjs from "@emailjs/browser";
 
 export const Footer = () => {
+
+   const facebookProfileURL =
+     "https://www.facebook.com/profile.php?id=YOUR_PROFILE_ID";
+
+     const Instagram =
+       "https://instagram.com/quezoncrave?igshid=ZDc4ODBmNjlmNQ==";
+
   const [isMobile] = useMediaQuery("(max-width: 767px)");
   const [isTablet] = useMediaQuery("(max-width: 1023px)");
 
@@ -120,7 +127,9 @@ export const Footer = () => {
             >
               <Box
                 as="a"
-                href="#"
+                href={facebookProfileURL}
+                target="_blank"
+                rel="noopener noreferrer"
                 color="white"
                 _hover={{
                   transform: "scale(1.2)",
@@ -131,7 +140,9 @@ export const Footer = () => {
               </Box>
               <Box
                 as="a"
-                href="#"
+                href={Instagram}
+                target="_blank"
+                rel="noopener noreferrer"
                 color="white"
                 _hover={{
                   transform: "scale(1.2)",
@@ -251,7 +262,7 @@ export const Footer = () => {
                 textOverflow="ellipsis"
                 fontSize={isMobile ? "12px" : "15px"}
               >
-                Anong Location Natin
+                Barangay San Agustine St. Acacia, Rosario Cavite
               </Text>
             </HStack>
           </VStack>
@@ -280,4 +291,3 @@ export const Footer = () => {
     </Center>
   );
 };
-

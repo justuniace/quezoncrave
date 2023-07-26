@@ -18,11 +18,11 @@ import L2 from "../../../../assets/hero/leaves2.webp";
 import Pork from "../../../../assets/hero/hero.svg";
 import Bg from "../../../../assets/hero/b1.webp";
 // import { motion } from "framer-motion";
-import {Reveal} from "../../../components/Observer/useObserver"
+//import {Reveal} from "../../../components/Observer/useObserver"
 
 export default function Hero() {
   const [isMobileScreen] = useMediaQuery("(max-width: 40em)");
- 
+
   return (
     <Flex
       h="100%"
@@ -91,35 +91,35 @@ export default function Hero() {
         <Image
           src={L2}
           position="absolute"
-          top={isMobileScreen ? "23%":"16%"}
-          left={isMobileScreen ? "59%":"45%"}
-          w={isMobileScreen ? "20%":"20%"}
+          top={isMobileScreen ? "23%" : "16%"}
+          left={isMobileScreen ? "59%" : "45%"}
+          w={isMobileScreen ? "20%" : "20%"}
           transform="rotate(20deg)"
           zIndex=""
         />
       </Box>
 
       {/* hero-image */}
-      <Reveal width="fit-content">
-        <Box w={isMobileScreen ? "13rem" : ""}>
-          <Image
-            src={Pork}
-            position="relative"
-            left={isMobileScreen ? "60%" : "50%"}
-            top={isMobileScreen ? "16%" : "5%"}
-            w={isMobileScreen ? "15rem" : "75rem"}
-            zIndex="1"
-          />
-        </Box>
-      </Reveal>
+      {/* <Reveal width="fit-content"> */}
+      <Box w={isMobileScreen ? "13rem" : ""}>
+        <Image
+          src={Pork}
+          position="absolute"
+          left={isMobileScreen ? "60%" : "50%"}
+          top={isMobileScreen ? "16%" : "5%"}
+          w={isMobileScreen ? "15rem" : "75rem"}
+          zIndex="1"
+        />
+      </Box>
+      {/* </Reveal> */}
       {/* leaves1 bottom */}
       <Box>
         <Image
           src={L1}
           position="absolute"
-          left={isMobileScreen ? "80%":"72%"}
-          top={isMobileScreen ? "28%":"64%"}
-          w={isMobileScreen ? "36%":"50%"}
+          left={isMobileScreen ? "80%" : "72%"}
+          top={isMobileScreen ? "28%" : "64%"}
+          w={isMobileScreen ? "36%" : "50%"}
           zIndex="2"
         />
       </Box>
@@ -132,23 +132,23 @@ export default function Hero() {
         w="40rem"
       >
         <VStack align="start" w={{ base: "100%", md: "55%" }}>
-          <Box w={isMobileScreen ?"10rem":"40rem"}>
-          <Text
-            lineHeight={isMobileScreen ? "2rem":"120px"}
-            color="white"
-           fontSize={isMobileScreen ?"2rem": "6rem"}
-            fontWeight="semi-bold"
-            fontFamily="Abril-Fatface"
-          >
-            <Highlight
-              query="Cravings."
-              styles={{
-                color: "#FFC700",
-              }}
+          <Box w={isMobileScreen ? "10rem" : "40rem"}>
+            <Text
+              lineHeight={isMobileScreen ? "2rem" : "120px"}
+              color="white"
+              fontSize={isMobileScreen ? "2rem" : "6rem"}
+              fontWeight="semi-bold"
+              fontFamily="Abril-Fatface"
             >
-              Satisfy Your Cravings.
-            </Highlight>
-          </Text>
+              <Highlight
+                query="Cravings."
+                styles={{
+                  color: "#FFC700",
+                }}
+              >
+                Satisfy Your Cravings.
+              </Highlight>
+            </Text>
           </Box>
 
           <Box w={isMobileScreen ? "10rem" : "30rem"}>
@@ -177,7 +177,7 @@ export default function Hero() {
                 buttonText="Explore"
                 hasBorder={false}
                 isYellowButton={true}
-                width={isMobileScreen ? "1.2rem":"13rem"}
+                width={isMobileScreen ? "1.2rem" : "13rem"}
               />
             </HStack>
           </Box>
