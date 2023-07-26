@@ -29,7 +29,7 @@ function Breakfast({ activeTab }) {
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const breakfastData = await client.fetch(
+        const breakfast = await client.fetch(
           `*[_type == "breakfast"]{
             _id,
             price,
@@ -45,7 +45,7 @@ function Breakfast({ activeTab }) {
             }
           }`
         );
-        setBreakfast(breakfastData);
+        setBreakfast(breakfast);
         setIsLoading(false);
       } catch (error) {
         console.error("Error fetching breakfast data:", error);
@@ -91,10 +91,10 @@ function Breakfast({ activeTab }) {
 
   return (
     <Box padding="0 7rem">
-      {/* Skeleton Loading Effect for all Cards */}
+     
       <Wrap spacing="5rem" justify="center">
         {isLoading
-          ? // Display skeleton placeholders while isLoading is true
+          ? 
             Array.from({ length: 6 }).map((_, index) => (
               <WrapItem key={`skeleton-${index}`} width={cardWidth}>
                 <Card
@@ -155,7 +155,7 @@ function Breakfast({ activeTab }) {
                 </Card>
               </WrapItem>
             ))
-          : // Display the actual data once isLoading is false
+          : 
             breakfast.map((item) => (
               <WrapItem key={item.slug.current} width={cardWidth}>
                 <Card
