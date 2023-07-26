@@ -18,17 +18,11 @@ import L2 from "../../../../assets/hero/leaves2.webp";
 import Pork from "../../../../assets/hero/hero.svg";
 import Bg from "../../../../assets/hero/b1.webp";
 // import { motion } from "framer-motion";
-//import {Reveal} from "../../../components/Observer/useObserver"
+import {Reveal} from "../../../components/Observer/useObserver"
 
 export default function Hero() {
   const [isMobileScreen] = useMediaQuery("(max-width: 40em)");
-  // const { ref, isInView } = useObserver();
-
-  // const slideInAnimation = {
-  //   hidden: { opacity: 0, y: 30 },
-  //   visible: { opacity: 1, y: 0 },
-  // };
-
+ 
   return (
     <Flex
       h="100%"
@@ -106,18 +100,19 @@ export default function Hero() {
       </Box>
 
       {/* hero-image */}
-      {/* <Reveal width="fit-content"> */}
+      <Reveal width="fit-content">
         <Box w={isMobileScreen ? "13rem" : ""}>
           <Image
             src={Pork}
-            position="absolute"
+            position="relative"
             left={isMobileScreen ? "60%" : "50%"}
             top={isMobileScreen ? "16%" : "5%"}
             w={isMobileScreen ? "15rem" : "75rem"}
             zIndex="1"
           />
         </Box>
-      {/* </Reveal> */}
+      </Reveal>
+
       {/* leaves1 bottom */}
       <Box>
         <Image

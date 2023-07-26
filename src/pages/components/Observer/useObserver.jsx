@@ -16,6 +16,7 @@ export  const  Reveal = ({ children, width = "fit-content" }) => {
   const mainControls = useAnimation();
 
   useEffect(() => {
+    console.log("isInView changed:", isInView);
     if (isInView) {
       mainControls.start("visible");
     }
