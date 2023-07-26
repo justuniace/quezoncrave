@@ -3,7 +3,7 @@ import { BsPatchCheckFill } from "react-icons/bs";
 import emailjs from "@emailjs/browser";
 //import { useToast } from "@chakra-ui/react";
 import ConfirmModal from "./ConfirmationModal";
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 
 import {
   Modal,
@@ -19,16 +19,14 @@ import {
   Spacer,
   HStack,
   Button,
-  Divider
+  Divider,
 } from "@chakra-ui/react";
 import { useToast } from "@chakra-ui/react";
 
-
 export function Shipping({ onClose, shippingData }) {
-
   //const toast = useToast();
-const [isModalOpen, setIsModalOpen] = useState(false);
-const [emailSent, setEmailSent] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [emailSent, setEmailSent] = useState(false);
   const toast = useToast();
 
   const {
@@ -47,79 +45,69 @@ const [emailSent, setEmailSent] = useState(false);
     itemSize,
   } = shippingData;
 
-    const handleConfirm = async () =>{
+  const handleConfirm = async () => {
+    const currentDate = new Date().toLocaleString();
+    const templateParams = {
+      currentDate: currentDate,
+      to_email: email,
+      from_name: name,
+      name: name,
+      gender: gender,
+      contactNumber: contactNumber,
+      email: email,
+      barangay: barangay,
+      street: street,
+      houseno: houseno,
+      landmark: landmark,
+      message: message,
+      itemName: itemName,
+      itemQuantity: itemQuantity,
+      itemSize: itemSize,
+      itemPrice: itemPrice,
+      total: total,
+    };
 
+    console.log("Sending email with the following data:");
+    console.log(templateParams);
 
- 
-  const currentDate = new Date().toLocaleString();
-      const templateParams = {
-        currentDate: currentDate,
-        to_email: email,
-        from_name: name,
-        name: name,
-        gender: gender,
-        contactNumber: contactNumber,
-        email: email,
-        barangay: barangay,
-        street: street,
-        houseno: houseno,
-        landmark: landmark,
-        message: message,
-        itemName: itemName,
-        itemQuantity: itemQuantity,
-        itemSize: itemSize,
-        itemPrice: itemPrice,
-        total: total
-      };
+    try {
+      const response = await emailjs.send(
+        "service_c7917pd",
+        "template_m0l0zdm",
+        templateParams,
+        "adU95kGqRHf8v9br6"
+      );
+      console.log(response);
+      console.log("data from response ", JSON.stringify(response));
 
-      console.log("Sending email with the following data:");
-      console.log(templateParams);
+      toast({
+        title: "Order Placed.",
+        description: "Send Successfully",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+        position: "bottom",
+      });
 
-      try {
-        const response = await emailjs.send(
-          "service_c7917pd",
-          "template_m0l0zdm",
-          templateParams,
-          "adU95kGqRHf8v9br6"
-        );
-        console.log(response);
-        console.log("data from response ", JSON.stringify(response));
-
-       
-
-       toast({
-          title: "Order Placed.",
-          description: "Send Successfully",
-          status: "success",
-          duration: 3000,
-          isClosable: true,
-          position: "bottom",
-        }); 
-      
-          setEmailSent(true);
-      } catch (error) {
-        console.log(error);
-
-       
-      }
+      setEmailSent(true);
+    } catch (error) {
+      console.log(error);
     }
-    useEffect(() => {
-      if (emailSent) {
-        setIsModalOpen(true); // Show the ConfirmModal after the email is sent
-      }
-    }, [emailSent]);
+  };
+  useEffect(() => {
+    if (emailSent) {
+      setIsModalOpen(true); // Show the ConfirmModal after the email is sent
+    }
+  }, [emailSent]);
 
-    
-    
-const totalAmount = (itemPrice) => {
-  let shippingFee = 20;
-  shippingFee += parseFloat(itemPrice);
-  return shippingFee.toFixed(2);
-};
+  const totalAmount = (itemPrice) => {
+    let shippingFee = 20;
+    shippingFee += parseFloat(itemPrice);
+    return shippingFee.toFixed(2);
+  };
 
- const total = totalAmount(itemPrice);
+  const total = totalAmount(itemPrice);
 
-    
   return (
     <>
       <Modal
@@ -194,6 +182,7 @@ const totalAmount = (itemPrice) => {
                 </Text>
               </HStack>
             </VStack>
+            <Text>We only accept Cash on Delivery!</Text>
           </ModalBody>
           <ModalFooter>
             <Button

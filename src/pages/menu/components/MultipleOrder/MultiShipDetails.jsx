@@ -190,7 +190,7 @@ const { setCartItems } = useContext(CartContext);
                   <br />
                 </VStack>
               ))}
-              <Text></Text>
+
               <Divider borderWidth="2px" w="12rem" />
               <HStack gap="4.5rem">
                 <Text fontSize="13px">Delivery Fee</Text>
@@ -204,6 +204,9 @@ const { setCartItems } = useContext(CartContext);
                 </Text>
               </HStack>
             </VStack>
+            <Text>
+              We only accept Cash on Delivery!
+            </Text>
           </ModalBody>
           <ModalFooter>
             <Button
