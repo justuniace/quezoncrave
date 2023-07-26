@@ -35,14 +35,10 @@ import { Link } from "react-router-dom";
                 Menu
               </Link>
             </MenuItem>
-            <MenuItem>
-              <Link to="/blog" onClick={toggleMenu}>
-                Blog
-              </Link>
-            </MenuItem>
+            
             <MenuItem>
               <Link to="/about" onClick={toggleMenu}>
-                About
+                Blog
               </Link>
             </MenuItem>
           </Flex>

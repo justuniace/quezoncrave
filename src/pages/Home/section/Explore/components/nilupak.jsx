@@ -5,12 +5,12 @@ import Niyubak from "../../../../../assets/explore/nilupak.webp";
 
 function Nilupak() {
   return (
-    <HStack alignItems="center">
+    <HStack alignItems="center" >
       <Box
         position="relative"
         w="90%"
         justifyContent="center"
-        left="45rem"
+        left="55rem"
         top="-15rem"
       >
         <Box position="absolute" mt="6rem">
@@ -20,10 +20,10 @@ function Nilupak() {
           <img src={Niyubak} alt="Nilupak" />
         </Box>
       </Box>
-      <Box w="100%" mt="-21rem" ml="-40rem">
+      <Box w="100%" mt="-21rem" ml="-60rem">
         <ExploreContent
           title="Nilupak/Niyubak"
-          details="Lorem ipsum dolor sit amet. Sed laudantium veniam ea dolorum alias aut voluptates dolore qui labore enim nam accusantium incidunt ad harum saepe."
+          details="A sweet that feels like a day in the barrio, a stop from the busy streets municipality. A dessert that can be a staple from anything! If a taste like your childhood is what you desire, Nilupak/Niyubak is your stop for desserts!."
           //"Nilupak is a class of traditional Filipino delicacies made from mashed or pounded starchy foods mixed with coconut milk (or condensed milk and butter) and sugar. They are molded into various shapes and traditionally served on banana leaves with toppings of grated young coconut (buko), various nuts, cheese, butter, or margarine."
         />
       </Box>

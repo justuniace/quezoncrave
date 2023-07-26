@@ -20,10 +20,11 @@ function BukoJuice() {
           <img src={Coconut} alt="Buko Juice" />
         </Box>
       </Box>
-      <Box mt="-12em" ml="18px">
+      <Box mt="-12em" ml="10rem">
         <ExploreContent
           title="Buko Juice"
-          details="Lorem ipsum dolor sit amet. Sed laudantium veniam ea dolorum alias aut voluptates dolore qui labore enim nam accusantium incidunt ad harum saepe."
+          details="A taste of the countryside. Buko Juice is a drink that feels like a refreshing stop from a hike in the mountain in Quezon! A refreshment straight from the palm trees! if it's what you want experience such nostalgic feelings, Buko Juice is the best!."
+
           //"Buko Juice is a simple refreshing and very healthy mixture of young coconut water, young coconut meat, and milk."
         />
       </Box>
