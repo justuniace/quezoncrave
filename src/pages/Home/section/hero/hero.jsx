@@ -91,9 +91,9 @@ export default function Hero() {
         <Image
           src={L2}
           position="absolute"
-          top={isMobileScreen ? "23%" : "16%"}
-          left={isMobileScreen ? "59%" : "45%"}
-          w={isMobileScreen ? "20%" : "20%"}
+          top={isMobileScreen ? "23%":"16%"}
+          left={isMobileScreen ? "59%":"45%"}
+          w={isMobileScreen ? "20%":"20%"}
           transform="rotate(20deg)"
           zIndex=""
         />
@@ -112,15 +112,14 @@ export default function Hero() {
           />
         </Box>
       </Reveal>
-
       {/* leaves1 bottom */}
       <Box>
         <Image
           src={L1}
           position="absolute"
-          left={isMobileScreen ? "80%" : "72%"}
-          top={isMobileScreen ? "28%" : "64%"}
-          w={isMobileScreen ? "36%" : "50%"}
+          left={isMobileScreen ? "80%":"72%"}
+          top={isMobileScreen ? "28%":"64%"}
+          w={isMobileScreen ? "36%":"50%"}
           zIndex="2"
         />
       </Box>
@@ -133,23 +132,23 @@ export default function Hero() {
         w="40rem"
       >
         <VStack align="start" w={{ base: "100%", md: "55%" }}>
-          <Box w={isMobileScreen ? "10rem" : "40rem"}>
-            <Text
-              lineHeight={isMobileScreen ? "2rem" : "120px"}
-              color="white"
-              fontSize={isMobileScreen ? "2rem" : "6rem"}
-              fontWeight="semi-bold"
-              fontFamily="Abril-Fatface"
+          <Box w={isMobileScreen ?"10rem":"40rem"}>
+          <Text
+            lineHeight={isMobileScreen ? "2rem":"120px"}
+            color="white"
+           fontSize={isMobileScreen ?"2rem": "6rem"}
+            fontWeight="semi-bold"
+            fontFamily="Abril-Fatface"
+          >
+            <Highlight
+              query="Cravings."
+              styles={{
+                color: "#FFC700",
+              }}
             >
-              <Highlight
-                query="Cravings."
-                styles={{
-                  color: "#FFC700",
-                }}
-              >
-                Satisfy Your Cravings.
-              </Highlight>
-            </Text>
+              Satisfy Your Cravings.
+            </Highlight>
+          </Text>
           </Box>
 
           <Box w={isMobileScreen ? "10rem" : "30rem"}>
@@ -178,7 +177,7 @@ export default function Hero() {
                 buttonText="Explore"
                 hasBorder={false}
                 isYellowButton={true}
-                width={isMobileScreen ? "1.2rem" : "13rem"}
+                width={isMobileScreen ? "1.2rem":"13rem"}
               />
             </HStack>
           </Box>
