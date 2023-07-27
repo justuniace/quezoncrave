@@ -12,7 +12,10 @@ import FlipImageCard4 from './components/FlipImage4';
 import {Reveal} from "../components/Observer/useObserver"
 import ChefModal from "../about/components/chefModal";
 import Eu from "../../assets/eu.jpg";
-
+import mc from "../../assets/mc.webp";
+import cha from "../../assets/cha.webp";
+import arv from "../../assets/arv.webp";
+import dan from "../../assets/dan.webp";
 export const Blog = () => {
   const [isMobileScreen] = useMediaQuery("(max-width: 60em)");
   const [isTabletScreen] = useMediaQuery("(max-width: 768px)");
@@ -20,22 +23,22 @@ export const Blog = () => {
   
    const carouselItems = [
     
-     { image: Eu, 
+     { image: mc, 
      author: "Mc Vincent Paredes" },
      {
        image: Eu,
        author: "Eunice C. Valdez",
      },
      {
-       image: Eu,
+       image: arv,
        author: "Arvin Lroga",
      },
      {
-       image:Eu,
+       image:cha,
        author: "Chrishalyn Apor",
      },
      {
-       image:Eu,
+       image:dan,
        author: "Jan Daniel Garduna",
      },
     
