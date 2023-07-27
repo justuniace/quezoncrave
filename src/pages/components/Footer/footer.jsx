@@ -303,7 +303,7 @@ export const Footer = () => {
           opacity=".8"
         >
           <Text>Copyright 2023 Quezon Crave.</Text>
-          <HStack mr={isMobile ? "" : "3rem"} onClick={handleScrollToTop}>
+          <HStack mr={isMobile ? "" : "6rem"} onClick={handleScrollToTop}>
             <Link to="privacy-policy">
               <Text>Privacy Policy</Text>
             </Link>{" "}
