@@ -3,6 +3,7 @@ import { Box, Text, VStack } from "@chakra-ui/react";
 import breakPoints from "../../theme/breakpoints";
 
 function PrivacyPolicy() {
+  
   return (
     <Box w={breakPoints} margin="auto" paddingBlockStart="10rem">
       <Box maxW="60rem" margin="auto" mb="7rem">
