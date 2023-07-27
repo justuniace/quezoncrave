@@ -274,10 +274,10 @@ console.log("cartItems in Cart component:", cartItems);
           mt="1rem"
           boxShadow="0 4px 8px 0 rgba(0, 0, 0, 0.2)"
           border="1px solid"
-          borderColor="#452B1A"
+          borderColor="#FFC700"
           _hover={{ opacity: ".9" }}
           p="1rem 10rem"
-          bg="#452B1A"
+          bg="#FFC700"
           color="white"
           onClick={handlePlaceOrder}
           leftIcon={<BiCartDownload />}
@@ -289,7 +289,6 @@ console.log("cartItems in Cart component:", cartItems);
         <MultipleOrder
           onClose={() => {
             setMultipleOrderOpen(false);
-            
           }}
           cartItems={cartItems}
           totalAmount={totalAmount()}
