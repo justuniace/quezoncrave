@@ -20,7 +20,8 @@ function FlipImageCard() {
       <Card
         w="21rem"
         h="27rem"
-        boxShadow="2xl"
+        bg="gray.200"
+        boxShadow="l"
         borderRadius="30px"
         marginTop="50px"
         overflow="visible"

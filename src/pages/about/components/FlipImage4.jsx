@@ -19,7 +19,8 @@ function FlipImageCard() {
       <Card
         w="21rem"
         h="27rem"
-        boxShadow="2xl"
+        bg="gray.200"
+        boxShadow="l"
         borderRadius="30px"
         marginTop="50px"
         overflow="visible"
@@ -48,7 +49,7 @@ function FlipImageCard() {
             <Text fontWeight="semibold" fontSize="20px">
               Kare-Kare
             </Text>
-            <Button  onClick={toggleModal} bg="#FFC700">
+            <Button onClick={toggleModal} bg="#FFC700">
               Recipe
             </Button>
           </VStack>

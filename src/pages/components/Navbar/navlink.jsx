@@ -8,12 +8,19 @@ function Navlink(props) {
   const { nav } = props;
   const appContext = useContext(AppContext);
   const location = useLocation();
+   const handleScrollToTop = () => {
+     // Find the element to scroll to (documentElement for modern browsers, body for older ones)
+     const element = document.documentElement || document.body;
+     // Scroll to the top of the page smoothly
+     element.scrollIntoView({ behavior: "smooth" });
+   };
 
   const isActive =
     location.pathname === (nav === "Home" ? "/" : `/${nav.toLowerCase()}`);
 
   const handleClick = () => {
     appContext?.setActiveNav(nav);
+    handleScrollToTop();
   };
 
   return (
