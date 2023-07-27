@@ -36,8 +36,9 @@ export default function Hero() {
       left="0"
       right="0"
     >
-      <Box>
         {/* background image right*/}
+      <Box>
+      
         <Image
           width="8rem"
           src={Bg}

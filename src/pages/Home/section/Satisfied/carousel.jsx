@@ -23,7 +23,7 @@ const BlogCarousel = ({carouselItems}) => {
        position: "absolute",
        cursor: isSliding ? "default" : "pointer",
        top: "130%",
-       right: "45%", // Adjust the right value to center horizontally
+       right: "45%", 
        transform: "translateY(-50%)",
        zIndex: 10,
      }}

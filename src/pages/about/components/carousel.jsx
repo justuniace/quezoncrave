@@ -1,7 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import Slider from "react-slick";
-import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
+import {
+  BsFillArrowLeftCircleFill,
+  BsFillArrowRightCircleFill,
+} from "react-icons/bs";
 import { Box, useBreakpointValue } from "@chakra-ui/react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -26,15 +29,14 @@ const BlogCarousel = () => {
       style={{
         position: "absolute",
         cursor: isSliding ? "default" : "pointer",
-        top: "50%",
-        right: 20,
+        top: "120%",
+        right: "45%",
         transform: "translateY(-50%)",
         zIndex: 10,
-        marginRight: "-90px", // Added margin
       }}
       onClick={isSliding ? null : onClick}
     >
-      <FaArrowRight />
+      <BsFillArrowRightCircleFill style={{ fontSize: "30px" }} />
     </div>
   );
 
@@ -43,15 +45,21 @@ const BlogCarousel = () => {
       style={{
         position: "absolute",
         cursor: isSliding ? "default" : "pointer",
-        top: "50%",
-        left: 20,
+        top: "120%",
+        left: "45%",
         transform: "translateY(-50%)",
         zIndex: 10,
-        marginLeft: "-90px", // Added margin
       }}
       onClick={isSliding ? null : onClick}
     >
-      <FaArrowLeft />
+      <BsFillArrowLeftCircleFill
+        style={{
+          fontSize: "30px",
+          boxShadow: "2xl",
+          _hover: { transform: "scale(5)" },
+          transition: "transform 0.1s",
+        }}
+      />
     </div>
   );
 
@@ -122,13 +130,14 @@ const BlogCarousel = () => {
             key={idx}
             className={idx === imageIndex ? "slide activeSlide" : "slide"}
             sx={{
+              borderRadius: "50px",
               opacity: idx === imageIndex ? 1 : 0.5,
               transform: `scale(${idx === imageIndex ? 1.1 : 0.9})`,
               transition: "transform 300ms",
               zIndex: idx === imageIndex ? 1 : 0,
             }}
           >
-            <img src={img} alt={`Slide ${idx + 1}`} width="95%"/>
+            <img src={img} alt={`Slide ${idx + 1}`} width="95%" />
           </Box>
         ))}
       </Slider>

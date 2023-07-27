@@ -1,67 +1,48 @@
-import React from 'react';
+
 import laing from "../../../assets/Blog/laing.webp";
-import { Center, Box, Button ,Text} from '@chakra-ui/react';
+import { Card, Flex, VStack, Box, Text, Button } from "@chakra-ui/react";
 
-const FlipImageCard = ({ frontText}) => {
-
-  const shapeStyles = {
-    width: '300px',
-    height: '400px',
-    borderRadius: '10px',
-    background: '#FFF0DC',
-    transition: 'transform 2.5s',
-    transformStyle: 'preserve-3d',
-  };
-
+function FlipImageCard() {
   return (
-
-    <Box
-    className="container1"
-    bg="gray.100"
-    boxShadow="2xl"
-    _hover={{ transform: "scale(1.05)" }}
-    transition={{ duration: 10 }}
-  >
-      <Box className="front" style={shapeStyles}>
-        <Center>
-      <img
-          src={laing}
-          alt="Front Image"
-          style={{ width: '280px', 
-          height: '300px', 
-          borderRadius: '10px', 
-          marginTop: "5px",
-          marginRight: "5px",
-          marginBottom: "5px",
-          marginLeft: "5px"}}
-        />
-        </Center>
-        <h2>{frontText}</h2>
-        <Text textAlign="center"
-              fontWeight="semibold"
-              fontSize="20px"
-              fontFamily="Abril-Fatface">
-          Laing
-        </Text>
-        <Center mt="1rem">
-          <Button onClick="Recipe-1" 
-                  colorScheme="yellow" 
-                  backgroundColor="#452B1A">
-                    See Recipe 
-                    </Button>
-        </Center>
-      </Box>
-    </Box>
+    <>
+      <Card
+        w="21rem"
+        h="27rem"
+        boxShadow="2xl"
+        borderRadius="30px"
+        marginTop="50px"
+        overflow="visible"
+        display="flex"
+        flexDirection="column"
+        cursor="pointer"
+        _hover={{ transform: "scale(1.05)" }}
+        transition={{ duration: 10 }}
+      >
+        <Flex flexDir="column" h="100%" justifyContent="space-between">
+          <VStack spacing={6}>
+            <Box>
+              <img
+                src={laing}
+                style={{
+                  width: "300px",
+                  height: "280px",
+                  borderRadius: "10px",
+                  marginTop: "5px",
+                  marginRight: "5px",
+                  marginBottom: "5px",
+                  marginLeft: "5px",
+                }}
+              />
+            </Box>
+            <Text fontWeight="semibold" fontSize="20px">
+             Laing
+            </Text>
+            <Button bg="#FFC700">Recipe</Button>
+          </VStack>
+        </Flex>
+      </Card>
+    </>
   );
-};
+}
 
-const App = () => {
-    return (
-      <Box className="container">
-        <FlipImageCard/>
-      </Box>
-    );
-  };
-  
-
-export default App;
+export default FlipImageCard;
