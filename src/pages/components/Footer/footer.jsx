@@ -44,6 +44,7 @@ export const Footer = () => {
     element.scrollIntoView({ behavior: "smooth" });
   };
 
+  const googleMapURL = "https://goo.gl/maps/dmBL5TTeF6honCwH8";
 
   const [isMobile] = useMediaQuery("(max-width: 767px)");
   const [isTablet] = useMediaQuery("(max-width: 1023px)");
@@ -148,6 +149,7 @@ export const Footer = () => {
                 rel="noopener noreferrer"
                 color="white"
                 _hover={{
+                  cursor: "pointer",
                   transform: "scale(1.2)",
                   transition: "transform 0.3s ease",
                 }}
@@ -161,6 +163,7 @@ export const Footer = () => {
                 rel="noopener noreferrer"
                 color="white"
                 _hover={{
+                  cursor: "pointer",
                   transform: "scale(1.2)",
                   transition: "transform 0.3s ease",
                 }}
@@ -191,10 +194,9 @@ export const Footer = () => {
               ml={isMobile ? "" : "2rem"}
             >
               <Box
-                as="a"
-                href="#"
                 color="white"
                 _hover={{
+                  cursor: "pointer",
                   transform: "scale(1.2)",
                   transition: "transform 0.3s ease",
                 }}
@@ -246,6 +248,7 @@ export const Footer = () => {
               <Button
                 onClick={handleSubscribe}
                 style={{
+                  cursor: "pointer",
                   fontSize: "12px",
                   background: "#FFF0DC",
                 }}
@@ -254,6 +257,7 @@ export const Footer = () => {
               </Button>
             </HStack>
             <HStack
+              onClick={() => window.open(googleMapURL, "_blank")}
               fontFamily="inter"
               spacing="1rem"
               opacity=".8"
@@ -268,6 +272,7 @@ export const Footer = () => {
                 href="#"
                 color="white"
                 _hover={{
+                  cursor: "pointer",
                   transform: "scale(1.2)",
                   transition: "transform 0.3s ease",
                 }}
@@ -277,10 +282,11 @@ export const Footer = () => {
               <Text
                 //whiteSpace="nowrap"
                 //overflow="hidden"
+                style={{ cursor: "pointer" }}
                 textOverflow="ellipsis"
                 fontSize={isMobile ? "12px" : "15px"}
               >
-                Barangay San Agustine St. Acacia, Rosario Cavite
+                752 P. Burgos Ave, San Roque, Cavite City, 4100 Cavite
               </Text>
             </HStack>
           </VStack>
