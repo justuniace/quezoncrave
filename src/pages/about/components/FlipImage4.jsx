@@ -1,8 +1,19 @@
-
+import { useState } from "react";
 import kare2x from "../../../assets/Blog/kare2x.webp";
 import { Card, Flex, VStack, Box, Text, Button } from "@chakra-ui/react";
+import KareModal from "../modals/kareModal";
+
 
 function FlipImageCard() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
   return (
     <>
       <Card
@@ -37,10 +48,17 @@ function FlipImageCard() {
             <Text fontWeight="semibold" fontSize="20px">
               Kare-Kare
             </Text>
-            <Button bg="#FFC700">Recipe</Button>
+            <Button  onClick={toggleModal} bg="#FFC700">
+              Recipe
+            </Button>
           </VStack>
         </Flex>
       </Card>
+      <KareModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        toggleModal={toggleModal}
+      />
     </>
   );
 }

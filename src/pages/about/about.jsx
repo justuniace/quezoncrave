@@ -4,17 +4,46 @@ import blob from "../../assets/blob.svg";
 import AboutUsBg from "../../assets/aboutUsBg.webp";
 import B1 from "../../assets/explore/explore.webp";
 import BlogCarousel  from "./components/carousel";
-import Brush from "../../assets/brush.svg";
+
 import FlipImageCard1 from './components/FlipImage1';
  import FlipImageCard2 from './components/FlipImage2';
 import FlipImageCard3 from './components/FlipImage3';
 import FlipImageCard4 from './components/FlipImage4';
 import {Reveal} from "../components/Observer/useObserver"
+import ChefModal from "../about/components/chefModal";
+import Eu from "../../assets/eu.jpg";
 
 export const Blog = () => {
   const [isMobileScreen] = useMediaQuery("(max-width: 60em)");
   const [isTabletScreen] = useMediaQuery("(max-width: 768px)");
   
+  
+   const carouselItems = [
+    
+     { image: Eu, 
+     author: "Mc Vincent Paredes" },
+     {
+       image: Eu,
+       author: "Eunice C. Valdez",
+     },
+     {
+       image: Eu,
+       author: "Arvin Lroga",
+     },
+     {
+       image:Eu,
+       author: "Chrishalyn Apor",
+     },
+     {
+       image:Eu,
+       author: "Jan Daniel Garduna",
+     },
+    
+
+    
+   ];
+
+
   return (
     <Box
       w="100%"
@@ -141,7 +170,7 @@ export const Blog = () => {
         </Box>
       </HStack>
 
-      <VStack>
+      <VStack spacing="4rem">
         <Box>
           <Reveal width="fit-content">
             <Text
@@ -157,6 +186,12 @@ export const Blog = () => {
             </Text>
           </Reveal>
         </Box>
+        <Reveal width="fit-content">
+          <Text>
+            A taste of quezon for those that craves authentic dish from the
+            region. home cooked giving it the vibe of home!
+          </Text>
+        </Reveal>
       </VStack>
 
       <Center>
@@ -167,60 +202,50 @@ export const Blog = () => {
 
       <VStack mt="5rem">
         <Box>
-          <Text
-            position="relative"
-            fontSize={isMobileScreen ? "30px" : "50px"}
-            fontWeight="semibold"
-            textAlign={isMobileScreen ? "center" : ""}
-            fontFamily="Abril-Fatface"
-          >
-            Our <span style={{ color: "#FFC700" }}>Best Sellers</span>
-          </Text>
+          <Reveal width="fit-content">
+            <Text
+              position="relative"
+              fontSize={isMobileScreen ? "30px" : "50px"}
+              fontWeight="semibold"
+              textAlign={isMobileScreen ? "center" : ""}
+              fontFamily="Abril-Fatface"
+            >
+              Our <span style={{ color: "#FFC700" }}>Best Sellers</span>
+            </Text>
+          </Reveal>
         </Box>
       </VStack>
 
       <VStack mt="2rem">
-        <HStack spacing={"10rem"}>
-          <FlipImageCard1 />
-          <FlipImageCard2 />
-        </HStack>
-        <HStack spacing={"10rem"}>
-          <FlipImageCard3 />
-          <FlipImageCard4 />
-        </HStack>
+        <Reveal width="fit-content">
+          <HStack spacing={"10rem"}>
+            <FlipImageCard1 />
+            <FlipImageCard2 />
+          </HStack>
+          <HStack spacing={"10rem"}>
+            <FlipImageCard3 />
+            <FlipImageCard4 />
+          </HStack>
+        </Reveal>
       </VStack>
-      <Box
-        mt={isMobileScreen ? "20px" : "100px"}
-        w={isMobileScreen ? "100%" : "40rem"}
-        ml={isMobileScreen ? "0px" : "300px"}
-      >
-        <Center>
-          <VStack>
-            <Box>
-              <Text
-                position="relative"
-                fontSize={isMobileScreen ? "30px" : "50px"}
-                fontWeight="semibold"
-                justifyContent="center"
-                alignItems="center"
-                textAlign={isMobileScreen ? "center" : ""}
-                fontFamily="Abril-Fatface"
-              >
-                Meet <span style={{ color: "#FFC700" }}>Our Chefs</span>
-              </Text>
-            </Box>
-            <Box ml="100px" mt="-15px" w="200px">
-              <Image src={Brush} />
-            </Box>
-          </VStack>
-        </Center>
-      </Box>
 
-      <Center>
-        <Box width="180%" height="200%" mt="-100px" ml="10">
-          <BlogCarousel />
+      <VStack mt="10rem">
+        <Box>
+          <Reveal width="fit-content">
+            <Text
+              position="relative"
+              fontSize={isMobileScreen ? "30px" : "50px"}
+              fontWeight="semibold"
+              textAlign={isMobileScreen ? "center" : ""}
+              fontFamily="Abril-Fatface"
+            >
+              Meet <span style={{ color: "#FFC700" }}>Our Chefs</span>
+            </Text>
+          </Reveal>
         </Box>
-      </Center>
+      </VStack>
+     <ChefModal carouselItems={carouselItems}/>
+      
     </Box>
   );
 };

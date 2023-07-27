@@ -10,16 +10,13 @@ import {
 
 import PropTypes from "prop-types";
 
-
 function BistekModal({ isOpen, onClose, toggleModal }) {
- 
-
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>Modal Title</ModalHeader>
-        <ModalCloseButton onClick={toggleModal}/>
+        <ModalCloseButton onClick={toggleModal} />
         <ModalBody>jkjkkk</ModalBody>
 
         <ModalFooter></ModalFooter>

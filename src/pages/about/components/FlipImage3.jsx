@@ -1,8 +1,19 @@
-
+import { useState } from "react";
 import porkAdobs from "../../../assets/Blog/porkAdobs.webp";
 import { Card, Flex, VStack, Box, Text, Button } from "@chakra-ui/react";
+import PorkModal from "../modals/porkModal";
+
 
 function FlipImageCard() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
   return (
     <>
       <Card
@@ -35,12 +46,19 @@ function FlipImageCard() {
               />
             </Box>
             <Text fontWeight="semibold" fontSize="20px">
-             Pork Adobo
+              Pork Adobo
             </Text>
-            <Button bg="#FFC700">Recipe</Button>
+            <Button onClick={toggleModal} bg="#FFC700">
+              Recipe
+            </Button>
           </VStack>
         </Flex>
       </Card>
+      <PorkModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        toggleModal={toggleModal}
+      />
     </>
   );
 }

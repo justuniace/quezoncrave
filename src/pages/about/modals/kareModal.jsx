@@ -6,21 +6,23 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
+  Text,
 } from "@chakra-ui/react";
 
 import PropTypes from "prop-types";
 
-
-function BistekModal({ isOpen, onClose, toggleModal }) {
- 
-
+function KareModal({ isOpen, onClose, toggleModal }) {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>Modal Title</ModalHeader>
-        <ModalCloseButton onClick={toggleModal}/>
-        <ModalBody>jkjkkk</ModalBody>
+        <ModalCloseButton onClick={toggleModal} />
+        <ModalBody>
+          <Text>
+           
+          </Text>
+        </ModalBody>
 
         <ModalFooter></ModalFooter>
       </ModalContent>
@@ -28,9 +30,9 @@ function BistekModal({ isOpen, onClose, toggleModal }) {
   );
 }
 
-BistekModal.propTypes = {
+KareModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
   toggleModal: PropTypes.func.isRequired,
 };
-export default BistekModal;
+export default KareModal;

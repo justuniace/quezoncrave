@@ -210,7 +210,7 @@ export const Footer = () => {
             <Link to="/menu">
               <Text fontSize="15px">Menu</Text>
             </Link>
-            <Link to="/about">
+            <Link to="/blog">
               <Text fontSize="15px">Blog</Text>
             </Link>
           </VStack>

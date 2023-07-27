@@ -10,16 +10,13 @@ import {
 
 import PropTypes from "prop-types";
 
-
-function BistekModal({ isOpen, onClose, toggleModal }) {
- 
-
+function PorkModal({ isOpen, onClose, toggleModal }) {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>Modal Title</ModalHeader>
-        <ModalCloseButton onClick={toggleModal}/>
+        <ModalCloseButton onClick={toggleModal} />
         <ModalBody>jkjkkk</ModalBody>
 
         <ModalFooter></ModalFooter>
@@ -28,9 +25,9 @@ function BistekModal({ isOpen, onClose, toggleModal }) {
   );
 }
 
-BistekModal.propTypes = {
+PorkModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
   toggleModal: PropTypes.func.isRequired,
 };
-export default BistekModal;
+export default PorkModal;

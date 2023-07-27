@@ -1,8 +1,18 @@
-
+import { useState } from "react";
 import laing from "../../../assets/Blog/laing.webp";
 import { Card, Flex, VStack, Box, Text, Button } from "@chakra-ui/react";
-
+import LaingModal from "../modals/laingModal";
 function FlipImageCard() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <>
       <Card
@@ -35,12 +45,19 @@ function FlipImageCard() {
               />
             </Box>
             <Text fontWeight="semibold" fontSize="20px">
-             Laing
+              Laing
             </Text>
-            <Button bg="#FFC700">Recipe</Button>
+            <Button onClick={toggleModal} bg="#FFC700">
+              Recipe
+            </Button>
           </VStack>
         </Flex>
       </Card>
+      <LaingModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        toggleModal={toggleModal}
+      />
     </>
   );
 }

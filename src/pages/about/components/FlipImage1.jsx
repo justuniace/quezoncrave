@@ -6,13 +6,14 @@ import BistekTagalog from "../../../assets/Blog/bistekTagalog.webp";
 function FlipImageCard() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const toggleModal = () => {
-    setIsModalOpen(true);
-  };
+ const toggleModal = () => {
+   setIsModalOpen(!isModalOpen);
+ };
 
-    const closeModal = () => {
-      setIsModalOpen(false);
-    };
+ const closeModal = () => {
+   setIsModalOpen(false);
+ };
+
 
   return (
     <>
@@ -54,7 +55,11 @@ function FlipImageCard() {
           </VStack>
         </Flex>
       </Card>
-      <BistekModal isOpen={isModalOpen} onClose={closeModal} />
+      <BistekModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        toggleModal={toggleModal}
+      />
     </>
   );
 }
