@@ -111,133 +111,6 @@ const handleAddToCart = () => {
 
   return (
     <>
-      <Modal isCentered isOpen onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>
-            <Flex
-              justifyContent="center"
-              alignItems="center"
-              flexDirection="column"
-            >
-              <Image src={imageUrl} alt={dessert.name} w="15rem" h="18rem" />
-            </Flex>
-            <HStack margin="0 20px">
-              <Text fontSize="lg" fontWeight="bold">
-                {dessert.name}
-              </Text>
-              <Text ml="160px" color="#FFC700" fontSize="20px">
-                ₱{calculateTotalPrice()}
-              </Text>
-            </HStack>
-          </ModalHeader>
-          <ModalCloseButton />
-          <ModalBody margin="0 20px">
-            <Text fontSize="15px" mb="15px">
-              {dessert.description}
-            </Text>
-            <HStack>
-              <Icon as={AiFillStar} color="#FFC700" fontSize="22px" />
-              <Text fontSize="12px">{dessert.rating}</Text>
-              <Text fontSize="12px">( {dessert.people} )</Text>
-            </HStack>
-
-            <HStack justifyContent="space-between">
-              <Box>
-                <Text mt="5" color="#434242" fontWeight="light" fontSize="13px">
-                  Size
-                </Text>
-                <RadioGroup mt="3" value={size} onChange={setSize}>
-                  <VStack align="start">
-                    <Radio
-                      sx={{
-                        color: "#FFC700",
-                        _checked: { bg: "#FFC700", borderColor: "#FFC700" },
-                      }}
-                      value="Single"
-                    >
-                      Single Order
-                    </Radio>
-                    <Radio
-                      sx={{
-                        color: "#FFC700",
-                        _checked: { bg: "#FFC700", borderColor: "#FFC700" },
-                      }}
-                      value="Family"
-                    >
-                      Family Size
-                    </Radio>
-                    <Radio
-                      sx={{
-                        color: "#FFC700",
-                        _checked: { bg: "#FFC700", borderColor: "#FFC700" },
-                      }}
-                      value="Party"
-                    >
-                      Party Size
-                    </Radio>
-                  </VStack>
-                </RadioGroup>
-              </Box>
-              <Box mb="2rem">
-                <Text color="#434242" ml="8" fontWeight="light" fontSize="13px">
-                  Quantity
-                </Text>
-
-                <HStack justifyContent="space-between">
-                  <HStack mt="3" spacing="5">
-                    <Button
-                      borderRadius="30"
-                      w="2rem"
-                      h="2rem"
-                      fontSize="12px"
-                      onClick={decrementQuantity}
-                      boxShadow="md"
-                    >
-                      -
-                    </Button>
-                    <span style={{ color: "#FFC700" }}>{quantity}</span>
-                    <Button
-                      borderRadius="30"
-                      w="2rem"
-                      h="2rem"
-                      fontSize="12px"
-                      onClick={incrementQuantity}
-                      boxShadow="md"
-                    >
-                      +
-                    </Button>
-                  </HStack>
-                </HStack>
-              </Box>
-            </HStack>
-          </ModalBody>
-          <ModalFooter margin="0 20px">
-            <HStack>
-              <Button
-                fontWeight="light"
-                bg="#FFC700"
-                w="11rem"
-                color="white"
-                leftIcon={<AiOutlineShoppingCart />}
-                onClick={handleAddToCart}
-              >
-                Add to Cart
-              </Button>
-              <Button
-                w="11rem"
-                bg="#EEEEEE"
-                fontWeight="light"
-                variant="ghost"
-                leftIcon={<BiCartDownload />}
-                onClick={handlePlaceOrder}
-              >
-                Place Order
-              </Button>
-            </HStack>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
       {isSingleOrderOpen && (
         <SingleOrder
           onClose={() => {
@@ -250,6 +123,145 @@ const handleAddToCart = () => {
           itemQuantity={quantity}
           itemSize={size}
         />
+      )}
+      {!isSingleOrderOpen && (
+        <Modal isCentered isOpen onClose={onClose}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>
+              <Flex
+                justifyContent="center"
+                alignItems="center"
+                flexDirection="column"
+              >
+                <Image src={imageUrl} alt={dessert.name} w="15rem" h="18rem" />
+              </Flex>
+              <HStack margin="0 20px">
+                <Text fontSize="lg" fontWeight="bold">
+                  {dessert.name}
+                </Text>
+                <Text ml="160px" color="#FFC700" fontSize="20px">
+                  ₱{calculateTotalPrice()}
+                </Text>
+              </HStack>
+            </ModalHeader>
+            <ModalCloseButton />
+            <ModalBody margin="0 20px">
+              <Text fontSize="15px" mb="15px">
+                {dessert.description}
+              </Text>
+              <HStack>
+                <Icon as={AiFillStar} color="#FFC700" fontSize="22px" />
+                <Text fontSize="12px">{dessert.rating}</Text>
+                <Text fontSize="12px">( {dessert.people} )</Text>
+              </HStack>
+
+              <HStack justifyContent="space-between">
+                <Box>
+                  <Text
+                    mt="5"
+                    color="#434242"
+                    fontWeight="light"
+                    fontSize="13px"
+                  >
+                    Size
+                  </Text>
+                  <RadioGroup mt="3" value={size} onChange={setSize}>
+                    <VStack align="start">
+                      <Radio
+                        sx={{
+                          color: "#FFC700",
+                          _checked: { bg: "#FFC700", borderColor: "#FFC700" },
+                        }}
+                        value="Single"
+                      >
+                        Single Order
+                      </Radio>
+                      <Radio
+                        sx={{
+                          color: "#FFC700",
+                          _checked: { bg: "#FFC700", borderColor: "#FFC700" },
+                        }}
+                        value="Family"
+                      >
+                        Family Size
+                      </Radio>
+                      <Radio
+                        sx={{
+                          color: "#FFC700",
+                          _checked: { bg: "#FFC700", borderColor: "#FFC700" },
+                        }}
+                        value="Party"
+                      >
+                        Party Size
+                      </Radio>
+                    </VStack>
+                  </RadioGroup>
+                </Box>
+                <Box mb="2rem">
+                  <Text
+                    color="#434242"
+                    ml="8"
+                    fontWeight="light"
+                    fontSize="13px"
+                  >
+                    Quantity
+                  </Text>
+
+                  <HStack justifyContent="space-between">
+                    <HStack mt="3" spacing="5">
+                      <Button
+                        borderRadius="30"
+                        w="2rem"
+                        h="2rem"
+                        fontSize="12px"
+                        onClick={decrementQuantity}
+                        boxShadow="md"
+                      >
+                        -
+                      </Button>
+                      <span style={{ color: "#FFC700" }}>{quantity}</span>
+                      <Button
+                        borderRadius="30"
+                        w="2rem"
+                        h="2rem"
+                        fontSize="12px"
+                        onClick={incrementQuantity}
+                        boxShadow="md"
+                      >
+                        +
+                      </Button>
+                    </HStack>
+                  </HStack>
+                </Box>
+              </HStack>
+            </ModalBody>
+            <ModalFooter margin="0 20px">
+              <HStack>
+                <Button
+                  fontWeight="light"
+                  bg="#FFC700"
+                  w="11rem"
+                  color="white"
+                  leftIcon={<AiOutlineShoppingCart />}
+                  onClick={handleAddToCart}
+                >
+                  Add to Cart
+                </Button>
+                <Button
+                  w="11rem"
+                  bg="#EEEEEE"
+                  fontWeight="light"
+                  variant="ghost"
+                  leftIcon={<BiCartDownload />}
+                  onClick={handlePlaceOrder}
+                >
+                  Place Order
+                </Button>
+              </HStack>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
       )}
     </>
   );

@@ -86,7 +86,7 @@ export function Shipping({ onClose, shippingData }) {
         status: "success",
         duration: 3000,
         isClosable: true,
-        position: "bottom",
+        position: "top",
       });
 
       setEmailSent(true);
@@ -182,7 +182,7 @@ export function Shipping({ onClose, shippingData }) {
                 </Text>
               </HStack>
             </VStack>
-            <Text>We only accept Cash on Delivery!</Text>
+            <Text fontSize={"15px"} mt="2rem">We only accept Cash on Delivery!</Text>
           </ModalBody>
           <ModalFooter>
             <Button

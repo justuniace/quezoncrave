@@ -12,28 +12,28 @@ function Satisfied() {
     },
     { text: "Excellent service and quality dishes!", author: "Jane Smith" },
     {
-      text: "Best restaurant in town! I highly recommend it.",
+      text: "Absolutely the best restaurant in town! Highly recommended! 🌟🍽️",
       author: "Alex Johnson",
     },
     {
-      text: "Best restaurant in town! I highly recommend it.",
-      author: "Alex Johnson",
+      text: "You have to try this place! Quezon Crave's is hands down the best restaurant in town. Quezon Crave's creativity in the kitchen and warm hospitality make every visit unforgettable! 🍴😊",
+      author: "Sarah Chu",
     },
     {
       text: "Best restaurant in town! I highly recommend it.",
-      author: "Alex Johnson",
+      author: "Carl Joe",
     },
     {
-      text: "Best restaurant in town! I highly recommend it.",
-      author: "Alex Johnson",
+      text: " Town's finest! Must-try! 👌🍽️😍",
+      author: "Alexa Isno",
     },
     {
-      text: "Best restaurant in town! I highly recommend it.",
-      author: "Alex Johnson",
+      text: "Don't miss out on Quezon's Crave - culinary bliss! 🍽️😋",
+      author: "David Lim",
     },
     {
-      text: "Best restaurant in town! I highly recommend it.",
-      author: "Alex Johnson",
+      text: "Exquisite culinary gem! Unmissable experience! 🌟🍽️😍",
+      author: "Kim Molina",
     },
 
     // Add more carousel items as needed
