@@ -32,6 +32,20 @@ export const Footer = () => {
      const Instagram =
        "https://instagram.com/quezoncrave?igshid=ZDc4ODBmNjlmNQ==";
 
+  const gmail = 'quezoncrave@gmail.com';
+
+  const handleEmailClick = () => {
+    window.location.href = `mailto:${gmail}?subject=Your%20Subject%20Here&body=Your%20message%20goes%20here.%0A%0ARegards,%0AYour%20Name`;
+  };
+  const handleScrollToTop = () => {
+    // Find the element to scroll to (documentElement for modern browsers, body for older ones)
+    const element = document.documentElement || document.body;
+    // Scroll to the top of the page smoothly
+    element.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const googleMapURL = "https://goo.gl/maps/dmBL5TTeF6honCwH8";
+
   const [isMobile] = useMediaQuery("(max-width: 767px)");
   const [isTablet] = useMediaQuery("(max-width: 1023px)");
 
@@ -135,6 +149,7 @@ export const Footer = () => {
                 rel="noopener noreferrer"
                 color="white"
                 _hover={{
+                  cursor: "pointer",
                   transform: "scale(1.2)",
                   transition: "transform 0.3s ease",
                 }}
@@ -148,6 +163,7 @@ export const Footer = () => {
                 rel="noopener noreferrer"
                 color="white"
                 _hover={{
+                  cursor: "pointer",
                   transform: "scale(1.2)",
                   transition: "transform 0.3s ease",
                 }}
@@ -155,13 +171,14 @@ export const Footer = () => {
                 <AiFillInstagram />
               </Box>
               <Box
-                as="a"
-                href="#"
+                as="span"
+                onClick={handleEmailClick}
                 color="white"
                 _hover={{
                   transform: "scale(1.2)",
                   transition: "transform 0.3s ease",
                 }}
+                style={{ cursor: "pointer", textDecoration: "none" }}
               >
                 <GrMail />
               </Box>
@@ -177,10 +194,9 @@ export const Footer = () => {
               ml={isMobile ? "" : "2rem"}
             >
               <Box
-                as="a"
-                href="#"
                 color="white"
                 _hover={{
+                  cursor: "pointer",
                   transform: "scale(1.2)",
                   transition: "transform 0.3s ease",
                 }}
@@ -196,6 +212,7 @@ export const Footer = () => {
             ml={isMobile ? "4.5rem" : isTablet ? "5rem" : ""}
             mt={isMobile ? "3rem" : "7rem"}
             color="white"
+            onClick={handleScrollToTop}
           >
             <Text
               mb="1rem"
@@ -231,6 +248,7 @@ export const Footer = () => {
               <Button
                 onClick={handleSubscribe}
                 style={{
+                  cursor: "pointer",
                   fontSize: "12px",
                   background: "#FFF0DC",
                 }}
@@ -239,6 +257,7 @@ export const Footer = () => {
               </Button>
             </HStack>
             <HStack
+              onClick={() => window.open(googleMapURL, "_blank")}
               fontFamily="inter"
               spacing="1rem"
               opacity=".8"
@@ -253,6 +272,7 @@ export const Footer = () => {
                 href="#"
                 color="white"
                 _hover={{
+                  cursor: "pointer",
                   transform: "scale(1.2)",
                   transition: "transform 0.3s ease",
                 }}
@@ -262,10 +282,11 @@ export const Footer = () => {
               <Text
                 //whiteSpace="nowrap"
                 //overflow="hidden"
+                style={{ cursor: "pointer" }}
                 textOverflow="ellipsis"
                 fontSize={isMobile ? "12px" : "15px"}
               >
-                Barangay San Agustine St. Acacia, Rosario Cavite
+                752 P. Burgos Ave, San Roque, Cavite City, 4100 Cavite
               </Text>
             </HStack>
           </VStack>
@@ -282,13 +303,8 @@ export const Footer = () => {
           opacity=".8"
         >
           <Text>Copyright 2023 Quezon Crave.</Text>
-          <HStack mr={isMobile ? "" : "3rem"}>
-            <Link
-            
-             
-              to="privacy-policy"
-              
-            >
+          <HStack mr={isMobile ? "" : "6rem"} onClick={handleScrollToTop}>
+            <Link to="privacy-policy">
               <Text>Privacy Policy</Text>
             </Link>{" "}
             <Text>| All rights reserved.</Text>

@@ -12,6 +12,7 @@ import {
   Button,
   Spacer,
 } from "@chakra-ui/react";
+import { useToast } from "@chakra-ui/react";
 import { DeleteIcon } from "@chakra-ui/icons";
 import { urlFor } from "../../../client";
 import { CartContext } from "../Context/Context";
@@ -22,10 +23,26 @@ export function Cart() {
   const { cartItems, setCartItems } = useContext(CartContext);
   const [isLoading, setIsLoading] = useState(true);
 const [isMultipleOrderOpen, setMultipleOrderOpen] = useState(false);
+const toast = useToast();
 
 
  const handlePlaceOrder = () => {
-   setMultipleOrderOpen(true);
+  if (cartItems.length === 0) {
+    // Show toast that the cart is empty
+    toast({
+      title: "",
+      description: "Your Cart is Empty!",
+      status: "warning",
+      duration: 3000,
+      isClosable: true,
+      position: "top",
+    });
+  } else {
+    // Open the modal for placing an order
+    setMultipleOrderOpen(true);
+  }
+
+   
  };
  
 
