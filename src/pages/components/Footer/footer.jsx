@@ -27,7 +27,7 @@ export const Footer = () => {
   // const history = useHistory();
 
    const facebookProfileURL =
-     "https://www.facebook.com/profile.php?id=YOUR_PROFILE_ID";
+     "https://web.facebook.com/profile.php?id=100095034350090&mibextid=2JQ9oc&_rdc=1&_rdr";
 
      const Instagram =
        "https://instagram.com/quezoncrave?igshid=ZDc4ODBmNjlmNQ==";

@@ -16,6 +16,10 @@ import mc from "../../assets/mc.webp";
 import cha from "../../assets/cha.webp";
 import arv from "../../assets/arv.webp";
 import dan from "../../assets/dan.webp";
+
+
+
+
 export const Blog = () => {
   const [isMobileScreen] = useMediaQuery("(max-width: 60em)");
   const [isTabletScreen] = useMediaQuery("(max-width: 768px)");

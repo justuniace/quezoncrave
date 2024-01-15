@@ -53,7 +53,9 @@ function BistekModal({ isOpen, onClose, toggleModal }) {
             <Text>
               Transfer to a serving plate. Serve with rice! Share and enjoy!
             </Text>
-          
+            <Text mt="2rem" fontSize={"15px"}>
+              from Panlasangpinoy.com
+            </Text>
           </VStack>
         </ModalBody>
 

@@ -59,13 +59,13 @@ CustomButton.propTypes = {
   isYellowButton: PropTypes.bool,
   icon: PropTypes.elementType.isRequired,
   width: PropTypes.string,
-  hasBorder: PropTypes.bool, // New prop for controlling the border color
+  hasBorder: PropTypes.bool, 
 };
 
 CustomButton.defaultProps = {
   isYellowButton: false,
   width: "auto",
-  hasBorder: true, // Default value for hasBorder prop
+  hasBorder: true, 
 };
 
 export default CustomButton;

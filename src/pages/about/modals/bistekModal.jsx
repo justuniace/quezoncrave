@@ -35,7 +35,7 @@ function BistekModal({ isOpen, onClose, toggleModal }) {
             <Text>▢1 cup water</Text>
             <Text>▢1 pinch salt</Text>
           </VStack>
-          <VStack spacing="1rem"mt="2rem"align={"start"}>
+          <VStack spacing="1rem" mt="2rem" align={"start"}>
             <Text fontWeight={"semibold"}> Instructions</Text>
             <Text>
               Marinate beef in soy sauce, lemon (or calamansi), and ground black
@@ -66,7 +66,9 @@ function BistekModal({ isOpen, onClose, toggleModal }) {
             <Text>
               Transfer to a serving plate. Serve hot. Share and Enjoy!
             </Text>
-           
+            <Text mt="2rem" fontSize={"15px"}>
+              from Panlasangpinoy.com
+            </Text>
           </VStack>
         </ModalBody>
 

@@ -16,7 +16,7 @@ function Satisfied() {
       author: "Alex Johnson",
     },
     {
-      text: "You have to try this place! Quezon Crave's is hands down the best restaurant in town. Quezon Crave's creativity in the kitchen and warm hospitality make every visit unforgettable! 🍴😊",
+      text: "You have to try this place! Quezon Crave's is hands down the best restaurant in town 🍴😊",
       author: "Sarah Chu",
     },
     {

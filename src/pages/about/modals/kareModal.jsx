@@ -63,6 +63,9 @@ function KareModal({ isOpen, onClose, toggleModal }) {
             </Text>
             <Text>7. Add salt and pepper to taste</Text>
             <Text>8. Serve hot with shrimp paste. Enjoy!</Text>
+            <Text mt="2rem" fontSize={"15px"}>
+              from Panlasangpinoy.com
+            </Text>
           </VStack>
         </ModalBody>
 

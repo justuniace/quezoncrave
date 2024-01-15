@@ -49,7 +49,7 @@ function PorkModal({ isOpen, onClose, toggleModal }) {
             <Text>5. Put-in the vinegar and simmer for 12 to 15 minutes</Text>
             <Text>6. Add salt to taste</Text>
             <Text>7.Serve hot. Share and enjoy!</Text>
-        
+            <Text  mt="2rem" fontSize={"15px"}>from Panlasangpinoy.com</Text>
           </VStack>
         </ModalBody>
 
